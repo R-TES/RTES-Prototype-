@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5;
     public Animator animator; 
+    public Rigidbody2D ribo; 
 
     // Start is called before the first frame update
 
@@ -27,7 +28,22 @@ public class PlayerMovement : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
+        //transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
+        
+        if(h > 0){
+            ribo.AddForce(transform.right * speed, ForceMode2D.Impulse);
+        }
+        else if(h < 0){
+            ribo.AddForce(-transform.right * speed, ForceMode2D.Impulse);
+        }
+
+        if(v > 0){
+            ribo.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        }
+        else if(v < 0){
+            ribo.AddForce(-transform.up * speed, ForceMode2D.Impulse);
+        }
+        
 
     }
 
