@@ -1,26 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5;
     public Animator animator; 
     public Rigidbody2D ribo; 
 
+    public PhotonView view; 
     // Start is called before the first frame update
 
 
     void Start()
     {
-        
+        view = GetComponent<PhotonView>(); 
     }
 
     // Update is called once per frame
     void Update()
-    {
-        PlayerMove();
-        AnimatePlayer();
+    {   
+        if(view.IsMine){
+            PlayerMove();
+            AnimatePlayer();
+        }
     }
 
 
