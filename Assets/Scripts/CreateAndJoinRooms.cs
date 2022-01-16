@@ -19,7 +19,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom(){
-        PhotonNetwork.LoadLevel("DemoGame"); 
+        PhotonNetwork.LoadLevel("DemoRoom1"); 
     }
 
     // Update is called once per frame

@@ -5,8 +5,13 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5;
+    public float force = 0.01f;
+    public float animate_threshold = 0.001f;
     public Animator animator; 
     public Rigidbody2D ribo; 
+
+    private Vector3 vel;
+    private Vector3 previous = Vector3.zero; 
 
     public PhotonView view; 
     // Start is called before the first frame update
@@ -18,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {   
         if(view.IsMine){
             PlayerMove();
@@ -31,43 +36,51 @@ public class PlayerMovement : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        //transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
+        transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
         
         if(h > 0){
-            ribo.AddForce(transform.right * speed, ForceMode2D.Impulse);
+            ribo.AddForce(transform.right * force, ForceMode2D.Impulse);
         }
         else if(h < 0){
-            ribo.AddForce(-transform.right * speed, ForceMode2D.Impulse);
+            ribo.AddForce(-transform.right * force, ForceMode2D.Impulse);
         }
 
         if(v > 0){
-            ribo.AddForce(transform.up * speed, ForceMode2D.Impulse);
+            ribo.AddForce(transform.up * force, ForceMode2D.Impulse);
         }
         else if(v < 0){
-            ribo.AddForce(-transform.up * speed, ForceMode2D.Impulse);
+            ribo.AddForce(-transform.up * force, ForceMode2D.Impulse);
         }
         
+
+
 
     }
 
     void AnimatePlayer(){
         ResetAnim();
-        if(Input.GetAxis("Horizontal") < 0){        // Left Key Pressed
+
+        vel = (transform.position - previous);
+        previous = transform.position;
+
+        Debug.Log("X: " + vel.x);
+        Debug.Log("Y: " + vel.y); 
+        if(vel.x < -animate_threshold){        // Left Key Pressed
             //ResetAnim();
             animator.SetBool("IDLE", false);
             animator.SetBool("LEFTRUN", true);
         }
-        else if(Input.GetAxis("Horizontal") > 0){
+        else if(vel.x > animate_threshold){
             //ResetAnim();
             animator.SetBool("IDLE", false);
             animator.SetBool("RIGHTRUN", true);
         }
-        else if(Input.GetAxis("Vertical") > 0){
+        else if(vel.y > animate_threshold){
             //ResetAnim();
             animator.SetBool("IDLE", false);
             animator.SetBool("UPRUN", true);
         } 
-        else if(Input.GetAxis("Vertical") < 0){
+        else if(vel.y < -animate_threshold){
             //ResetAnim();
             animator.SetBool("IDLE", false);
             animator.SetBool("DOWNRUN", true);
