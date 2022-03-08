@@ -63,8 +63,7 @@ public class PlayerMovement : MonoBehaviour
         vel = (transform.position - previous);
         previous = transform.position;
 
-        Debug.Log("X: " + vel.x);
-        Debug.Log("Y: " + vel.y); 
+ 
         if(vel.x < -animate_threshold){        // Left Key Pressed
             //ResetAnim();
             animator.SetBool("IDLE", false);
