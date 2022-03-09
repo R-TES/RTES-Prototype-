@@ -1,8 +1,8 @@
 # RTES-Prototype-
 
 ### Working Test Application:
-    https://r-tes.github.io/RTES-Prototype-/webdemo2/ - Leading Version
-    https://r-tes.github.io/RTES-Prototype-/webdemo2/ - Fallback Version
+https://r-tes.github.io/RTES-Prototype-/webdemo/ - Leading Version (1.05)
+https://r-tes.github.io/RTES-Prototype-/webdemo2/ - Fallback Version
 
 ## Concept
 
