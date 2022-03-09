@@ -37,7 +37,10 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
-        
+        Debug.Log(h);
+        Debug.Log(v); 
+
+
         if(h > 0){
             ribo.AddForce(transform.right * force, ForceMode2D.Impulse);
         }
