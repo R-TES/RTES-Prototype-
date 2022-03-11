@@ -29,8 +29,8 @@ public class spawnPlayer : MonoBehaviour
         }
         else
         {
-            Instantiate(offlineDebugPlayer, pos, offlineDebugPlayer.transform.rotation);
-            Debug.LogError("Not Connected To Photon! Testing Purposes only guys."); 
+            Instantiate(offlineDebugPlayer, pos, Quaternion.identity);
+            Debug.LogError("Not Connected To Photon! Open game from Intro Scene guys."); 
         }
         
     }
