@@ -1,0 +1,23 @@
+{
+  "name": "rtes",
+  "version": "1.0.0",
+  "description": "https://r-tes.github.io/RTES-Prototype-/webdemo/ - Leading Version (1.05)",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^9.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R-TES/RTES-Prototype-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/R-TES/RTES-Prototype-/issues"
+  },
+  "homepage": "https://github.com/R-TES/RTES-Prototype-#readme"
+}

@@ -106,8 +106,8 @@
     </script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script type="module">
-      const firebaseConfig = {
+    <script>
+      firebase.initializeApp({
         apiKey: "AIzaSyAvlOlnZM6TzQPCrHN5I-EUGHH79wsPA-w",
         authDomain: "rtes-6f8a2.firebaseapp.com",
         projectId: "rtes-6f8a2",
@@ -115,12 +115,7 @@
         messagingSenderId: "296587151958",
         appId: "1:296587151958:web:164a7b4aa963eec146c9f7",
         measurementId: "G-13MJQ4G50Z"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      // var parsedPath = "/Rooms";
-      // var parsedId = "tSSPMUrsoiU6lYPGDkme";
-      //   firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function (doc) {console.log(JSON.stringify(doc.data()))});
+      });  
     </script>
   </body>
 </html>
