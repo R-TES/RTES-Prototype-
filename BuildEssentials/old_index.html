@@ -120,21 +120,23 @@
         const db = getFirestore(app);
         window.doc = doc;
         window.getDoc = getDoc;
-
-        try {
-            firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function (doc) {
-                if (doc.exists) {
-                    window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(doc.data()));
-                } else {
-                    window.unityInstance.SendMessage(parsedObjectName, parsedCallback, "null");
-                }
-            }).catch(function(error) {
-                window.unityInstance.SendMessage(parsedObjectName, parsedFallback, "Object does not exist!");
-            });
-
-        } catch (error) {
-            window.unityInstance.SendMessage(parsedObjectName, parsedFallback, "Object does not exist!");
-        }
+        firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function (doc) {
+           var res;
+           var roomData = doc.data();
+           res.id = doc.id;
+           if(roomData.name){
+               res.name = roomData.name;
+           }
+           if(roomData.owner){
+               roomData.owner.get().then(function(doc){
+                    var ownerData = doc.data();
+                    roomData.owner = ownerData.username;
+               }); 
+           }
+           console.log(roomData);
+        }).catch(function(error) {
+            console.log(error);
+        });
     </script>
   </body>
 </html>

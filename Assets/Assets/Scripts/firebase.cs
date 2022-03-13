@@ -1,15 +1,16 @@
-// using System.Diagnostics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-
 [System.Serializable]
 class Room{
     public string name;
-    public string template;
     public string owner;
+    [SerializeField]
+    public List<string> roomObjects;
+    public string template;
 }
 
 public class firebase : MonoBehaviour
@@ -30,10 +31,14 @@ public class firebase : MonoBehaviour
         GetDocument("Rooms", "tSSPMUrsoiU6lYPGDkme", gameObject.name, "callback", "fallback");
     }
     private void callback(string data){
+        Debug.Log(data);
         Room room = JsonUtility.FromJson<Room>(data);
         Debug.Log(room.name);
         Debug.Log(room.template);
         Debug.Log(room.owner);
+        foreach(string roomObj in room.roomObjects){
+            Debug.Log(roomObj);
+        }
 
     }
 
