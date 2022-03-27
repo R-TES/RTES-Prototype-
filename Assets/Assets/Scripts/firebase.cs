@@ -25,10 +25,25 @@ public class firebase : MonoBehaviour
     public static extern void GetDocument(string collectionPath, string documentId, string objectName,
             string callback, string fallback);
 
+    [DllImport("__Internal")]
+    public static extern void AddDocument(string collectionPath, string data);
+
+    [DllImport("__Internal")]
+    public static extern void SetDocument(string collectionPath, string documentId, string data);
+
     void Start() {
         Hello();
         HelloString(gameObject.name, "callback");
         GetDocument("Rooms", "tSSPMUrsoiU6lYPGDkme", gameObject.name, "callback", "fallback");
+        Room newRoom = new Room();
+        newRoom.name = "Office2";
+        newRoom.owner = "Users/zd26igJS15tCTNchXaaQ";
+        newRoom.roomObjects = new List<string> {"RoomObjects/VZLw9B7HMFZA7mlNIqVR"};
+        // newRoom.template = "Templates/GfGIZ9UkGk9T19Strtll";
+        string json = JsonUtility.ToJson(newRoom);
+        print(json);
+        // AddDocument("Rooms", json);
+        SetDocument("Rooms", "tSSPMUrsoiU6lYPGDkme", json);
     }
     private void callback(string data){
         Debug.Log(data);
