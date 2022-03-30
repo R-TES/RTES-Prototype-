@@ -22,13 +22,13 @@ namespace Scripts{
     }
 
     [System.Serializable]
-    public class Templates {
+    public class Template {
         public string name;
         public string scene;
     }
 
     [System.Serializable]
-    public class RoomObjects {
+    public class RoomObject {
         public string name;
     }
 

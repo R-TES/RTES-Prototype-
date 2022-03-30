@@ -1,4 +1,4 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -42,9 +42,9 @@
         "**/*.mat":true,
         "**/*.meta":true,
         "**/*.prefab":true,
-        "**/*.unity":true,
-        "build/":true,
-        "Build/":true,
+        "**/*.unity":false,
+        "build/":false,
+        "Build/":false,
         "Library/":true,
         "library/":true,
         "obj/":true,
