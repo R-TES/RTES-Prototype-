@@ -20,16 +20,6 @@ namespace Scripts
         {
             if (Application.platform != RuntimePlatform.WebGLPlayer)
                 DisplayError("The code is not running on a WebGL build; as such, the Javascript functions will not be recognized.");
-
-            Room newRoom = new Room();
-            newRoom.name = "Office2";
-            newRoom.owner = "Users/zd26igJS15tCTNchXaaQ";
-            newRoom.roomObjects = new List<string> {"RoomObjects/VZLw9B7HMFZA7mlNIqVR"};
-
-            string json = Serializer<Room>.toJSON(newRoom);
-            print(json);
-            
-            FirebaseFirestore.UpdateDocument("Rooms", "tSSPMUrsoiU6lYPGDkme", json, gameObject.name, "DisplayInfo", "DisplayErrorObject");
         }
 
         public void GetDocument() =>

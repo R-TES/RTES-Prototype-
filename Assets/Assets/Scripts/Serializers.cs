@@ -2,13 +2,20 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Scripts{
-
     [System.Serializable]
     public class Room {
-        public string  name;
+        public string name;
         public string owner;
-        public List<string> roomObjects;
+        // [UnityEngine.SerializeField]
+        public List<RoomObjectPosition> roomObjects;
         public string template;
+    }
+
+    [System.Serializable]
+    public class RoomObjectPosition {
+        public string name;
+        public int xVal;
+        public int yVal;
     }
 
     [System.Serializable]

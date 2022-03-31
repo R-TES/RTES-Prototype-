@@ -9853,7 +9853,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c0cb95a79d231e64da34aa4ae0050fdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db6c6fad28158534ebbab672d278d25f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_FlipX: 0
   m_FlipY: 0
@@ -9872,8 +9872,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935699405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.35081, y: 52.92197, z: 10.294708}
-  m_LocalScale: {x: 4.0604234, y: 4.4287424, z: 1}
+  m_LocalPosition: {x: -34.9873, y: 54.2654, z: 10.294708}
+  m_LocalScale: {x: 3.4817266, y: 3.2887669, z: 1}
   m_Children: []
   m_Father: {fileID: 1592172217}
   m_RootOrder: 6
@@ -19147,6 +19147,10 @@ PrefabInstance:
     - target: {fileID: 467590829299231791, guid: a050205b08d451840b04b23ea10e4f50, type: 3}
       propertyPath: m_Name
       value: Tree Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275106331375763263, guid: a050205b08d451840b04b23ea10e4f50, type: 3}
+      propertyPath: sceneViewId
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a050205b08d451840b04b23ea10e4f50, type: 3}
