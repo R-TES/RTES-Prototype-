@@ -1,50 +1,55 @@
+using System.Data.SqlTypes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 
 namespace Scripts{
     public class CreateOrJoinFirestoreRoom : MonoBehaviourPunCallbacks
     {
-        // Start is called before the first frame update 
-
-        // public static Room room = Serializer<Room>.toObject("{'roomObjects':['Tree Plant']}");
-        public static Room room;
-        public static string template = "Template2";
-        public string roomId = "tSSPMUrsoiU6lYPGDkme";
-        public void CreateRoom() {
-            getRooms();
-            PhotonNetwork.CreateRoom(roomId);
+        public GameObject button;
+        public Transform panel;
+        public RoomOptions roomOptions = new RoomOptions();
+        public User user = Serializer<User>.toObject("{'id':'zd26igJS15tCTNchXaaQ', 'username':'aryajayadevkm','avatar':'IwZIvRqQlKXHj8hVMM76','mobile':'','rooms':[{'name':'Office 1','id':'tSSPMUrsoiU6lYPGDkme'},{'name':'Office 2','id':'vRVo1rLAtEU14Tzl5288'}],'designation':'','email':'aryajayadevkm@gmail.com'}");
+        
+        
+        private void Start(){
+            foreach(Room room in user.rooms){
+                createRoomButton(room);
+            }
         }
 
-        public void getRooms(){
-            FirebaseFirestore.GetDocument("Rooms", roomId, gameObject.name, "SetRoom", "DisplayErrorObject");
+        private void createRoomButton(Room room){
+            GameObject roomButton = Instantiate(button);
+            roomButton.transform.SetParent(panel);
+            roomButton.GetComponentInChildren<Text>().text = room.name;
+            roomButton.GetComponent<Button>().onClick.AddListener(delegate { JoinOrCreateRoom(room.id);});
+        }
+
+        public void JoinOrCreateRoom(string roomId) {
+            Storage.room.id = roomId;
+            getRoom();
+            PhotonNetwork.JoinOrCreateRoom(roomId, roomOptions, TypedLobby.Default);
+        }
+
+        public void getRoom(){
+            FirebaseFirestore.GetDocument("Rooms", Storage.room.id, gameObject.name, "SetRoom", "DisplayErrorObject");
         }
 
         public void SetRoom(string data){
-            room = Serializer<Room>.toObject(data);
-        }
-
-        public void getTemplate(){
-            FirebaseFirestore.GetDocument("Templates", room.template, gameObject.name, "SetTemplate", "DisplayErrorObject");
-        }
-
-        public void setTemplate(string data){
-            var temp = Serializer<Template>.toObject(data);
-            template = temp.scene;
+            Storage.room = Serializer<Room>.toObject(data);
         }
         public void DisplayErrorObject(string error){
             Debug.Log(error);
         }
 
-        public void JoinRoom(){
-            PhotonNetwork.JoinRoom(roomId);
+        public override void OnJoinedRoom(){
+            Debug.Log("joining");
+            PhotonNetwork.LoadLevel(Storage.room.template); 
         }
 
-        public override void OnJoinedRoom(){
-            PhotonNetwork.LoadLevel(template); 
-        }
     }
 
 }
