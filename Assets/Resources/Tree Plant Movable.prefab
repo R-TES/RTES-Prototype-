@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 467590829299231778}
   - component: {fileID: 6455507270247791752}
   - component: {fileID: 1275106331375763263}
-  - component: {fileID: 2196134131130481479}
+  - component: {fileID: 7677981222263093981}
+  - component: {fileID: -5543470569262984884}
   m_Layer: 0
-  m_Name: Tree Plant
+  m_Name: Tree Plant Movable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,11 +153,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2196134131130481479}
+  - {fileID: 7677981222263093981}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2196134131130481479
+--- !u!114 &7677981222263093981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,3 +190,26 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-5543470569262984884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467590829299231791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7677981222263093981}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
