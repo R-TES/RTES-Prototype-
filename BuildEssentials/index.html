@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <div>WebGL Firebase Plugin Demo</div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
@@ -56,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build.loader.js";
+      var loaderUrl = buildUrl + "/testingBuild.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build.data",
-        frameworkUrl: buildUrl + "/Build.framework.js",
-        codeUrl: buildUrl + "/Build.wasm",
+        dataUrl: buildUrl + "/testingBuild.data",
+        frameworkUrl: buildUrl + "/testingBuild.framework.js",
+        codeUrl: buildUrl + "/testingBuild.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "R-TES",
         productName: "RTES Prototype",
@@ -116,11 +117,11 @@
         appId: "1:296587151958:web:164a7b4aa963eec146c9f7",
         measurementId: "G-13MJQ4G50Z"
       });  
-      // firebase.firestore().collection("Rooms").doc("tSSPMUrsoiU6lYPGDkme").get().then(function (doc) {
-      //      console.log("response: ", doc.data());
-      //   }).catch(function(error) {
-      //       console.log(error);
-      //   }); 
+       firebase.firestore().collection("Rooms").doc("tSSPMUrsoiU6lYPGDkme").get().then(function (doc) {
+            console.log("response: ", doc.data());
+         }).catch(function(error) {
+             console.log(error);
+         }); 
     </script>
   </body>
 </html>
