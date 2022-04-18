@@ -25,10 +25,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
-        if(view.IsMine){
+        //if(view.IsMine){
             PlayerMove();
             AnimatePlayer();
-        }
+        //}
     }
 
 
