@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
+    public string nextSceneName = "Select"; 
+
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -17,6 +19,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedLobby(){
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene(nextSceneName);
     }
 }
