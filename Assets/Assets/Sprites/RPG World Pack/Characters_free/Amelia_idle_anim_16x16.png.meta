@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -646,6 +647,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Amelia_idle_anim_16x16_6: -750434189114621416
+      Amelia_idle_anim_16x16_13: 7405204621183634186
+      Amelia_idle_anim_16x16_20: 4388085274086121606
+      Amelia_idle_anim_16x16_1: -2760736548063111837
+      Amelia_idle_anim_16x16_7: 1918193389454674578
+      Amelia_idle_anim_16x16_5: 7030207018000786032
+      Amelia_idle_anim_16x16_10: 3556917978707756721
+      Amelia_idle_anim_16x16_12: -2079281101058025938
+      Amelia_idle_anim_16x16_2: 6790360680606227175
+      Amelia_idle_anim_16x16_22: 1714160463212027729
+      Amelia_idle_anim_16x16_23: -6047129493301585556
+      Amelia_idle_anim_16x16_14: 3351517648487934475
+      Amelia_idle_anim_16x16_16: -8189036956906364046
+      Amelia_idle_anim_16x16_17: -7885529834210634439
+      Amelia_idle_anim_16x16_11: 5555299586337194249
+      Amelia_idle_anim_16x16_19: 2041537157801427402
+      Amelia_idle_anim_16x16_0: -3708922225944154069
+      Amelia_idle_anim_16x16_18: -5108956708132578186
+      Amelia_idle_anim_16x16_4: 938562864792140936
+      Amelia_idle_anim_16x16_8: -5265267857890902978
+      Amelia_idle_anim_16x16_15: 8508548168955334981
+      Amelia_idle_anim_16x16_3: 4928252936413336897
+      Amelia_idle_anim_16x16_9: 371063470862747257
+      Amelia_idle_anim_16x16_21: -5814633108662518112
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
