@@ -1680,7 +1680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c262767b1a5aff48bb0bb177140a0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorSceneName: MainMenu1
+  editorSceneName: Lobby
   inputField: {fileID: 0}
 --- !u!114 &1848824473
 MonoBehaviour:

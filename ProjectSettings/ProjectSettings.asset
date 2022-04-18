@@ -636,11 +636,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 1ffa987e-fa2c-49d2-9bf7-bfbb957eb25b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: RTES Prototype
+  organizationId: sandeep-pillai
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
