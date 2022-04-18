@@ -25,10 +25,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
-        if(view.IsMine){
+        //if(view.IsMine){
             PlayerMove();
             AnimatePlayer();
-        }
+        //}
     }
 
 
@@ -37,8 +37,7 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
-        Debug.Log(h);
-        Debug.Log(v); 
+
 
 
         if(h > 0){
