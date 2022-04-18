@@ -288,6 +288,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -952,6 +953,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Grass E: 21300152
+      TX Bush T6: 21300080
+      TX Grass A: 21300144
+      TX Tree T2 Lower: 21300126
+      TX Bush T5: 21300132
+      TX Bush T4: 21300138
+      TX Grass G: 21300156
+      TX Grass F: 21300154
+      TX Tree T2 Upper: 21300128
+      TX Grass L: 21300166
+      TX Grass I: 21300160
+      TX Tree T3 Upper: 21300084
+      TX Grass C: 21300148
+      TX Grass N: 21300170
+      TX Tree T1 Lower: 21300122
+      TX Grass H: 21300158
+      TX Grass D: 21300150
+      TX Grass M: 21300168
+      TX Bush T3: 21300140
+      TX Tree T3 Lower: 21300082
+      TX Bush T1: 21300136
+      TX Flower: 21300174
+      TX Grass O: 21300172
+      TX Bush T2: 21300134
+      TX Grass K: 21300164
+      TX Grass B: 21300146
+      TX Tree T1 Upper: 21300124
+      TX Grass J: 21300162
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

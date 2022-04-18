@@ -99,6 +99,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -724,6 +725,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Flower B0: -2969016694365801900
+      Flower A1: 2752588384504392991
+      House A0: 7642980859614939925
+      House B3: -6895716492971166485
+      Plant 0: -4060402318970035109
+      Flower B1: 1955328530927145255
+      Tree 0: -3001449038190906842
+      House A5: 8661651960862297898
+      House A2: 2058049638561703503
+      Flower A0: -3803466081661082397
+      House B1: -7067808830664889489
+      Tree 2: 8575179032478902733
+      House A1: -174804484191063705
+      House B2: 5372264662783423788
+      Rock: 7859958447799540355
+      House A4: 734368628706365288
+      Tree 1: -4894898745955426128
+      Plant 1: 6234151420658722001
+      Desk: 5820355003221595676
+      House B4: 2710443080846324409
+      Box: 8284690431070618562
+      Tree 3: -2925288176213767688
+      House A3: -2746839580606631015
+      House B0: 3275407576765064038
+      House B5: -1312994402987499043
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

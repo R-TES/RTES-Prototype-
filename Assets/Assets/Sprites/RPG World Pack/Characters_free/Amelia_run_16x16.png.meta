@@ -99,6 +99,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -712,6 +713,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Amelia_run_16x16_24: -1016439340534922467
+      Amelia_run_16x16_10: 4982833479168970092
+      Amelia_run_16x16_0: 1919563972457424006
+      Amelia_run_16x16_4: 5563407294750843284
+      Amelia_run_16x16_21: 3575928863039969402
+      Amelia_run_16x16_1: -2917346802057576728
+      Amelia_run_16x16_9: 5065274291236072061
+      Amelia_run_16x16_2: -9138915536693372919
+      Amelia_run_16x16_6: 8667881304487392831
+      Amelia_run_16x16_12: 4413959395871729748
+      Amelia_run_16x16_15: 4595910181164868139
+      Amelia_run_16x16_3: -8993123205285564308
+      Amelia_run_16x16_11: -752677563906866686
+      Amelia_run_16x16_18: -1103381221885560226
+      Amelia_run_16x16_8: 5755919864681394612
+      Amelia_run_16x16_13: -1387157329041994757
+      Amelia_run_16x16_14: -6953906926410563315
+      Amelia_run_16x16_7: 6306724619194940093
+      Amelia_run_16x16_5: -4450262322761531657
+      Amelia_run_16x16_16: -245627612919825299
+      Amelia_run_16x16_17: -5810962800728487918
+      Amelia_run_16x16_19: -2403702317273283542
+      Amelia_run_16x16_20: -1125823091935697841
+      Amelia_run_16x16_22: -8700254786623207891
+      Amelia_run_16x16_23: 3624955549895897854
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

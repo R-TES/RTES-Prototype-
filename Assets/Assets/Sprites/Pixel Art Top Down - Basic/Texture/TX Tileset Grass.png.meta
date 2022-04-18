@@ -219,6 +219,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1639,6 +1640,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Tileset Grass 7: 21300032
+      TX Tileset Grass 0: 21300000
+      TX Tileset Grass_62: 21300124
+      TX Tileset Grass Pavement 6: 21300112
+      TX Tileset Grass 15: 21300054
+      TX Tileset Grass_55: 21300110
+      TX Tileset Grass Flower 10: 21300044
+      TX Tileset Grass Flower 6: 21300028
+      TX Tileset Grass_44: 21300088
+      TX Tileset Grass 6: 21300020
+      TX Tileset Grass Flower 9: 21300042
+      TX Tileset Grass_37: 21300074
+      TX Tileset Grass Flower 5: 21300026
+      TX Tileset Grass_39: 21300078
+      TX Tileset Grass 14: 21300052
+      TX Tileset Grass Pavement 2: 21300080
+      TX Tileset Grass Flower 12: 21300056
+      TX Tileset Grass_61: 21300122
+      TX Tileset Grass Flower 11: 21300046
+      TX Tileset Grass_36: 21300072
+      TX Tileset Grass_59: 21300118
+      TX Tileset Grass 2: 21300004
+      TX Tileset Grass Flower 13: 21300058
+      TX Tileset Grass 13: 21300050
+      TX Tileset Grass_58: 21300116
+      TX Tileset Grass Pavement 4: 21300096
+      TX Tileset Grass 1: 21300002
+      TX Tileset Grass Pavement 3: 21300082
+      TX Tileset Grass_51: 21300102
+      TX Tileset Grass_63: 21300126
+      TX Tileset Grass_38: 21300076
+      TX Tileset Grass 3: 21300006
+      TX Tileset Grass Flower 2: 21300012
+      TX Tileset Grass Flower 14: 21300060
+      TX Tileset Grass_35: 21300070
+      TX Tileset Grass Flower 3: 21300014
+      TX Tileset Grass Flower 8: 21300040
+      TX Tileset Grass 12: 21300048
+      TX Tileset Grass_46: 21300092
+      TX Tileset Grass Flower 7: 21300030
+      TX Tileset Grass Flower 4: 21300024
+      TX Tileset Grass 5: 21300018
+      TX Tileset Grass_47: 21300094
+      TX Tileset Grass_60: 21300120
+      TX Tileset Grass_43: 21300086
+      TX Tileset Grass 10: 21300038
+      TX Tileset Grass_50: 21300100
+      TX Tileset Grass 8: 21300034
+      TX Tileset Grass Pavement 0: 21300064
+      TX Tileset Grass_42: 21300084
+      TX Tileset Grass Pavement 5: 21300098
+      TX Tileset Grass 11: 21300128
+      TX Tileset Grass Flower 1: 21300010
+      TX Tileset Grass_34: 21300068
+      TX Tileset Grass_53: 21300106
+      TX Tileset Grass Flower 15: 21300062
+      TX Tileset Grass_45: 21300090
+      TX Tileset Grass_52: 21300104
+      TX Tileset Grass 4: 21300016
+      TX Tileset Grass 9: 21300036
+      TX Tileset Grass Flower 0: 21300008
+      TX Tileset Grass_54: 21300108
+      TX Tileset Grass Pavement 7: 21300114
+      TX Tileset Grass Pavement 1: 21300066
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

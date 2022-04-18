@@ -171,6 +171,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -436,6 +437,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Shadow Tree T1: 21300080
+      TX Shadow Bush T2: 21300090
+      TX Shadow Tree T2: 21300082
+      TX Shadow Bush T5: 21300088
+      TX Shadow Bush T1: 21300086
+      TX Shadow Tree T3: 21300030
+      TX Shadow Bush T4: 21300092
+      TX Shadow Bush T3: 21300094
+      TX Shadow Bush T6: 21300040
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

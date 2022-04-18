@@ -273,6 +273,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1357,6 +1358,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Props Well: 21300164
+      TX Props Chest Opened: 21300040
+      TX Props Pot B: 21300092
+      TX Props Barrel: 21300066
+      TX Props Rune Pillar X3: 21300058
+      TX Props Altar Rune 3: 21300148
+      TX Props Wooden Gate Opened: 21300160
+      TX Props Rune Pillar Broken: 21300060
+      TX Props Crate Small: 21300038
+      TX Props Pot C: 21300094
+      TX Props Stone T1: 21300102
+      TX Props Stone T7: 21300162
+      TX Props Pot A: 21300090
+      TX Props Stone Cube: 21300130
+      TX Props Pillar Broken: 21300120
+      TX Props Stone Bench S: 21300096
+      TX Props Altar: 21300142
+      TX Props Stone T2: 21300104
+      TX Props Road Sign W: 21300088
+      TX Props Pillar: 21300118
+      TX Props Stone T3: 21300106
+      TX Props Brick T1: 21300152
+      TX Props Altar Rune 1: 21300144
+      TX Props Crate: 21300034
+      TX Props Stone Bench E: 21300100
+      TX Props Rune Pillar Broken Glow: 21300064
+      TX Props Road Sign E: 21300086
+      TX Props Rune Pillar X2 Glow: 21300044
+      TX Props Altar Rune 2: 21300146
+      TX Props Wooden Gate: 21300158
+      TX Props Cube: 21300036
+      TX Props Stone Coffin V: 21300076
+      TX Props Gravestone B: 21300070
+      TX Props Gravestone C: 21300072
+      TX Props Rune Pillar X2: 21300042
+      TX Props Stone T6: 21300112
+      TX Props Altar Rune 4: 21300150
+      TX Props Stone Lantern: 21300116
+      TX Props Chest: 21300000
+      TX Props Stone Coffin H: 21300078
+      TX Props Statue: 21300114
+      TX Props Brick T3: 21300156
+      TX Props Stone T5: 21300110
+      TX Props Stone Bench W: 21300098
+      TX Props Stone T4: 21300108
+      TX Props Brick T2: 21300154
+      TX Props Rune Pillar X3 Glow: 21300062
+      TX Props Gravestone A: 21300068
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

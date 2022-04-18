@@ -120,6 +120,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -892,6 +893,39 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Wall 3: 2398694386035660818
+      Water 6: 6930148502292774571
+      Water 7: 4243927867023665446
+      Soil 2: -6833445872158455971
+      Wall 1: -7369953315678303813
+      Soil 0: -5062486230716756072
+      Gress 2: -4684333735789482159
+      Soil 4: 7477827516038983822
+      Water 0: 4680653795402065389
+      Gress 6: -47299315171432025
+      Soil 3: 3825752689756085014
+      Gress 1: -8377130690987618698
+      Gress 8: -6765242926017629268
+      Wall 4: 8976018127306389262
+      Soil 7: 8933607801220796041
+      Soil 1: 4099902767569298868
+      Gress 3: -537749870668139058
+      Gress 0: 7223950226953391895
+      Gress 4: 1561205615984820651
+      Gress 5: 857779327251732012
+      Water 4: -8644279775636323431
+      Water 8: 4080561482957604121
+      Soil 6: -8637159173488095169
+      Water 3: 5264979163374914166
+      Wall 0: -6100061461012067082
+      Water 1: 4753258692078137619
+      Soil 5: 3930821917377472818
+      Water 5: 3841374895227053369
+      Soil 8: -8955812619259062215
+      Water 2: -7956832237065629149
+      Gress 7: 9045646400296435942
+      Wall 2: -7326330765846486680
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

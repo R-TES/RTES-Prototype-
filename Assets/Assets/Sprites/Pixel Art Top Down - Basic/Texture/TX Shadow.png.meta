@@ -183,6 +183,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1162,6 +1163,50 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Shadow Stone Cube: 21300084
+      TX Shadow Pot A: 21300046
+      TX Shadow Stone T4: 21300064
+      TX Shadow Stone Bench W: 21300054
+      TX Shadow Chest Opened: 21300008
+      TX Shadow Road Sign E: 21300042
+      TX Shadow Pillar Broken: 21300078
+      TX Shadow Stone Bench E: 21300056
+      TX Shadow Crate Small: 21300006
+      TX Shadow Rune Pillar X3: 21300012
+      TX Shadow Pot C: 21300050
+      TX Shadow Pot B: 21300048
+      TX Shadow Pillar: 21300076
+      TX Shadow Gravestone B: 21300028
+      TX Shadow Stone Bench S: 21300052
+      TX Shadow Tileset Wall 1: 21300020
+      TX Shadow Stone Coffin Vert: 21300036
+      TX Shadow Tileset Wall 4: 21300034
+      TX Shadow Stone T3: 21300062
+      TX Shadow Gravestone C: 21300026
+      TX Shadow Rune Pillar X2: 21300010
+      TX Shadow Stone T5: 21300066
+      TX Shadow Road Sign W: 21300044
+      TX Shadow Altar: 21300096
+      TX Shadow Rune Pillar Broken: 21300014
+      TX Shadow Tileset Wall 3: 21300016
+      TX Shadow Crate: 21300004
+      TX Shadow Stone T6: 21300068
+      TX Shadow Chest: 21300000
+      TX Shadow Barrel: 21300022
+      TX Shadow Statue: 21300070
+      TX Shadow Bridge Gate: 21300074
+      TX Shadow Stone T7: 21300104
+      TX Shadow Stone Lantern: 21300072
+      TX Shadow Tileset Wall 2: 21300018
+      TX Shadow Well: 21300102
+      TX Shadow Stone T2: 21300060
+      TX Shadow Wooden Door: 21300098
+      TX Shadow Stone Coffin Hori: 21300038
+      TX Shadow Cube: 21300002
+      TX Shadow Wooden Door Opened: 21300100
+      TX Shadow Stone T1: 21300058
+      TX Shadow Gravestone A: 21300024
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
