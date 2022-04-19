@@ -5,21 +5,24 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5;
-    public float force = 0.01f;
-    public float animate_threshold = 0.001f;
-    public Animator animator; 
-    public Rigidbody2D ribo; 
+    //public float force = 0.01f;
+    //public float animate_threshold = 0.001f;
+    private Animator animator; 
+    private Rigidbody2D ribo; 
+    private PhotonView view;
 
     private Vector3 vel;
     private Vector3 previous = Vector3.zero; 
 
-    public PhotonView view; 
+    
     // Start is called before the first frame update
 
 
     void Start()
     {
         view = GetComponent<PhotonView>(); 
+        ribo = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,26 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        transform.position += new Vector3(h * Time.deltaTime * speed,  v * Time.deltaTime * speed, 0);
-
-
-
-        if(h > 0){
-            ribo.AddForce(transform.right * force, ForceMode2D.Impulse);
-        }
-        else if(h < 0){
-            ribo.AddForce(-transform.right * force, ForceMode2D.Impulse);
-        }
-
-        if(v > 0){
-            ribo.AddForce(transform.up * force, ForceMode2D.Impulse);
-        }
-        else if(v < 0){
-            ribo.AddForce(-transform.up * force, ForceMode2D.Impulse);
-        }
-        
-
-
+        ribo.velocity = new Vector2(h * Time.deltaTime * speed,  v * Time.deltaTime * speed);
 
     }
 
@@ -66,37 +50,31 @@ public class PlayerMovement : MonoBehaviour
         previous = transform.position;
 
  
-        if(vel.x < -animate_threshold){        // Left Key Pressed
-            //ResetAnim();
-            animator.SetBool("IDLE", false);
-            animator.SetBool("LEFTRUN", true);
+        if(vel.x < 0){        // Left Key Pressed
+            
+            animator.SetInteger("dir", 1);
+            //animator.SetBool("LEFTRUN", true);
         }
-        else if(vel.x > animate_threshold){
-            //ResetAnim();
-            animator.SetBool("IDLE", false);
-            animator.SetBool("RIGHTRUN", true);
+        else if(vel.x > 0){
+            
+            animator.SetInteger("dir", 3);
         }
-        else if(vel.y > animate_threshold){
-            //ResetAnim();
-            animator.SetBool("IDLE", false);
-            animator.SetBool("UPRUN", true);
+        else if(vel.y > 0){
+            
+            animator.SetInteger("dir", 2);
         } 
-        else if(vel.y < -animate_threshold){
-            //ResetAnim();
-            animator.SetBool("IDLE", false);
-            animator.SetBool("DOWNRUN", true);
+        else if(vel.y < 0){
+            
+            animator.SetInteger("dir", 0);
         }  
         else{
-            //ResetAnim();
-            animator.SetBool("IDLE", true);
+            
+            animator.SetInteger("dir", -1);
         }
     }
 
     void ResetAnim(){
-            animator.SetBool("DOWNRUN", false);
-            animator.SetBool("UPRUN", false);
-            animator.SetBool("RIGHTRUN", false);
-            animator.SetBool("LEFTRUN", false);
+        animator.SetInteger("dir", -1);
     }
 
 }
