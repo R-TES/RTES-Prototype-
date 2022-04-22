@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108774,9 +108774,9 @@ TextureImporter:
       Room_Builder_32x32_60: 1019604934
       Room_Builder_32x32_2664: -1748150576
       Room_Builder_32x32_3237: -1094588761
-      Room_Builder_32x32_69: 421043780
       Room_Builder_32x32_203: 985391092
       Room_Builder_32x32_4637: -1778421482
+      Room_Builder_32x32_69: 421043780
       Room_Builder_32x32_4541: 1996148195
       Room_Builder_32x32_4687: 1950217629
       Room_Builder_32x32_1292: -986761946
@@ -108853,18 +108853,18 @@ TextureImporter:
       Room_Builder_32x32_3081: -985218352
       Room_Builder_32x32_1241: -721060023
       Room_Builder_32x32_1807: 1145853571
-      Room_Builder_32x32_1830: 1534078162
       Room_Builder_32x32_2944: -1180183513
-      Room_Builder_32x32_4177: -1390651154
+      Room_Builder_32x32_4649: 2117135664
+      Room_Builder_32x32_1830: 1534078162
       Room_Builder_32x32_228: 217163232
       Room_Builder_32x32_2854: -2065598802
       Room_Builder_32x32_1007: 886894546
       Room_Builder_32x32_3631: -1140706517
       Room_Builder_32x32_3708: 1622331662
       Room_Builder_32x32_4268: -160832557
-      Room_Builder_32x32_4884: -1804111858
+      Room_Builder_32x32_4177: -1390651154
       Room_Builder_32x32_3908: -384167018
-      Room_Builder_32x32_4649: 2117135664
+      Room_Builder_32x32_4884: -1804111858
       Room_Builder_32x32_515: 206321909
       Room_Builder_32x32_950: 1187468683
       Room_Builder_32x32_3924: 240573843
@@ -109026,16 +109026,16 @@ TextureImporter:
       Room_Builder_32x32_1134: 1713513248
       Room_Builder_32x32_5159: 728932622
       Room_Builder_32x32_2480: -1962084989
-      Room_Builder_32x32_1897: -1614573805
       Room_Builder_32x32_3491: -1949647768
+      Room_Builder_32x32_1897: -1614573805
       Room_Builder_32x32_1104: 60442327
       Room_Builder_32x32_1703: 372336817
       Room_Builder_32x32_3689: 723647464
       Room_Builder_32x32_4628: 297760003
       Room_Builder_32x32_4725: 1406726243
       Room_Builder_32x32_4723: 66155663
-      Room_Builder_32x32_3639: 878394045
       Room_Builder_32x32_4981: -589953199
+      Room_Builder_32x32_3639: 878394045
       Room_Builder_32x32_135: -861382632
       Room_Builder_32x32_2270: 1817843601
       Room_Builder_32x32_640: -727965756
@@ -109335,24 +109335,23 @@ TextureImporter:
       Room_Builder_32x32_3034: 395806505
       Room_Builder_32x32_3932: 1352298007
       Room_Builder_32x32_4332: -21624453
+      Room_Builder_32x32_3785: -1809056979
+      Room_Builder_32x32_4278: -211813316
+      Room_Builder_32x32_4074: 486703971
       Room_Builder_32x32_2135: 1447075005
       Room_Builder_32x32_183: 1911844112
       Room_Builder_32x32_3264: 1722045224
-      Room_Builder_32x32_3457: -605085807
-      Room_Builder_32x32_3988: 778235783
+      Room_Builder_32x32_3741: -2118627612
       Room_Builder_32x32_2943: -510368995
       Room_Builder_32x32_2812: -1409512238
-      Room_Builder_32x32_1170: 908425069
-      Room_Builder_32x32_3785: -1809056979
+      Room_Builder_32x32_3457: -605085807
+      Room_Builder_32x32_4975: 1618807217
       Room_Builder_32x32_3072: -18770227
-      Room_Builder_32x32_3741: -2118627612
+      Room_Builder_32x32_1170: 908425069
       Room_Builder_32x32_2709: 23657243
       Room_Builder_32x32_3297: -208830152
-      Room_Builder_32x32_4278: -211813316
-      Room_Builder_32x32_4074: 486703971
       Room_Builder_32x32_4557: 1031722106
       Room_Builder_32x32_651: -1112481781
-      Room_Builder_32x32_4975: 1618807217
       Room_Builder_32x32_4771: -2080508235
       Room_Builder_32x32_3149: 257664720
       Room_Builder_32x32_3100: 685878618
@@ -109369,6 +109368,7 @@ TextureImporter:
       Room_Builder_32x32_1916: 1046169653
       Room_Builder_32x32_429: -466133246
       Room_Builder_32x32_2177: 897406763
+      Room_Builder_32x32_3988: 778235783
       Room_Builder_32x32_4958: -2017738757
       Room_Builder_32x32_4270: 1874065371
       Room_Builder_32x32_1342: -832194564
@@ -109997,26 +109997,26 @@ TextureImporter:
       Room_Builder_32x32_4816: 107365504
       Room_Builder_32x32_1232: -825893514
       Room_Builder_32x32_2115: -1208473736
-      Room_Builder_32x32_522: 1304737037
+      Room_Builder_32x32_4813: -1668309285
       Room_Builder_32x32_2699: 347406169
       Room_Builder_32x32_2455: 2113667122
-      Room_Builder_32x32_4813: -1668309285
+      Room_Builder_32x32_522: 1304737037
+      Room_Builder_32x32_5024: -1945572018
       Room_Builder_32x32_3486: -2042718387
       Room_Builder_32x32_2820: -1728182515
       Room_Builder_32x32_223: 1475846957
       Room_Builder_32x32_3823: -1752526309
       Room_Builder_32x32_1396: 1499733792
-      Room_Builder_32x32_780: -1208153268
-      Room_Builder_32x32_1224: 1908095216
       Room_Builder_32x32_1781: 1914936883
+      Room_Builder_32x32_1224: 1908095216
       Room_Builder_32x32_2172: -1083211304
+      Room_Builder_32x32_3693: -870673237
       Room_Builder_32x32_2453: 1754672285
+      Room_Builder_32x32_3594: 1325650387
+      Room_Builder_32x32_780: -1208153268
       Room_Builder_32x32_521: 701226869
       Room_Builder_32x32_2689: -398472213
-      Room_Builder_32x32_3594: 1325650387
-      Room_Builder_32x32_3693: -870673237
       Room_Builder_32x32_3750: -519964796
-      Room_Builder_32x32_5024: -1945572018
       Room_Builder_32x32_549: 1473064743
       Room_Builder_32x32_2598: -1414738258
       Room_Builder_32x32_2013: -90102358
@@ -110040,10 +110040,10 @@ TextureImporter:
       Room_Builder_32x32_1873: -1031849728
       Room_Builder_32x32_4420: 2003523675
       Room_Builder_32x32_750: 1508345562
-      Room_Builder_32x32_1533: -1797790763
-      Room_Builder_32x32_4760: -207863592
       Room_Builder_32x32_2777: 743607059
+      Room_Builder_32x32_4760: -207863592
       Room_Builder_32x32_4055: 461259194
+      Room_Builder_32x32_1533: -1797790763
       Room_Builder_32x32_1409: 97521062
       Room_Builder_32x32_2577: -406936547
       Room_Builder_32x32_3321: 1167937376
@@ -110058,8 +110058,8 @@ TextureImporter:
       Room_Builder_32x32_1512: -947136815
       Room_Builder_32x32_2739: 527728403
       Room_Builder_32x32_498: -1018062661
-      Room_Builder_32x32_3587: -1928168788
       Room_Builder_32x32_4388: 1501645917
+      Room_Builder_32x32_3587: -1928168788
       Room_Builder_32x32_632: -1145480866
       Room_Builder_32x32_3123: -239639774
       Room_Builder_32x32_4373: -1270313350
@@ -111284,6 +111284,7 @@ TextureImporter:
       Room_Builder_32x32_2102: 1872517340
       Room_Builder_32x32_3906: 536408669
       Room_Builder_32x32_4198: 768236336
+      Room_Builder_32x32_4886: 213204013
       Room_Builder_32x32_4042: -1202261113
       Room_Builder_32x32_740: -1345313088
       Room_Builder_32x32_3751: 1823700020
@@ -111311,7 +111312,6 @@ TextureImporter:
       Room_Builder_32x32_2988: 542256954
       Room_Builder_32x32_1504: 723231460
       Room_Builder_32x32_4395: -2057757139
-      Room_Builder_32x32_4886: 213204013
       Room_Builder_32x32_328: 1554049984
       Room_Builder_32x32_2533: 762549221
       Room_Builder_32x32_2033: -1458418536
@@ -111323,12 +111323,12 @@ TextureImporter:
       Room_Builder_32x32_542: -850210390
       Room_Builder_32x32_1785: 1203917825
       Room_Builder_32x32_227: 1007636328
+      Room_Builder_32x32_3410: -1612598301
       Room_Builder_32x32_1018: 216644490
       Room_Builder_32x32_2350: 445098568
-      Room_Builder_32x32_3105: -1992282247
       Room_Builder_32x32_975: 251601849
+      Room_Builder_32x32_3105: -1992282247
       Room_Builder_32x32_673: -360441220
-      Room_Builder_32x32_3410: -1612598301
       Room_Builder_32x32_2020: -1832298469
       Room_Builder_32x32_2423: 26451345
       Room_Builder_32x32_3508: 549060991
@@ -111367,10 +111367,10 @@ TextureImporter:
       Room_Builder_32x32_4252: -542853185
       Room_Builder_32x32_4195: 584821886
       Room_Builder_32x32_520: -314870363
-      Room_Builder_32x32_1588: -1330495938
+      Room_Builder_32x32_4861: 1302282299
       Room_Builder_32x32_1296: 1522087012
       Room_Builder_32x32_3577: 1532186057
-      Room_Builder_32x32_4861: 1302282299
+      Room_Builder_32x32_1588: -1330495938
       Room_Builder_32x32_2859: 1619632901
       Room_Builder_32x32_2485: -295005580
       Room_Builder_32x32_3667: 1713674975
@@ -111392,8 +111392,8 @@ TextureImporter:
       Room_Builder_32x32_1667: 435775523
       Room_Builder_32x32_4473: -314292658
       Room_Builder_32x32_2587: 1141002777
-      Room_Builder_32x32_3453: 1336954109
       Room_Builder_32x32_3824: -1956955964
+      Room_Builder_32x32_3453: 1336954109
       Room_Builder_32x32_4486: 991135154
       Room_Builder_32x32_3702: 2130318430
       Room_Builder_32x32_2474: 1185756581
@@ -111407,27 +111407,27 @@ TextureImporter:
       Room_Builder_32x32_572: 1702097709
       Room_Builder_32x32_1446: -871711875
       Room_Builder_32x32_3241: 104326689
-      Room_Builder_32x32_4555: -665511026
-      Room_Builder_32x32_4113: 354192138
+      Room_Builder_32x32_4626: 990921826
+      Room_Builder_32x32_4349: 1032540420
       Room_Builder_32x32_1248: 258609239
       Room_Builder_32x32_2080: 1814468537
       Room_Builder_32x32_585: -875817323
       Room_Builder_32x32_2769: 2137911382
-      Room_Builder_32x32_4626: 990921826
+      Room_Builder_32x32_4717: 1511754942
       Room_Builder_32x32_929: -134780105
       Room_Builder_32x32_2401: -1711830916
-      Room_Builder_32x32_2645: 917398265
+      Room_Builder_32x32_4555: -665511026
       Room_Builder_32x32_1646: -1828115441
-      Room_Builder_32x32_2009: -782721186
-      Room_Builder_32x32_3537: -1784327204
-      Room_Builder_32x32_934: 523064869
-      Room_Builder_32x32_4598: -1090660549
       Room_Builder_32x32_3183: -1709288392
-      Room_Builder_32x32_4349: 1032540420
+      Room_Builder_32x32_2009: -782721186
+      Room_Builder_32x32_934: 523064869
+      Room_Builder_32x32_4113: 354192138
+      Room_Builder_32x32_4598: -1090660549
+      Room_Builder_32x32_2645: 917398265
       Room_Builder_32x32_4077: -1673779117
       Room_Builder_32x32_1623: 743268393
+      Room_Builder_32x32_3537: -1784327204
       Room_Builder_32x32_881: 1954677224
-      Room_Builder_32x32_4717: 1511754942
       Room_Builder_32x32_2968: -262138718
       Room_Builder_32x32_3963: -1470799071
       Room_Builder_32x32_1530: -39234801
