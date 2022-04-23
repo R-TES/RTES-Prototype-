@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class DoorLockerScript : MonoBehaviour
 {
@@ -16,8 +17,11 @@ public class DoorLockerScript : MonoBehaviour
     private bool interacting = false;
     private Collider2D interacter; 
     private bool locked = false;
-
-
+    PhotonView photonView;
+    private void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 
     private void Update()
     {
@@ -26,16 +30,21 @@ public class DoorLockerScript : MonoBehaviour
             if (Input.GetKeyDown(interact_key))
             {
                 Debug.Log("Key Pressed: " + interact_key.ToString());
+                Debug.Log(locked);
                 if (!locked)
                 {
                     if (interacter.CompareTag("Player") || interacter.CompareTag("Admin"))
-                        LockDoor(interacter.gameObject);
+                    {
+                        LockDoor();
+                        photonView.RPC("LockDoor", RpcTarget.All);
+                    }
                 }
                 else if (locked)
                 {
                     if (!onlyOnePersonCanLock || interacter.gameObject == PersonWhoLocked)
                     {
                         UnlockDoor();
+                        photonView.RPC("UnlockDoor", RpcTarget.All);
                     }
                 }
             }
@@ -58,18 +67,21 @@ public class DoorLockerScript : MonoBehaviour
 
 
 
-
-    void LockDoor(GameObject player)
+    [PunRPC]
+    void LockDoor()
     {
         Debug.Log("Locked!");
         locked = true;
         animator.TriggerDeactivateObjectAnimation();
         animator.DisableObject();
 
-        PersonWhoLocked = player;
+        //PersonWhoLocked = player;
         solidDoorCollider.enabled = true;
+
+
     }
 
+    [PunRPC]
     void UnlockDoor()
     {
         Debug.Log("Unlocked!");
@@ -79,4 +91,6 @@ public class DoorLockerScript : MonoBehaviour
         solidDoorCollider.enabled = false;
 
     }
+
+
 }

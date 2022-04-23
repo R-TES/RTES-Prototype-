@@ -9693,6 +9693,34 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &282363392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7879645288145776003, guid: 7f1b5719753bcd14ca701763ffb8370b,
+    type: 3}
+  m_PrefabInstance: {fileID: 37683351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &282363396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282363392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &308362680
 GameObject:
   m_ObjectHideFlags: 0
@@ -12185,6 +12213,34 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &356688183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7879645288145776003, guid: 7f1b5719753bcd14ca701763ffb8370b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1248027874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &356688187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356688183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 1
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &497143750
 GameObject:
   m_ObjectHideFlags: 0
@@ -28138,7 +28194,7 @@ PrefabInstance:
     - target: {fileID: 3411360222465072705, guid: 5adbadc457a7e26428601f3f02fa1a81,
         type: 3}
       propertyPath: spawnPlayerIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3411360222465072705, guid: 5adbadc457a7e26428601f3f02fa1a81,
         type: 3}
@@ -137006,6 +137062,34 @@ Transform:
   m_Father: {fileID: 1083831289}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1331775780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7879645288145776003, guid: 7f1b5719753bcd14ca701763ffb8370b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7879645288878091290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1331775784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331775780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1473227410
 GameObject:
   m_ObjectHideFlags: 0
@@ -138767,6 +138851,34 @@ Transform:
   m_Father: {fileID: 920853094}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1684835242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7879645288145776003, guid: 7f1b5719753bcd14ca701763ffb8370b,
+    type: 3}
+  m_PrefabInstance: {fileID: 37083729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1684835246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684835242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!4 &1753143904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7879645288124952259, guid: 7f1b5719753bcd14ca701763ffb8370b,

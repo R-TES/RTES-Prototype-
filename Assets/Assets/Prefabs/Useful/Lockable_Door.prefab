@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7879645288124952256}
   interact_key: 102
-  onlyOnePersonCanLock: 1
+  onlyOnePersonCanLock: 0
   adminTag: Admin
   solidDoorCollider: {fileID: 7879645288706832388}
 --- !u!61 &7879645288145776007
