@@ -11,8 +11,8 @@ var localTracks = {
 var remoteUsers = {};
 // Agora client options
 var options = {
-    appid: "Enter appid of no-certifcate project",
-    channel: "Enter Channel Name",
+    appid: "e84579e080a145ec9fc8312297fa075f",
+    channel: "arya-gmc",
     token: null,
     uid: null,
     accountName: null
