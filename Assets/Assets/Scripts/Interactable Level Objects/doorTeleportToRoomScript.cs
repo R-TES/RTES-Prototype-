@@ -10,7 +10,7 @@ public class doorTeleportToRoomScript : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Hi");
+        
         if(!doorController.checkIfAlreadyBlocked(col.gameObject)){
             col.gameObject.transform.position = destination.transform.position; 
             doorController.addToBlockList(col.gameObject);
@@ -18,7 +18,6 @@ public class doorTeleportToRoomScript : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D col){
-        Debug.Log("Bye");
         doorController.removeFromBlockList(col.gameObject);
     }
 }

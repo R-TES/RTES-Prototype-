@@ -17,7 +17,7 @@ public class doorTeleportControllerScript : MonoBehaviour
 
     public bool checkIfAlreadyBlocked(GameObject g)
     {   
-        Debug.Log(blockList.Contains(g));
+        
         return blockList.Contains(g);
     }
 

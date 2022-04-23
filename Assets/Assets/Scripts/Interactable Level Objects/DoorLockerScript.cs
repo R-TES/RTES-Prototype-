@@ -25,10 +25,9 @@ public class DoorLockerScript : MonoBehaviour
         {
             if (Input.GetKeyDown(interact_key))
             {
-                Debug.Log("Keypressed");
+                Debug.Log("Key Pressed: " + interact_key.ToString());
                 if (!locked)
                 {
-                    Debug.Log("Testing");
                     if (interacter.CompareTag("Player") || interacter.CompareTag("Admin"))
                         LockDoor(interacter.gameObject);
                 }
