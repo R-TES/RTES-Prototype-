@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c262767b1a5aff48bb0bb177140a0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  editorSceneName: Loading
+  inputField: {fileID: 0}
 --- !u!4 &325031367
 Transform:
   m_ObjectHideFlags: 0
@@ -238,7 +240,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: REALTES Virtual Office Demo (v2.1)
+  m_Text: REALTES Virtual Office Demo (v2.0)
 --- !u!222 &417697885
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -399,8 +401,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 325031366}
-        m_TargetAssemblyTypeName: loadingScreen, Assembly-CSharp
-        m_MethodName: LoadGameServers
+        m_TargetAssemblyTypeName: loadScene, Assembly-CSharp
+        m_MethodName: LoadSceneByEditorName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

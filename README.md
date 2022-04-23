@@ -16,7 +16,7 @@ https://r-tes.github.io/RTES-Prototype-/testingBuild/
 
 ## Concept
 
-SlideShow with images: https://docs.google.com/presentation/d/1JV2l8pqZGam8CvFnmIDDNOKUMwNjv1deEKESgoetNJY/edit?usp=sharing
+Slideshow presentation: https://docs.google.com/presentation/d/1JV2l8pqZGam8CvFnmIDDNOKUMwNjv1deEKESgoetNJY/edit?usp=sharing
 
     With the advent of the pandemic, organizations and institutions across the globe were forced to quickly shift to remote work/learning and this lead to the meteoric rise in the usage of platforms like  Zoom,  Google  Meet,  Microsoft  Teams  etc.   Over  time  people  from  different  walks  of  life incorporated these platforms into their daily workflow to only realize that the continuous usage of these platforms had become monotonous and had taken a toll on one's mental well being as such  platforms  provided  a  mere  source  of  communication  without  factoring  in  the  underlying characteristics  of  a  typical  human  conversation.  
 
