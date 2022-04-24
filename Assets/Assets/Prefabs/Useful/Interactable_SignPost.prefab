@@ -32,6 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3554133984695158017}
+  - {fileID: 3554133984645727081}
   m_Father: {fileID: 3554133985226394614}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,7 +114,7 @@ GameObject:
   - component: {fileID: 3554133984645727083}
   - component: {fileID: 3554133984645727082}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PopUpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,12 +132,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3554133984695158017}
-  m_RootOrder: 0
+  m_Father: {fileID: 3554133984554925867}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000009059906, y: 0.114}
+  m_AnchoredPosition: {x: -692.49, y: -879.466}
   m_SizeDelta: {x: 5.0498, y: 2.0517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3554133984645727083
@@ -250,7 +251,7 @@ GameObject:
   - component: {fileID: 3554133984695158019}
   - component: {fileID: 3554133984695158018}
   m_Layer: 5
-  m_Name: PopUp
+  m_Name: PopUpBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,8 +268,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3554133984645727081}
+  m_Children: []
   m_Father: {fileID: 3554133984554925867}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
