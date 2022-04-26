@@ -98,9 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offlinePlayers:
-  - {fileID: 6260159658608947814, guid: 315fdd9d417f0724498e2354fe3d0646, type: 3}
+  - {fileID: 795871098571092398, guid: bafbc562cd29a0c4f9fe604fdf443057, type: 3}
+  - {fileID: 1356855413749440147, guid: 339dc91082730b04fbcc43112db857d8, type: 3}
   - {fileID: 1526864060210763979, guid: e953707d572f5954ebe4c608e80a6dac, type: 3}
   photonPlayers:
+  - {fileID: 1655674338661181319, guid: 4a9f114d353da9d4d9102c603166f68a, type: 3}
   - {fileID: 1356855413749440147, guid: 339dc91082730b04fbcc43112db857d8, type: 3}
   - {fileID: 5035954788265952279, guid: 7a2d4dfdf895de24aa1926d476e500fa, type: 3}
   spawnPlayerIndex: 0
