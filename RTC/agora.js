@@ -9,10 +9,11 @@ var localTracks = {
 };
 
 var remoteUsers = {};
+var subscribedRemoteUsers = {};
 // Agora client options
 var options = {
-    appid: "Enter appid of no-certifcate project",
-    channel: "Enter Channel Name",
+    appid: "Enter app-id here",
+    channel: "trial1",
     token: null,
     uid: null,
     accountName: null
@@ -46,6 +47,8 @@ $("#leave").click(function (e) {
 async function join() {
     $("#mic-btn").prop("disabled", false);
     $("#video-btn").prop("disabled", false);
+    $("#near").prop("disabled", false);
+    $("#far").prop("disabled", false);
     RTMJoin();
     // Event Listener to play remote streams as and when published
     client.on("user-published", handleUserPublished);
@@ -240,13 +243,16 @@ async function RTMJoin() {
     }
 }
 
-async function subscribe(user, mediaType) {
+async function subscribe(user,mediaType) {
     const uid = user.uid;
     const remName = user.accountName;
     // subscribe to a remote user
-    await client.subscribe(user, mediaType);
+    if (mediaType == "AV"){
+    await client.subscribe(user, "video");
+    await client.subscribe(user, "audio");
+    const videoTrack = user.videoTrack;
+    const audioTrack = user.audioTrack;
     console.log("subscribe success");
-    if (mediaType === 'video') {
         const player = $(`
       <div id="player-wrapper-${uid}">
         <p class="player-name">remoteUser(${remName})</p>
@@ -254,19 +260,54 @@ async function subscribe(user, mediaType) {
       </div>
     `);
         $("#remote-playerlist").append(player);
-        user.videoTrack.play(`player-${uid}`);
+        videoTrack.play(`player-${uid}`);
+        audioTrack.play();
     }
-    if (mediaType === 'audio') {
-        user.audioTrack.play();
-    }
+
+    // if (mediaType == "video"){
+    //     await client.subscribe(user, "video");
+    //     const videoTrack = user.videoTrack;
+    //     console.log("subscribe success");
+    //     const player = $(`
+    //   <div id="player-wrapper-${uid}">
+    //     <p class="player-name">remoteUser(${remName})</p>
+    //     <div id="player-${uid}" class="player"></div>
+    //   </div>
+    // `);
+    //     $("#remote-playerlist").append(player);
+    //     videoTrack.play(`player-${uid}`);
+    // }
+
+    // if (mediaType == "audio"){
+    //     await client.subscribe(user, "audio");
+    //     const audioTrack = user.audioTrack;
+    //     audioTrack.play();
+
+    // }
+}
+
+async function unsubscribe(user){
+    remoteVanish(user);
+    await client.unsubscribe(user);
+    console.log('unsubscribe successs');
+
 }
 
 // Handle user publish
-function handleUserPublished(user, mediaType) {
+function handleUserPublished(user) {
     const id = user.uid;
     remoteUsers[id] = user;
-    subscribe(user, mediaType);
+    // console.log('***************')
+    // console.log(remoteUsers)
+    // console.log('****************')
+    //subscribe(user, mediaType);
 }
+
+// function dummy(user){
+//     const id = user.id;
+//     remoteUsers[id] = user;
+//     subscribe(user,"video");
+// }
 
 // Handle user left
 function handleUserLeft(user) {
@@ -275,6 +316,11 @@ function handleUserLeft(user) {
     $(`#player-wrapper-${id}`).remove();
 }
 
+function remoteVanish(user) {
+    const id = user.uid;
+    //delete remoteUsers[id];
+    $(`#player-wrapper-${id}`).remove();
+}
 // Initialise UI controls
 enableUiControls();
 
@@ -286,22 +332,37 @@ function enableUiControls() {
     $("#video-btn").click(function () {
         toggleVideo();
     });
+    $("#near").click(function () {
+        subscribeWhenNear();
+    });
+    $("#far").click(function () {
+        unsubscribeWhenFar();
+    });
+
 }
 
 // Toggle Mic
-function toggleMic() {
+async function toggleMic() {
     if ($("#mic-icon").hasClass('fa-microphone')) {
-        localTracks.audioTrack.setEnabled(false);
+        localTracks.audioTrack.setVolume(0);
         console.log("Audio Muted.");
     } else {
-        localTracks.audioTrack.setEnabled(true);
-        console.log("Audio Unmuted.");
+        localTracks.audioTrack.setVolume(100);
+        
+        // console.log(remoteUsers)
+        // console.log(localTracks)
+        //console.log(client.remoteUsers)
+        // for (const rmUser in subscribedRemoteUsers){
+        //     console.log("SENT NEW AUDIO SUB");
+        //     subscribe(subscribedRemoteUsers[rmUser],"audio");
+        // }
+        console.log('Audio Unmuted');
     }
     $("#mic-icon").toggleClass('fa-microphone').toggleClass('fa-microphone-slash');
 }
 
 // Toggle Video
-function toggleVideo() {
+async function toggleVideo() {
     if ($("#video-icon").hasClass('fa-video')) {
         localTracks.videoTrack.setEnabled(false);
         console.log("Video Muted.");
@@ -310,4 +371,29 @@ function toggleVideo() {
         console.log("Video Unmuted.");
     }
     $("#video-icon").toggleClass('fa-video').toggleClass('fa-video-slash');
+}
+
+function subscribeWhenNear(uid){
+    console.log("SWN");
+   // console.log(client.remoteUsers)
+    //console.log(remoteUsers)
+    // ids = Object.keys(remoteUsers);
+    // userAdded = remoteUsers[ids[ids.length * Math.random() << 0]];
+    // subscribedRemoteUsers[userAdded.uid] = userAdded;
+    // console.log(subscribedRemoteUsers);
+    userAdded = remoteUsers[uid];
+    subscribe(userAdded,"AV");
+}
+
+function unsubscribeWhenFar(uid){
+    console.log("USWF");
+    // ids = Object.keys(remoteUsers);
+    // userKickedOut = remoteUsers[ids[ids.length * Math.random() << 0]];
+    userKickedOut = remoteUsers[uid];
+    //console.log(userKickedOut)
+    delete subscribedRemoteUsers[userKickedOut.uid];
+    unsubscribe(userKickedOut);
+
+
+    //client.muteRemoteVideoStream(userKickedOut, true);
 }
