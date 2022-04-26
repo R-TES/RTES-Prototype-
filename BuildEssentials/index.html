@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | RTES Prototype</title>
+    <title>RTES Developement Build | Unity HTML5</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <div>WebGL Firebase Plugin Demo</div>
     <div id="unity-container" class="unity-desktop">
+      <div>WebGL Firebase Plugin Enabled Demo File</div>
       <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -22,6 +22,7 @@
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">RTES Prototype</div>
+        <a href="https://github.com/R-TES">Github Repository</a>
       </div>
     </div>
     <script>
@@ -32,12 +33,7 @@
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
+
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -56,30 +52,26 @@
         updateBannerVisibility();
       }
 
+      var folder_name = null ; // CHANGE THIS TO THE FOLDER YOU BUILT TO IN UNITY!! eg: "webdemo2"; 
+      if(folder_name == null) 
+        alert("Please set folder_nam variable in line 55 of index.html with the folder you built to!")
+
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/testingBuild.loader.js";
+      var loaderUrl = buildUrl + "/" +folder_name + ".loader.js";
       var config = {
-        dataUrl: buildUrl + "/testingBuild.data",
-        frameworkUrl: buildUrl + "/testingBuild.framework.js",
-        codeUrl: buildUrl + "/testingBuild.wasm",
+        dataUrl: buildUrl + "/"+ folder_name + ".data",
+        frameworkUrl: buildUrl + "/"+ folder_name + ".framework.js",
+        codeUrl: buildUrl + "/" + folder_name + ".wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "R-TES",
         productName: "RTES Prototype",
-        productVersion: "1.0",
+        productVersion: "2.5",
         showBanner: unityShowBanner,
       };
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
