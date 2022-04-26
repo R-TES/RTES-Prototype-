@@ -5,50 +5,47 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float speed = 250;
-
-    private Animator animator; 
+    public float speed = 250f;
+ 
     private Rigidbody2D ribo; 
     private PhotonView view;
+    private Vector2 movement_values;
 
     void Start()
     {
         view = GetComponent<PhotonView>(); 
         ribo = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        movement_values = Vector2.zero;
     }
 
+    private void Update()
+    {
+        if (!PhotonNetwork.IsConnected || view.IsMine)
+        {
+            movement_values = GetKeyboardControls();
+        }
+        
+    }
     void FixedUpdate()
     {   
         if(!PhotonNetwork.IsConnected || view.IsMine){
-            PlayerMove();
-            AnimatePlayer();
+            PlayerMoveByVelocity(movement_values);
         }
     }
 
-    void PlayerMove(){
+    void PlayerMoveByVelocity(Vector2 movement){
+        ribo.velocity = new Vector2(movement.x * Time.deltaTime * speed,  movement.y * Time.deltaTime * speed);
+    }
+
+
+    Vector2 GetKeyboardControls()
+    {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        ribo.velocity = new Vector2(h * Time.deltaTime * speed,  v * Time.deltaTime * speed);
-    }
 
-    void AnimatePlayer(){
- 
-        if(ribo.velocity.x < 0){        // Left Key Pressed
-            animator.SetInteger("dir", 1);
-        }
-        else if(ribo.velocity.x > 0){
-            animator.SetInteger("dir", 3);
-        }
-        else if(ribo.velocity.y > 0){  // Up Key Pressed
-            animator.SetInteger("dir", 2);
-        } 
-        else if(ribo.velocity.y < 0){
-            animator.SetInteger("dir", 0);
-        }  
-        else{
-            animator.SetInteger("dir", -1);
-        }
+        Vector2 movement = new(h, v); 
+        return movement;
+        
     }
 
 }
