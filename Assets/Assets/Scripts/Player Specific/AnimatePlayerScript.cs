@@ -17,7 +17,7 @@ public class AnimatePlayerScript : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
         AnimatePlayer();
     }
@@ -30,19 +30,19 @@ public class AnimatePlayerScript : MonoBehaviour
         {
             IdleAnimation(true);
         }
-        else if (ribo.velocity.x < -1)
+        else if (ribo.velocity.x < 0)
         {                                           
             RunningAnimation(Direction.Left);
         }
-        else if (ribo.velocity.x > 1)
+        else if (ribo.velocity.x > 0)
         {
             RunningAnimation(Direction.Right);
         }
-        else if (ribo.velocity.y > 1)
+        else if (ribo.velocity.y > 0)
         {                                           
             RunningAnimation(Direction.Up);
         }
-        else if (ribo.velocity.y < -1)
+        else if (ribo.velocity.y < 0)
         {
             RunningAnimation(Direction.Down);
         }

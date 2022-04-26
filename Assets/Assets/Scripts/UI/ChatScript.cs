@@ -17,6 +17,13 @@ public class ChatScript : MonoBehaviour
        
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SendTextMessage();
+        }
+    }
 
     public void SendTextMessage()
     {
@@ -43,7 +50,7 @@ public class ChatScript : MonoBehaviour
     private bool AllowedTextTest(string t)
     {
         //do other checks here
-        if (t.Length < 2)
+        if (t.Length < 1)
         {
             Debug.Log("Message too small or something.");
             return false;
