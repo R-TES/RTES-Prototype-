@@ -37,8 +37,6 @@ public class CameraFollow : MonoBehaviour
         tempPos = transform.position ;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         localplayer = players[0].transform ;
-        Debug.Log(localplayer.transform.position);
-        
         notFound = false; 
     }
 

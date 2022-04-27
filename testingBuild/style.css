@@ -42,6 +42,8 @@ input {
 
 #join,
 #leave,
+#near,
+#far,
 #mic-btn,
 #screen-share-btn,
 #video-btn {

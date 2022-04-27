@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | RTES Prototype</title>
+    <title>Unity WebGL Player | RTES-Prototype-</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
@@ -151,8 +151,8 @@
         frameworkUrl: buildUrl + "/testingBuild.framework.js",
         codeUrl: buildUrl + "/testingBuild.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "R-TES",
-        productName: "RTES Prototype",
+        companyName: "DefaultCompany",
+        productName: "RTES-Prototype-",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
@@ -165,15 +165,29 @@
       // config.matchWebGLToCanvasSize = false;
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+        canvas.style.width = "1280px";
+        canvas.style.height = "768px";
       }
+
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
@@ -182,7 +196,6 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-          window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
