@@ -32,7 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/Select.unity
     guid: 4b0a2d21b7017cf44865645686091214
+  - enabled: 0
+    path: Assets/Scenes/Gamespaces/V.unity
+    guid: 4517e7fb456e12740a54030b1ca7daa3
   - enabled: 1
     path: Assets/Scenes/Gamespaces/Village.unity
-    guid: 4517e7fb456e12740a54030b1ca7daa3
+    guid: b2cb626433135284c869f10cf7fe9d96
   m_configObjects: {}

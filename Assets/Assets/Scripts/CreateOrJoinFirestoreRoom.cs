@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Data.SqlTypes;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Scripts{
     public class CreateOrJoinFirestoreRoom : MonoBehaviourPunCallbacks
     {
         public GameObject button;
+        public InputField agoraUserId;
         public Transform panel;
         public RoomOptions roomOptions = new RoomOptions();
         public User user = Serializer<User>.toObject("{'id':'zd26igJS15tCTNchXaaQ', 'username':'aryajayadevkm','avatar':'IwZIvRqQlKXHj8hVMM76','mobile':'','rooms':[{'name':'Office 1','id':'tSSPMUrsoiU6lYPGDkme'},{'name':'Office 2','id':'vRVo1rLAtEU14Tzl5288'}],'designation':'','email':'aryajayadevkm@gmail.com'}");
@@ -22,6 +24,7 @@ namespace Scripts{
         }
 
         private void createRoomButton(Room room){
+            user.id = agoraUserId.text;
             GameObject roomButton = Instantiate(button);
             roomButton.transform.SetParent(panel);
             roomButton.GetComponentInChildren<Text>().text = room.name;
@@ -31,7 +34,10 @@ namespace Scripts{
         public void JoinOrCreateRoom(string roomId) {
             Storage.room.id = roomId;
             getRoom();
+            FirebaseFirestore.Init(roomId, agoraUserId.text);
             PhotonNetwork.JoinOrCreateRoom(roomId, roomOptions, TypedLobby.Default);
+            UnityEngine.Debug.Log("unity roomId: " + roomId);
+            
         }
 
         public void getRoom(){
@@ -42,11 +48,11 @@ namespace Scripts{
             Storage.room = Serializer<Room>.toObject(data);
         }
         public void DisplayErrorObject(string error){
-            Debug.Log(error);
+            UnityEngine.Debug.Log(error);
         }
 
         public override void OnJoinedRoom(){
-            Debug.Log("joining");
+            UnityEngine.Debug.Log("joining: " + Storage.room.id + " template: " + Storage.room.template);
             PhotonNetwork.LoadLevel(Storage.room.template); 
         }
 
