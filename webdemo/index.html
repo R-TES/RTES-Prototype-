@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1280 height=768></canvas>
+    <div id="unity-container"  class="unity-desktop">
+      <canvas id="unity-canvas" style="border: 10px solid black" width=1280 height=768></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -58,9 +58,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/webdemo.loader.js";
       var config = {
-        dataUrl: buildUrl + "/webdemo.data.br",
-        frameworkUrl: buildUrl + "/webdemo.framework.js.br",
-        codeUrl: buildUrl + "/webdemo.wasm.br",
+        dataUrl: buildUrl + "/webdemo.data.unityweb",
+        frameworkUrl: buildUrl + "/webdemo.framework.js.unityweb",
+        codeUrl: buildUrl + "/webdemo.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "RTES-Prototype-",
