@@ -5,8 +5,9 @@ using Photon.Pun;
 
 public class CameraFollow : MonoBehaviour
 {
-    
+    [Header("Follow Parameters")]
     public float speed = .1f;
+    public float teleportIfDistanceGreaterThan = 100f;
 
     private Vector3 tempPos;
     private Transform localplayer; 
@@ -18,8 +19,12 @@ public class CameraFollow : MonoBehaviour
     }
 
     void FixedUpdate()
-    { 
-        v = Vector3.Lerp(transform.position, localplayer.position, speed);
+    {
+        float distance = Vector3.Distance(transform.position, localplayer.position);
+        if (distance < teleportIfDistanceGreaterThan)
+            v = Vector3.Lerp(transform.position, localplayer.position, speed);
+        else
+            v = localplayer.position; 
         transform.position = new Vector3(v.x, v.y, transform.position.z);
     }
 
