@@ -5,39 +5,34 @@ using Photon.Pun;
 
 public class CameraFollow : MonoBehaviour
 {
+    [Header("Follow Parameters")]
+    public float speed = .1f;
+    public float teleportIfDistanceGreaterThan = 100f;
 
-   
     private Vector3 tempPos;
     private Transform localplayer; 
-    private bool notFound = true; 
-    public float leftBound, rightBound, upperBound, lowerBound; 
+    private Vector2 v;
 
-    void LateUpdate()
+    void Start()
     {   
-        if(notFound){
-            InstantiateCamera();
-        }
-        else{        
-            tempPos.x = localplayer.position.x;
-            tempPos.y = localplayer.position.y;
-            transform.position = tempPos;
-        }
-        //if(tempPos.x <= leftBound) tempPos.x =leftBound ;
-        //if(tempPos.y <= lowerBound) tempPos.y =lowerBound ;
-        //if(tempPos.y >= upperBound) tempPos.y =upperBound ;
-        //if(tempPos.x >= rightBound) tempPos.x =rightBound ;
-
-        
-        
+       BindCameraWithLocalPlayer();    
     }
 
+    void FixedUpdate()
+    {
+        float distance = Vector3.Distance(transform.position, localplayer.position);
+        if (distance < teleportIfDistanceGreaterThan)
+            v = Vector3.Lerp(transform.position, localplayer.position, speed);
+        else
+            v = localplayer.position; 
+        transform.position = new Vector3(v.x, v.y, transform.position.z);
+    }
 
-    void InstantiateCamera(){
+    void BindCameraWithLocalPlayer(){
         
         tempPos = transform.position ;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        localplayer = players[0].transform ;
-        notFound = false; 
+        localplayer = players[0].transform ; 
     }
 
 }
