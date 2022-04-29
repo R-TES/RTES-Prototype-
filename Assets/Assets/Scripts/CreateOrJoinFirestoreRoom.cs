@@ -34,10 +34,8 @@ namespace Scripts{
         public void JoinOrCreateRoom(string roomId) {
             Storage.room.id = roomId;
             getRoom();
-            FirebaseFirestore.Init(roomId, agoraUserId.text);
             PhotonNetwork.JoinOrCreateRoom(roomId, roomOptions, TypedLobby.Default);
-            UnityEngine.Debug.Log("unity roomId: " + roomId);
-            
+            Agora.Init(roomId, agoraUserId.text);            
         }
 
         public void getRoom(){
@@ -48,11 +46,10 @@ namespace Scripts{
             Storage.room = Serializer<Room>.toObject(data);
         }
         public void DisplayErrorObject(string error){
-            UnityEngine.Debug.Log(error);
+            UnityEngine.Debug.Log("firestore call failed: " + error);
         }
 
         public override void OnJoinedRoom(){
-            UnityEngine.Debug.Log("joining: " + Storage.room.id + " template: " + Storage.room.template);
             PhotonNetwork.LoadLevel(Storage.room.template); 
         }
 

@@ -1166,26 +1166,26 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 2897260: function() {
+ 2899020: function() {
   Module["emscripten_get_now_backup"] = performance.now;
  },
- 2897315: function($0) {
+ 2899075: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 2897363: function($0) {
+ 2899123: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 2897411: function() {
+ 2899171: function() {
   performance.now = Module["emscripten_get_now_backup"];
  },
- 2897466: function() {
+ 2899226: function() {
   return Module.webglContextAttributes.premultipliedAlpha;
  },
- 2897527: function() {
+ 2899287: function() {
   return Module.webglContextAttributes.preserveDrawingBuffer;
  }
 };
@@ -1373,6 +1373,7 @@ function _GetDocument(collectionPath, documentId, objectName, callback, fallback
  try {
   firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function(doc) {
    if (doc.exists) {
+    console.log("firestore call success: " + JSON.stringify(doc.data()));
     window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(doc.data()));
    } else {
     window.unityInstance.SendMessage(parsedObjectName, parsedCallback, "null");
@@ -3162,6 +3163,24 @@ function _StopListeningForDocumentChange(collectionPath, documentId, objectName,
  } catch (error) {
   window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
  }
+}
+
+function _Subscribe(uid) {
+ var parsedUid = UTF8ToString(uid);
+ subscribeWhenNear(parsedUid);
+}
+
+function _ToggleMic() {
+ toggleMic();
+}
+
+function _ToggleVideo() {
+ toggleVideo();
+}
+
+function _Unsubscribe(uid) {
+ var parsedUid = UTF8ToString(uid);
+ unsubscribeWhenFar(parsedUid);
 }
 
 function _UpdateDocument(collectionPath, documentId, value, objectName, callback, fallback) {
@@ -14063,6 +14082,10 @@ var asmLibraryArg = {
  "SocketState": _SocketState,
  "StopListeningForCollectionChange": _StopListeningForCollectionChange,
  "StopListeningForDocumentChange": _StopListeningForDocumentChange,
+ "Subscribe": _Subscribe,
+ "ToggleMic": _ToggleMic,
+ "ToggleVideo": _ToggleVideo,
+ "Unsubscribe": _Unsubscribe,
  "UpdateDocument": _UpdateDocument,
  "__cxa_allocate_exception": ___cxa_allocate_exception,
  "__cxa_atexit": ___cxa_atexit,

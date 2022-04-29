@@ -4,12 +4,9 @@ namespace Scripts
 {
     public static class FirebaseFirestore
     {
-        [DllImport("__Internal")]
-        public static extern void Init(string channel, string userId);
 
         [DllImport("__Internal")]
-        public static extern void GetDocument(string collectionPath, string documentId, string objectName,
-            string callback, string fallback);
+        public static extern void GetDocument(string collectionPath, string documentId, string objectName, string callback, string fallback);
 
         [DllImport("__Internal")]
         public static extern void GetDocumentsInCollection(string collectionPath, string objectName, string callback,

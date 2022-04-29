@@ -13,32 +13,34 @@ var subscribedRemoteUsers = {};
 // Agora client options
 var options = {
     appid: "e84579e080a145ec9fc8312297fa075f",
-    channel: "arya-gmc",
+    channel: null,
     token: null,
     uid: null,
     accountName: null
 };
 
-$("#join-form").submit(async function (e) {
-    e.preventDefault();
+function init (channel, userId)
+{
+    console.log( "init called" );
+    options.channel = channel;
+    options.uid = userId;
+    console.log("userid in options: " + options.uid)
+    console.log( channel + " setChannel: " + options.channel);
+    callJoin();
+}
+
+async function callJoin(){
     $("#join").attr("disabled", true);
-    try {
-        options.accountName = $('#accountName').val();
-        // var result = "";
-        // var chars = "0123456789";
-        // var len = chars.length;
-        // for (var i =0; i<5; i++)
-        // {
-        //     result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        // }
-        // options.uid = result;
+    try
+    {
+        console.log( "call join: " + options.uid );
         await join();
     } catch (error) {
         console.error(error);
     } finally {
         $("#leave").attr("disabled", false);
     }
-})
+}
 
 $("#leave").click(function (e) {
     leave();
@@ -49,15 +51,16 @@ async function join() {
     $("#video-btn").prop("disabled", false);
     $("#near").prop("disabled", false);
     $("#far").prop("disabled", false);
-    RTMJoin();
+    // RTMJoin();
     // Event Listener to play remote streams as and when published
     client.on("user-published", handleUserPublished);
     client.on("user-left", handleUserLeft);
     // Join a channel and create local tracks
     // Promise.all to runs join and create funcn's concurrently
+    
     [options.uid, localTracks.audioTrack, localTracks.videoTrack] = await Promise.all([
         // join the channel
-        client.join(options.appid, options.channel, options.token),
+        client.join(options.appid, options.channel, options.token, options.uid),
         // create local tracks, using microphone and camera
         AgoraRTC.createMicrophoneAudioTrack(
             {AEC: true, ANS: true} // to suppress echo.
@@ -326,18 +329,18 @@ enableUiControls();
 
 // Action buttons
 function enableUiControls() {
-    $("#mic-btn").click(function () {
-        toggleMic();
-    });
-    $("#video-btn").click(function () {
-        toggleVideo();
-    });
-    $("#near").click(function () {
-        subscribeWhenNear();
-    });
-    $("#far").click(function () {
-        unsubscribeWhenFar();
-    });
+    // $("#mic-btn").click(function () {
+    //     toggleMic();
+    // });
+    // $("#video-btn").click(function () {
+    //     toggleVideo();
+    // });
+    // $("#near").click(function () {
+    //     subscribeWhenNear();
+    // });
+    // $("#far").click(function () {
+    //     unsubscribeWhenFar();
+    // });
 
 }
 
@@ -374,13 +377,15 @@ async function toggleVideo() {
 }
 
 function subscribeWhenNear(uid){
-    console.log("SWN");
+    console.log("SWN " + uid);
    // console.log(client.remoteUsers)
     //console.log(remoteUsers)
     // ids = Object.keys(remoteUsers);
     // userAdded = remoteUsers[ids[ids.length * Math.random() << 0]];
     // subscribedRemoteUsers[userAdded.uid] = userAdded;
     // console.log(subscribedRemoteUsers);
+    console.log( "id fetched: " + uid + ", logging remoteUser[uid] from subscribewhennear: " + remoteUsers[options.uid] );
+    
     userAdded = remoteUsers[uid];
     subscribe(userAdded,"AV");
 }

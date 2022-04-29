@@ -32,15 +32,15 @@
     <div class="container mt-5 mb-5">
         <!-- Form for joining and leaving -->
         <form id="join-form">
-            <div class="row join-info-group">
+            <!-- <div class="row join-info-group">
                 <div class="col-sm">
                     <p class="join-info-text">Name</p>
                     <input id="accountName" type="text" placeholder="Enter Your Name" required class="form-control">
                 </div>
-            </div>
+            </div> -->
 
             <div class="button-group mt-2">
-                <button id="join" type="submit" class="btn btn-sm">Join</button>
+                <!-- <button id="join" type="submit" class="btn btn-sm">Join</button> -->
                 <button id="mic-btn" type="button" class="btn btn-sm" disabled>
                     <i id="mic-icon" class="fa fa-microphone"></i>
                 </button>
@@ -107,7 +107,7 @@
     </script>
     <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
-    <script src="./agora-unity-call.js"></script>
+    <script src="./agora.js"></script>
 
 
 
@@ -197,6 +197,7 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
+          window.unityInstance = unityInstance;
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
@@ -218,11 +219,11 @@
         appId: "1:296587151958:web:164a7b4aa963eec146c9f7",
         measurementId: "G-13MJQ4G50Z"
       });  
-      // firebase.firestore().collection("Rooms").doc("tSSPMUrsoiU6lYPGDkme").get().then(function (doc) {
-      //      console.log("response: ", doc.data());
-      //   }).catch(function(error) {
-      //       console.log(error);
-      //   }); 
+      firebase.firestore().collection("Rooms").doc("tSSPMUrsoiU6lYPGDkme").get().then(function (doc) {
+           console.log("response: ", doc.data());
+        }).catch(function(error) {
+            console.log(error);
+        }); 
     </script>
   </body>
 </html>
