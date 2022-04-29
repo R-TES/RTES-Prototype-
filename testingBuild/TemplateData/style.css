@@ -1,5 +1,5 @@
 body { padding: 0; margin: 0 }
-#unity-container { position: absolute }
+/* #unity-container { position: absolute } */
 #unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
 #unity-container.unity-mobile { width: 100%; height: 100% }
 #unity-canvas { background: #808080 }
