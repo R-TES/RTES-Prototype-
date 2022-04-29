@@ -34,6 +34,7 @@ namespace Scripts{
         public void JoinOrCreateRoom(string roomId) {
             Storage.room.id = roomId;
             getRoom();
+            UnityEngine.Debug.Log(Storage.room.template);
             PhotonNetwork.JoinOrCreateRoom(roomId, roomOptions, TypedLobby.Default);
             Agora.Init(roomId, agoraUserId.text);            
         }
@@ -50,6 +51,7 @@ namespace Scripts{
         }
 
         public override void OnJoinedRoom(){
+            UnityEngine.Debug.Log(Storage.room.template);
             PhotonNetwork.LoadLevel(Storage.room.template); 
         }
 

@@ -1225,14 +1225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641039c374ae8d54c877899c08b96e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offlinePlayers:
-  - {fileID: 1356855413749440147, guid: 339dc91082730b04fbcc43112db857d8, type: 3}
-  photonPlayers:
-  - {fileID: 1356855413749440147, guid: 339dc91082730b04fbcc43112db857d8, type: 3}
-  spawnPlayerIndex: 0
+  playerPrefabs:
+  - {fileID: 1655674338661181319, guid: 4a9f114d353da9d4d9102c603166f68a, type: 3}
+  character_index: -1
   useCustomSpawnCoordinates: 0
-  xSpawnPosition: 0
-  ySpawnPosition: 0
+  xSpawnPositionOffset: 0
+  ySpawnPositionOffet: 0
 --- !u!212 &1384263995
 SpriteRenderer:
   m_ObjectHideFlags: 0
