@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-
-
+using Scripts;   // Agora
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
@@ -15,7 +14,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public TMP_Dropdown characterDropDown;
     public InputField createInput;
     public InputField joinInput;
-    public InputField playerName; 
+    public InputField playerName;
+
+    [Header("Disable this when you're buildng!!")]
+    public bool localTest = false;
 
     public void CreateRoom()
     {
@@ -23,7 +25,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
 
         RoomOptions roomOptions = SetRoomOptions();
-
+        
         PhotonNetwork.CreateRoom(createInput.text, roomOptions);
     }
 
@@ -34,15 +36,21 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom(){
+
         PhotonNetwork.LocalPlayer.NickName = playerName.text;
-        string mapSelected = getDropDownMapSelection(mapDropDown);
+        string mapSelected = GetDropDownMapSelection(mapDropDown);
         SetDropDownPlayerSelection(characterDropDown);
-        Debug.Log("Loading: " + mapSelected);
+
+        ExitGames.Client.Photon.Hashtable customProperty = new() { { "info1", "1" } };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(customProperty);
+        Debug.Log("User ID: " + PhotonNetwork.LocalPlayer.UserId);
+        if(!localTest)
+            Agora.Init(createInput.text, PhotonNetwork.LocalPlayer.NickName);
         PhotonNetwork.LoadLevel(mapSelected); 
     }
 
     
-    private string getDropDownMapSelection(TMP_Dropdown dropdownMenu)
+    private string GetDropDownMapSelection(TMP_Dropdown dropdownMenu)
     {
         int menuIndex = dropdownMenu.value;
         List<TMP_Dropdown.OptionData> menuOptions = dropdownMenu.GetComponent<TMP_Dropdown>().options;
@@ -65,13 +73,14 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         ExitGames.Client.Photon.Hashtable room_details = new ExitGames.Client.Photon.Hashtable();
         room_details.Add("Ag", "AGORA_ID");
-        room_details.Add("m", getDropDownMapSelection(mapDropDown));
+        room_details.Add("m", GetDropDownMapSelection(mapDropDown));
 
         RoomOptions roomOptions = new RoomOptions
         {
             PlayerTtl = 0,
             CustomRoomProperties = room_details
         };
+        roomOptions.PublishUserId = true; 
 
 
         return roomOptions;

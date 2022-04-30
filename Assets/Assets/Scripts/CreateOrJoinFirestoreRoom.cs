@@ -33,7 +33,7 @@ namespace Scripts{
 
         public void JoinOrCreateRoom(string roomId) {
             Storage.room.id = roomId;
-            getRoom();
+            getRoom();              // FireStore Fetch
             UnityEngine.Debug.Log(Storage.room.template);
             PhotonNetwork.JoinOrCreateRoom(roomId, roomOptions, TypedLobby.Default);
             Agora.Init(roomId, agoraUserId.text);            
