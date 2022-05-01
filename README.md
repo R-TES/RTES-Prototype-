@@ -4,11 +4,8 @@
 #### Unity Version - 2022.3.0f1
 ### Working Application Demo:
 
-#### Untested Build (v2.04)
-https://r-tes.github.io/RTES-Prototype-/webdemo2/ 
 
-
-#### Stable Version Build (v1.05)
+#### Web Demo for public: 
  https://r-tes.github.io/RTES-Prototype-/webdemo/ 
 
 
