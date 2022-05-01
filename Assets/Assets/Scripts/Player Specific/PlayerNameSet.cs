@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun; 
-using UnityEngine.UI; 
+using Photon.Pun;
+using TMPro;
 public class PlayerNameSet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject playernamefield;
-
     void Start()
     {
         SetPlayerNames(); 
@@ -19,10 +16,11 @@ public class PlayerNameSet : MonoBehaviour
         GameObject[] characters = GameObject.FindGameObjectsWithTag("Player");
         foreach (var ch in characters)
         {
-            GameObject playernameText = ch.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+            GameObject playernameText = ch.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
+            // Oh god. Not proud of this one.
 
             PhotonView pv = ch.GetComponent<PhotonView>();
-            playernameText.GetComponent<Text>().text =  pv.Owner.NickName; 
+            playernameText.GetComponent<TMP_Text>().text =  pv.Owner.NickName; 
 
         }
 

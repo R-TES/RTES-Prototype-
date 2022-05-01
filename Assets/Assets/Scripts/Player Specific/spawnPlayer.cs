@@ -9,42 +9,57 @@ public class spawnPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject[] offlinePlayers;
-    public GameObject[] photonPlayers; 
-    public int spawnPlayerIndex = 0;
+    public GameObject[] playerPrefabs; 
+    public int character_index = -1;
 
 
     [Header("Custom Spawn Coordinates")]
     public bool useCustomSpawnCoordinates = false;
-    public int xSpawnPosition = 0;
-    public int ySpawnPosition = 0;
+    public int xSpawnPositionOffset = 0;
+    public int ySpawnPositionOffet = 0;
     
     void Start()
     {
 
         Vector2 pos = GetSpawnCoordinate();
         PhotonView view = GetComponent<PhotonView>();
+        int character_index = GetPlayerCharacterIndex();
 
         if (PhotonNetwork.IsConnected)
         {
             Debug.Log("Player Created in Photon Room.");
-            PhotonNetwork.Instantiate(photonPlayers[spawnPlayerIndex].name, pos, Quaternion.identity);
+            PhotonNetwork.Instantiate(playerPrefabs[character_index].name, pos, Quaternion.identity);
         }
         else
         {
-            Instantiate(offlinePlayers[spawnPlayerIndex], pos, Quaternion.identity);
+            Instantiate(playerPrefabs[character_index], pos, Quaternion.identity);
             Debug.LogError("Not Connected To Photon! Open game from Intro Scene!"); 
         }
         
     }
 
 
+    int GetPlayerCharacterIndex()
+    {
+        if (character_index >= playerPrefabs.Length) {
+            Debug.Log("Player Spawn Script's index is out of scope. Spawning Index 0 by default."); 
+            return 0;
+        };
+        if (character_index == -1)   // PlayerPref mode.      
+        {
+            Debug.Log("Spawning from PlayerPrefs");
+            return PlayerPrefs.GetInt("PlayerCharacterPresetIndex");
+        }
+
+        return character_index; 
+    }
+
 
     private Vector2 GetSpawnCoordinate()
     {
         Vector2 pos;
         if (useCustomSpawnCoordinates)
-            pos = new Vector2(xSpawnPosition, ySpawnPosition);
+            pos = new Vector2(xSpawnPositionOffset, ySpawnPositionOffet);
         else
             pos = transform.position;
 
