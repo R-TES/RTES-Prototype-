@@ -22,6 +22,8 @@ using Scripts; // Agora
             {
                 string playerID = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
                 if (playerID == PhotonNetwork.LocalPlayer.NickName) return; // Probably can remove this. Too lazy to check if it'll break.
+
+                Debug.Log("UNITY DEBUG LOG:\n A user has ENTERED your proximity: " + playerID);
                 if (playerID != null)
                 {
                     Agora.Subscribe(playerID);
@@ -35,6 +37,8 @@ using Scripts; // Agora
             {
                 string playerID = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
                 if (playerID == PhotonNetwork.LocalPlayer.NickName) return;
+
+                Debug.Log("UNITY DEBUG LOG:\n A user has EXITED your proximity: " + playerID);
                 if (playerID != null)
                 {
                     Agora.Unsubscribe(playerID);
