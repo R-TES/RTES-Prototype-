@@ -1166,26 +1166,26 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 3876116: function() {
+ 3876692: function() {
   Module["emscripten_get_now_backup"] = performance.now;
  },
- 3876171: function($0) {
+ 3876747: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 3876219: function($0) {
+ 3876795: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 3876267: function() {
+ 3876843: function() {
   performance.now = Module["emscripten_get_now_backup"];
  },
- 3876322: function() {
+ 3876898: function() {
   return Module.webglContextAttributes.premultipliedAlpha;
  },
- 3876383: function() {
+ 3876959: function() {
   return Module.webglContextAttributes.preserveDrawingBuffer;
  }
 };
@@ -1423,6 +1423,12 @@ function _IncrementFieldValue(collectionPath, documentId, field, increment, obje
  } catch (error) {
   window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
  }
+}
+
+function _Init(channel, userId) {
+ var parsedChannel = UTF8ToString(channel);
+ var parsedUserId = UTF8ToString(userId);
+ init(parsedChannel, parsedUserId);
 }
 
 var JS_Accelerometer = null;
@@ -3156,6 +3162,24 @@ function _StopListeningForDocumentChange(collectionPath, documentId, objectName,
  } catch (error) {
   window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
  }
+}
+
+function _Subscribe(uid) {
+ var parsedUid = UTF8ToString(uid);
+ subscribeWhenNear(parsedUid);
+}
+
+function _ToggleMic() {
+ toggleMic();
+}
+
+function _ToggleVideo() {
+ toggleVideo();
+}
+
+function _Unsubscribe(uid) {
+ var parsedUid = UTF8ToString(uid);
+ unsubscribeWhenFar(parsedUid);
 }
 
 function _UpdateDocument(collectionPath, documentId, value, objectName, callback, fallback) {
@@ -13972,6 +13996,7 @@ var asmLibraryArg = {
  "GetDocument": _GetDocument,
  "GetDocumentsInCollection": _GetDocumentsInCollection,
  "IncrementFieldValue": _IncrementFieldValue,
+ "Init": _Init,
  "JS_Accelerometer_IsRunning": _JS_Accelerometer_IsRunning,
  "JS_Accelerometer_Start": _JS_Accelerometer_Start,
  "JS_Accelerometer_Stop": _JS_Accelerometer_Stop,
@@ -14056,6 +14081,10 @@ var asmLibraryArg = {
  "SocketState": _SocketState,
  "StopListeningForCollectionChange": _StopListeningForCollectionChange,
  "StopListeningForDocumentChange": _StopListeningForDocumentChange,
+ "Subscribe": _Subscribe,
+ "ToggleMic": _ToggleMic,
+ "ToggleVideo": _ToggleVideo,
+ "Unsubscribe": _Unsubscribe,
  "UpdateDocument": _UpdateDocument,
  "__cxa_allocate_exception": ___cxa_allocate_exception,
  "__cxa_atexit": ___cxa_atexit,

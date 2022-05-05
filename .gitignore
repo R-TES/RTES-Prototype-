@@ -10,7 +10,8 @@
 /[Ll]ogs/
 /UserSettings/
 /[Mm]emoryCaptures/
-/testingBuild/
+/testingBuild/Build/
+/testingBuild/TemplateData/
 
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored

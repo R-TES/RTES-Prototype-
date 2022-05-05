@@ -25,7 +25,6 @@ public class AnimatePlayerScript : MonoBehaviour
     // Update is called once per frame
     void AnimatePlayer()
     {
-
         if (ribo.velocity == Vector2.zero)
         {
             IdleAnimation(true);
