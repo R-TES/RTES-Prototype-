@@ -19,7 +19,7 @@ var options = {
     accountName: null
 };
 
-function init (channel, userId)
+function init (channel, userId, name="")
 {
     console.log( "init called" );
     options.channel = channel;
@@ -249,6 +249,7 @@ async function RTMJoin() {
 async function subscribe(user,mediaType) {
     const uid = user.uid;
     const remName = user.accountName;
+    //const remName = "";
     // subscribe to a remote user
     if (mediaType == "AV"){
     await client.subscribe(user, "video");

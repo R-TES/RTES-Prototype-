@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     [Header("Modify the Collider attached to this object to control the range. You can even swap out the Circle Collider with another Collider.\nJust remmeber to set 'isTrigger' to true!")]
     public bool isInRange = false;
     public bool autoTrigger = false;
+    public bool triggerAgainOnExit = true; 
     public KeyCode triggerOnInteractKey = KeyCode.E;
     public string customPromptMessage = "";
     public UnityEvent interactEvent;
@@ -19,6 +20,7 @@ public class Interactable : MonoBehaviour
 
     private string playerTag = "Player";
     private bool autoTriggerLock = false;
+    private bool activeTriggerState = false;
 
     private Canvas interactPromptBanner;
     private TMP_Text interactPromptText; 
@@ -47,6 +49,7 @@ public class Interactable : MonoBehaviour
                 interactEvent.Invoke();
                 interactPromptBanner.enabled = false;
                 autoTriggerLock = autoTrigger;          // To Prevent triggering infinitely.
+                activeTriggerState = !activeTriggerState;
             }
         }
 
@@ -71,9 +74,14 @@ public class Interactable : MonoBehaviour
             if ( !PhotonNetwork.IsConnected || other.gameObject.GetComponent<PhotonView>().IsMine)
             {
                 isInRange = false;
+                if(activeTriggerState && triggerAgainOnExit)
+                {
+                    interactEvent.Invoke();
+                }
             }
         }
-        autoTriggerLock = false; 
+        autoTriggerLock = false;
+        activeTriggerState = false;
     }
 
 
