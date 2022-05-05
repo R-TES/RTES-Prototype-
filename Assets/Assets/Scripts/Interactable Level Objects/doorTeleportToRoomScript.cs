@@ -10,7 +10,8 @@ public class doorTeleportToRoomScript : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D col)
     {
-        
+        if (col.gameObject.CompareTag("IgnoreTriggers")) return; // Don't teleport objects with this tag.
+
         if(!doorController.checkIfAlreadyBlocked(col.gameObject)){
             col.gameObject.transform.position = destination.transform.position; 
             doorController.addToBlockList(col.gameObject);
@@ -18,6 +19,7 @@ public class doorTeleportToRoomScript : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D col){
+        if(col.gameObject.CompareTag("IgnoreTriggers")) return;
         doorController.removeFromBlockList(col.gameObject);
     }
 }

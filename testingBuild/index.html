@@ -24,54 +24,14 @@
 
   </head>
   <body>
-AAAAAAAAAAAAAAAAA
     <div class="container-fluid banner">
-        <p class="banner-text">Agora Demo for RealTES</p>
+        <p class="banner-text">RTES Proximity Chat Prototype</p>
     </div>
 
-    <div class="container mt-5 mb-5">
-        <!-- Form for joining and leaving -->
-        <form id="join-form">
-            <!-- <div class="row join-info-group">
-                <div class="col-sm">
-                    <p class="join-info-text">Name</p>
-                    <input id="accountName" type="text" placeholder="Enter Your Name" required class="form-control">
-                </div>
-            </div> -->
-
-            <div class="button-group mt-2">
-                <!-- <button id="join" type="submit" class="btn btn-sm">Join</button> -->
-                <button id="mic-btn" type="button" class="btn btn-sm" disabled>
-                    <i id="mic-icon" class="fa fa-microphone"></i>
-                </button>
-                <button id="video-btn" type="button" class="btn btn-sm" disabled>
-                    <i id="video-icon" class="fa fa-video"></i>
-                </button>
-                <button id="screen-share-btn" type="button" class="btn btn-sm" disabled>
-                    <i id="screen-share-icon" class="fas fa-desktop"></i>
-                </button>
-                <button id="leave" type="button" class="btn btn-sm" disabled>Leave</button>
-            </div>
-        </form>
-        
-        <div class="row">
-            <div class="row">
-
-                <div class="row video-group">
-                    <!-- Local Video -->
-                    <div class="col">
-                        <p id="local-player-name" class="player-name"></p>
-                        <div id="local-player" class="player"></div>
-                    </div>
-
-                    <!-- Remote Players -->
-                    <div class="col">
-                        <div id="remote-playerlist"></div>
-                    </div>
-                </div>
-
-                <div id="unity-container" class="col">
-                  <canvas id="unity-canvas" ></canvas>
+    <div>       
+        <div class="flex-container" style="  display: flex;align-items: stretch; background-color: #f1f1f1;">
+                <div id="unity-container" >
+                  <canvas id="unity-canvas"  style="flex-grow:15;"></canvas>
                   <div id="unity-loading-bar">
                     <div id="unity-logo"></div>
                     <div id="unity-progress-bar-empty">
@@ -79,16 +39,30 @@ AAAAAAAAAAAAAAAAA
                     </div>
                   </div>
                   <div id="unity-warning"> </div>
-                  <div id="unity-footer">
+                  <div id="unity-footer" style="position: relative;">
                     <div id="unity-webgl-logo"></div>
                     <div id="unity-fullscreen-button"></div>
-                    <div id="unity-build-title">RTES Prototype</div>
+                    <div id="unity-build-title">RTES Proximity Chat Prototype</div>
+                  </div>
+                </div>
+                
+                <div class="video-group" style="flex-grow: 2; background-color: black;">
+                  <!-- Local Video -->
+                  <div class="">
+                      <p id="local-player-name" class="player-name"></p>
+                      <div id="local-player" class="player" style="background-color: green;" ></div>
+                  </div>
+
+                  <!-- Remote Players -->
+                  <div class="" style="height: 50% ; overflow: scroll; background-color: red;">
+                      <div id="remote-playerlist"></div>
                   </div>
                 </div>
 
-            </div>
+            
+            <!--
             <div class="col">
-                <!-- All Users List with Mute Controls -->
+                 All Users List with Mute Controls 
                 <div class="all-users-text my-3">
                     <h5 class="text-decoration-underline">All Users:</h5>
                     <div class="all-users" id="all-users">
@@ -96,7 +70,7 @@ AAAAAAAAAAAAAAAAA
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
