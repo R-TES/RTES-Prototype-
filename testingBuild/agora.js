@@ -385,20 +385,27 @@ function subscribeWhenNear(uid){
     // userAdded = remoteUsers[ids[ids.length * Math.random() << 0]];
     // subscribedRemoteUsers[userAdded.uid] = userAdded;
     // console.log(subscribedRemoteUsers);
-    console.log( "id fetched: " + uid + ", logging remoteUser[uid] from subscribewhennear: " + remoteUsers[options.uid] );
+    console.log( "id fetched: " + uid + ", logging remoteUser[uid] from subscribewhennear: " + remoteUsers[uid] );
     
     userAdded = remoteUsers[uid];
-    if(!userAdded) return;              // Sandy: Added Null Guards.
+    if(!userAdded){
+        console.log("AGORA DEBUG LOG:\nFUNCTION: subscribeWhenNear \nUSER UNDEFINED FOR ID: " + uid); 
+        return; 
+    }              // Sandy: Added Null Guards.
     console.log(userAdded); 
     subscribe(userAdded,"AV");
 }
 
 function unsubscribeWhenFar(uid){
     console.log("USWF");
+    console.log( "id fetched: " + uid + ", logging remoteUser[uid] from unsubscribeWhenFar: " + remoteUsers[uid] );
     // ids = Object.keys(remoteUsers);
     // userKickedOut = remoteUsers[ids[ids.length * Math.random() << 0]];
     userKickedOut = remoteUsers[uid];
-    if(!userKickedOut) return;          // Sandy: Added Null Guards.
+    if(!userKickedOut){ 
+        console.log("AGORA DEBUG LOG:\nFUNCTION: unsubscribeWhenFar \nUSER UNDEFINED FOR ID: " + uid); 
+        return;          // Sandy: Added Null Guards.
+    }
     //console.log(userKickedOut)
     delete subscribedRemoteUsers[userKickedOut.uid];
     unsubscribe(userKickedOut);
