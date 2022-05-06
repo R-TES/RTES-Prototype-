@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 4292075591831702922}
   - component: {fileID: 2447848747433865797}
   - component: {fileID: 2447848746999236413}
+  - component: {fileID: 4204932644826605367}
   - component: {fileID: 2447848747433865796}
   - component: {fileID: 2447848747433865799}
   - component: {fileID: 5224627293885444728}
@@ -279,6 +280,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4204932644826605367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affd920d7de1fdb478b9d3276b2adc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 1, g: 0.6, b: 0.6, a: 1}
+  leftClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rightClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  middleClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &2447848747433865796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -292,7 +327,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.169584}
+  m_Offset: {x: -0.000021517277, y: -0.15823904}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -303,7 +338,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.21507746}
+  m_Size: {x: 0.28096998, y: 0.23776741}
   m_EdgeRadius: 0
 --- !u!50 &2447848747433865799
 Rigidbody2D:
@@ -595,7 +630,7 @@ GameObject:
   - component: {fileID: 8077370541275704974}
   - component: {fileID: 8077370541275704975}
   - component: {fileID: 8077370541275704972}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 'ProximityAudioHandler '
   m_TagString: IgnoreTriggers
   m_Icon: {fileID: 0}

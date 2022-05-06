@@ -11,13 +11,6 @@
 }
 
 
-#join-form {
-    margin-top: 10px;
-}
-
-.join-info-text {
-    margin-bottom: 2px;
-}
 
 input {
     width: 100%;
@@ -68,21 +61,8 @@ input {
     overflow: scroll;
 }
 
-.btn-control {
-    outline: none;
-    border: 1px solid white;
-    box-shadow: none;
-}
-
-.btn-control:hover,
-.btn-control:focus {
-    outline: none;
-    box-shadow: none;
-    border: 1px solid white;
-    background: rgb(12, 157, 253);
-}
-
-.remoteMicrophone,
-.remoteCamera {
-    cursor: pointer;
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    
 }
