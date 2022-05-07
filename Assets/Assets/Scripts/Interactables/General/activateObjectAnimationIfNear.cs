@@ -6,12 +6,13 @@ public class activateObjectAnimationIfNear : MonoBehaviour
 {
     public string animation_variable = "active";
     public bool disabled = false;
-    private Animator animator;
+    public Animator animator;
 
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        if(animator == null)
+            animator = GetComponent<Animator>();
     }
 
 

@@ -9,15 +9,14 @@ public class DoorLockerScript : MonoBehaviour
     public activateObjectAnimationIfNear animator;
     public KeyCode interact_key = KeyCode.E;
     public bool onlyOnePersonCanLock = true; 
-    public string adminTag = "Admin";
     public Collider2D solidDoorCollider;
 
-    private GameObject PersonWhoLocked;
-
+    private Collider2D personWhoLocked;
     private bool interacting = false;
     private Collider2D interacter; 
     private bool locked = false;
-    PhotonView photonView;
+    private PhotonView photonView;
+
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
@@ -30,18 +29,18 @@ public class DoorLockerScript : MonoBehaviour
             if (Input.GetKeyDown(interact_key))
             {
                 Debug.Log("Key Pressed: " + interact_key.ToString());
-                Debug.Log(locked);
                 if (!locked)
                 {
-                    if (interacter.CompareTag("Player") || interacter.CompareTag("Admin"))
+                    if (interacter.GetComponent<PhotonView>().IsMine || !PhotonNetwork.IsConnected)
                     {
                         LockDoor();
                         photonView.RPC("LockDoor", RpcTarget.All);
+                        personWhoLocked = interacter; 
                     }
                 }
                 else if (locked)
                 {
-                    if (!onlyOnePersonCanLock || interacter.gameObject == PersonWhoLocked)
+                    if (!onlyOnePersonCanLock && interacter.GetComponent<PhotonView>().IsMine || interacter == personWhoLocked)
                     {
                         UnlockDoor();
                         photonView.RPC("UnlockDoor", RpcTarget.All);
@@ -55,14 +54,20 @@ public class DoorLockerScript : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D other)
     {
-        interacting = true;
-        interacter = other;
+        if (other.CompareTag("Player"))
+        {
+            interacting = true;
+            interacter = other;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        interacting = false;
-        interacter = null; 
+        if (other.CompareTag("Player"))
+        {
+            interacting = false;
+            interacter = null;
+        }
     }
 
 

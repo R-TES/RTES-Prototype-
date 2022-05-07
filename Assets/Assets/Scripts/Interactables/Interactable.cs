@@ -12,7 +12,9 @@ public class Interactable : MonoBehaviour
     public bool autoTrigger = false;
     public bool triggerAgainOnExit = true; 
     public KeyCode triggerOnInteractKey = KeyCode.E;
-    public string customPromptMessage = "";
+    public string initialCustomPromptMessage = "";
+
+    public string afterInteractMessage = ""; 
     public UnityEvent interactEvent;
 
 
@@ -31,14 +33,12 @@ public class Interactable : MonoBehaviour
     private void Start()
     {
         interactPromptText = GetComponentInChildren<TMP_Text>();
-        if (customPromptMessage == "")
-            interactPromptText.text = "Press [" + triggerOnInteractKey.ToString() + "] to interact.";
-        else
-            interactPromptText.text = customPromptMessage;
-
-
         interactPromptBanner = GetComponentInChildren<Canvas>();
         interactPromptBanner.enabled = false;
+
+        ResetPromptMessage();
+
+
     }
 
     private void Update()
@@ -46,13 +46,16 @@ public class Interactable : MonoBehaviour
         if (isInRange && !autoTriggerLock)
         {
             if (autoTrigger || Input.GetKeyDown(triggerOnInteractKey)) {
-                interactEvent.Invoke();
-                interactPromptBanner.enabled = false;
-                autoTriggerLock = autoTrigger;          // To Prevent triggering infinitely.
-                activeTriggerState = !activeTriggerState;
+
+                TriggerEvent();
+                AutoTriggerLogicHandler();
+
+                if (activeTriggerState)
+                    ChangeOrHidePromptMessageOnInteract();
+                else
+                    ResetPromptMessage();
             }
         }
-
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -73,6 +76,8 @@ public class Interactable : MonoBehaviour
         if (other.gameObject.CompareTag("IgnoreTriggers")) return;
 
         interactPromptBanner.enabled = false;
+        ResetPromptMessage();
+
         if (other.gameObject.CompareTag(playerTag))
         {
             if ( !PhotonNetwork.IsConnected || other.gameObject.GetComponent<PhotonView>().IsMine)
@@ -89,5 +94,39 @@ public class Interactable : MonoBehaviour
     }
 
 
+    void ResetPromptMessage()
+    {
+        if (initialCustomPromptMessage.Length == 0)
+            SetPromptBanner("Press [" + triggerOnInteractKey.ToString() + "] to interact.");
+        else
+            SetPromptBanner(initialCustomPromptMessage);
+    }
+
+    void ChangeOrHidePromptMessageOnInteract()
+    {
+            if (afterInteractMessage.Length == 0)
+                interactPromptBanner.enabled = false;       // Just Hide Prompt.
+            else
+                SetPromptBanner(afterInteractMessage);      // Show Reaction Prompt on interact.
+    }
+
+    void SetPromptBanner(string CustomPromptMessage)
+    {
+        interactPromptText.text = CustomPromptMessage;
+    }
+
+
+    void TriggerEvent()
+    {
+        interactEvent.Invoke();
+    }
+
+
+    void AutoTriggerLogicHandler()
+    {
+        // To Prevent auto triggering infinitely.
+        autoTriggerLock = autoTrigger;
+        activeTriggerState = !activeTriggerState;
+    }
 
 }
