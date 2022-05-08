@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -9,47 +10,56 @@ public class PlayerMovement : MonoBehaviour
     public float diagonalFluidity = 2f;
     public float minVelocity = 4f;
 
+    public InputManagerScript inputManagementScript; 
 
     private Rigidbody2D ribo; 
     private PhotonView view;
-    private Vector2 movement_values;
+    private Vector2 movementXY;
 
     void Start()
     {
+
         view = GetComponent<PhotonView>(); 
         ribo = GetComponent<Rigidbody2D>();
-        movement_values = Vector2.zero;
+
+        if(PhotonNetwork.IsConnected && !view.IsMine)           // Disable script on online players.
+            this.enabled = false;
     }
 
     private void Update()
     {
-        if (!PhotonNetwork.IsConnected || view.IsMine)
-        {
-            movement_values = GetKeyboardControls();
-        }
-        
+      movementXY = inputManagementScript.PlayerMoveGenericController();
     }
     void FixedUpdate()
     {   
-        if(!PhotonNetwork.IsConnected || view.IsMine){
-            PlayerMoveByVelocity(movement_values);
-        }
-    }
-
-    void PlayerMoveByVelocity(Vector2 movement){
-        ribo.velocity = new Vector2(movement.x * Time.deltaTime * speed,  movement.y * Time.deltaTime * speed);
-        if (ribo.velocity.magnitude < minVelocity) ribo.velocity = Vector2.zero;
-    }
-
-
-    Vector2 GetKeyboardControls()
-    {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        Vector2 movement = new( h/ (Mathf.Abs(v)/ diagonalFluidity + 1), v / (Mathf.Abs(h)/ diagonalFluidity + 1)); 
-        return movement;
+        PlayerMover();
         
     }
+
+    void PlayerMover(){
+        DiagonalMovementDelimeter();
+        ApplyVelocityToRigidBody();
+        VelocityThreshhold();
+    }
+
+    /// 
+    ///  Helper Functions Below.
+    /// 
+    /// 
+    void DiagonalMovementDelimeter()        // If you're moving vertically already, make horizontal movement slower.
+    {
+        movementXY.x /= (Mathf.Abs(movementXY.y) / diagonalFluidity + 1);
+        movementXY.y /= (Mathf.Abs(movementXY.x) / diagonalFluidity + 1);
+    }
+    
+    void ApplyVelocityToRigidBody()
+    {
+        ribo.velocity = new Vector2(movementXY.x * Time.deltaTime * speed, movementXY.y * Time.deltaTime * speed);
+    }
+    void VelocityThreshhold()
+    {
+        if (ribo.velocity.magnitude < minVelocity && ribo.velocity.magnitude > minVelocity / 2) ribo.velocity = Vector2.zero;
+    }
+
 
 }

@@ -12,9 +12,10 @@ public class ProximityAudioController : MonoBehaviour
 
 
     void Start()
-    {   // If Online or this gameobject isn't attached to local player, destroy.
-        if (PhotonNetwork.IsConnected  && !player.GetComponent<PhotonView>().IsMine)
-            Destroy(gameObject);    
+    {
+        // If Online or this gameobject isn't attached to local player, destroy.
+        if (PhotonNetwork.IsConnected && !player.GetComponent<PhotonView>().IsMine)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
