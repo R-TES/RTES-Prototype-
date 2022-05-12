@@ -34,7 +34,7 @@ public class DoorLockerScript : MonoBehaviour
                     if (interacter.GetComponent<PhotonView>().IsMine || !PhotonNetwork.IsConnected)
                     {
                         LockDoor();
-                        photonView.RPC("LockDoor", RpcTarget.All);
+                        photonView.RPC("LockDoor", RpcTarget.AllBuffered);
                         personWhoLocked = interacter; 
                     }
                 }
@@ -43,7 +43,7 @@ public class DoorLockerScript : MonoBehaviour
                     if (!onlyOnePersonCanLock && interacter.GetComponent<PhotonView>().IsMine || interacter == personWhoLocked)
                     {
                         UnlockDoor();
-                        photonView.RPC("UnlockDoor", RpcTarget.All);
+                        photonView.RPC("UnlockDoor", RpcTarget.AllBuffered);
                     }
                 }
             }

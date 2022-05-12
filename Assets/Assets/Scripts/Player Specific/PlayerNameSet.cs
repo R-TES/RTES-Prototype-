@@ -12,6 +12,7 @@ public class PlayerNameSet : MonoBehaviour
 
     void SetPlayerNames()
     {
+        if (!PhotonNetwork.IsConnected) return;
         // Sets Player Name for all characters in the room. 
         GameObject[] characters = GameObject.FindGameObjectsWithTag("Player");
         foreach (var ch in characters)

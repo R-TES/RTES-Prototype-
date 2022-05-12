@@ -5,43 +5,49 @@ using Photon.Pun;
 using Scripts; // Agora
 
 
-public class ProximityAudioController : MonoBehaviour
+public class ProximityAudioController : MonoBehaviour       // Henceforth called as "PAC"
 {
-    private string[] blockedUsers;
+    //private string[] blockedUsers;
     public GameObject player;
     private Collider2D selfCollider;
-
+    public bool isAllowingSubscribers;
 
     void Start()
     {
+        selfCollider = GetComponent<Collider2D>();
+        isAllowingSubscribers = true;
         // If Online or this gameobject isn't attached to local player, destroy.
         if (PhotonNetwork.IsConnected && !player.GetComponent<PhotonView>().IsMine)
-            Destroy(gameObject);
+            selfCollider.enabled = false;
 
-        selfCollider = GetComponent<Collider2D>();
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!isAllowingSubscribers) return;         // If in disabled state, don't check for new users entering your space. 
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            string playerID = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
-            if (playerID == PhotonNetwork.LocalPlayer.NickName) return; // Probably can remove this. Too lazy to check if it'll break.
+            string playerID = GetPhotonIDFromCollider2D(other);         // Retrieve Other Players ID
+            ProximityAudioController otherPlayersPAC = other.gameObject.GetComponentInChildren<ProximityAudioController>();     // Retrieve Other Player's PAC
             Debug.Log("UNITY DEBUG LOG:\n A user has ENTERED your proximity: " + playerID);
-            SubscribeToPlayerID(playerID);
+            
+            if (otherPlayersPAC.isAllowingSubscribers)   // If collided user's PAC is in disabled state, ignore.
+                SubscribeToPlayerID(playerID);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (!isAllowingSubscribers) return;     // If in disabled state, don't check for new users entering your space. 
+
         if (other.gameObject.CompareTag("Player"))
         {
             string playerID = GetPhotonIDFromCollider2D(other);
-            if (playerID == PhotonNetwork.LocalPlayer.NickName) return;
-
             Debug.Log("UNITY DEBUG LOG:\n A user has EXITED your proximity: " + playerID);
-
-            UnSubscribeToPlayerID(playerID);
+            if (other.gameObject.GetComponentInChildren<ProximityAudioController>().isAllowingSubscribers)
+                UnSubscribeToPlayerID(playerID);
         }
     }
 
@@ -49,13 +55,16 @@ public class ProximityAudioController : MonoBehaviour
 
     public void SubscribeToPlayerID(string playerID)
     {
+        if (playerID == PhotonNetwork.LocalPlayer.NickName) return; // Probably can remove this. Too lazy to check if it'll break.
         if (playerID != null)
         {
             Agora.Subscribe(playerID);
         }
+        Debug.Log("Subscribed via (STPID)");
     }
     public void UnSubscribeToPlayerID(string playerID)
     {
+        if (playerID == PhotonNetwork.LocalPlayer.NickName) return;
         if (playerID != null)
         {
             Agora.Unsubscribe(playerID);
@@ -76,6 +85,13 @@ public class ProximityAudioController : MonoBehaviour
         selfCollider.enabled = isEnabled;
         yield return new WaitForSeconds(0.001f);
         transform.position = tempPos;
+    }
+
+    public void ToggleSubscribableState(bool isEnabled)
+    {
+        isAllowingSubscribers = isEnabled;
+        ToggleProximityAudio(isEnabled);
+        Debug.Log("You toggled your Subscriber State.");
     }
 }
 

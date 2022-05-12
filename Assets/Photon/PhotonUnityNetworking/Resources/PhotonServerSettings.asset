@@ -42,6 +42,17 @@ MonoBehaviour:
   - LockDoor
   - UnlockDoor
   - RecieveMessageRPC
+  - AddParticipant
+  - CallSubscribeForParticipants
+  - CallUnSubscribeForParticipants
+  - RemoveParticipant
+  - DisablePACOfLocalUser
+  - TogglePACOfLocalUser
+  - TogglePACOfNewUserEverywhere
+  - SubscribeRPC
+  - UnSubscribeRPC
+  - <CallSubscribeForParticipants>g__SubscribeRPC|8_0
+  - <CallUnSubscribeForParticipants>g__UnSubscribeRPC|9_0
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

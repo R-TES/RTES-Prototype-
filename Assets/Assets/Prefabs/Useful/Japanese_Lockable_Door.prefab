@@ -468,6 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation_variable: active
   disabled: 0
+  animator: {fileID: 0}
 --- !u!1 &7879645288145776003
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +481,7 @@ GameObject:
   - component: {fileID: 7879645288145776006}
   - component: {fileID: 7879645288145776007}
   - component: {fileID: 9083532386046303767}
+  - component: {fileID: 912535689503522884}
   m_Layer: 0
   m_Name: door-lock
   m_TagString: Untagged
@@ -518,7 +520,6 @@ MonoBehaviour:
   animator: {fileID: 7879645288124952256}
   interact_key: 101
   onlyOnePersonCanLock: 0
-  adminTag: Admin
   solidDoorCollider: {fileID: 7879645288706832388}
 --- !u!61 &7879645288145776007
 BoxCollider2D:
@@ -567,6 +568,28 @@ MonoBehaviour:
   interactEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &912535689503522884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7879645288145776003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7879645288706832390
 GameObject:
   m_ObjectHideFlags: 0
