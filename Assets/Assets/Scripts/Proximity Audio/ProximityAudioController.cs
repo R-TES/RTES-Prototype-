@@ -78,11 +78,13 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
     }
 
 
-    public IEnumerator ToggleProximityAudio(bool isEnabled)
+    public IEnumerator ToggleProximityAudio(bool isEnabled)         // Lazy Unsubscribe option.
     {
         Vector3 tempPos = transform.position;
-        transform.position = new Vector3(1000000, 100000);      // To Trigger OnExit for all nearby players.\
+        transform.position = new Vector3(1000000, 100000);      // To Trigger OnExit for all nearby players.
+        yield return new WaitForSeconds(0.001f);
         selfCollider.enabled = isEnabled;
+        GetComponent<SpriteRenderer>().enabled = isEnabled;
         yield return new WaitForSeconds(0.001f);
         transform.position = tempPos;
     }
@@ -90,7 +92,7 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
     public void ToggleSubscribableState(bool isEnabled)
     {
         isAllowingSubscribers = isEnabled;
-        ToggleProximityAudio(isEnabled);
+        StartCoroutine(ToggleProximityAudio(isEnabled));
         Debug.Log("You toggled your Subscriber State.");
     }
 }
