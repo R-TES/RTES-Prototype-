@@ -17,6 +17,7 @@ public class CameraFollow : MonoBehaviour
 
     private Vector2 lerpVectors;
     private GameObject targetObject;
+    private SpriteRenderer fade;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class CameraFollow : MonoBehaviour
             BindCameraWithLocalPlayer();
         else
             targetObject = alternateTargetObject;
+        fade = GetComponentInChildren<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -48,4 +50,9 @@ public class CameraFollow : MonoBehaviour
         targetObject = players[0];
     }
 
+
+    public void CameraFade(Color color)
+    {
+        fade.color = color;
+    }
 }
