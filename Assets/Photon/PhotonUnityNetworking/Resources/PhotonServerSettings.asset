@@ -53,6 +53,7 @@ MonoBehaviour:
   - UnSubscribeRPC
   - <CallSubscribeForParticipants>g__SubscribeRPC|8_0
   - <CallUnSubscribeForParticipants>g__UnSubscribeRPC|9_0
+  - AttachObjectInstanceScriptToObject
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

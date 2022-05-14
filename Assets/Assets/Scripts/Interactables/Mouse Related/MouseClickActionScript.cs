@@ -48,5 +48,9 @@ public class MouseClickActionScript : MonoBehaviour
             middleClickEvent.Invoke();
         }
     }
-
+    
+    public void DebugFunction()
+    {
+        Debug.Log("Works");
+    }
 }

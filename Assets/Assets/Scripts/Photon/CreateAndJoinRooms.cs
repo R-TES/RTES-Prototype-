@@ -12,21 +12,28 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     public TMP_Dropdown mapDropDown;
     public TMP_Dropdown characterDropDown;
-    public InputField createInput;
-    public InputField joinInput;
+    public InputField roomInput;
     public InputField playerName;
 
     public void CreateRoom()
     {
         if(!NameCheck())return;
         RoomOptions roomOptions = SetRoomOptions();
-        PhotonNetwork.CreateRoom(createInput.text, roomOptions);
+        PhotonNetwork.CreateRoom(roomInput.text, roomOptions);
     }
 
     public void JoinRoom(){
         if(!NameCheck()) return;
 
-        PhotonNetwork.JoinRoom(joinInput.text);
+        PhotonNetwork.JoinRoom(roomInput.text);
+    }
+
+    public void CreateOrJoinRoom()
+    {
+        if (!NameCheck()) return;
+        RoomOptions roomOptions = SetRoomOptions();
+        PhotonNetwork.JoinOrCreateRoom(roomInput.text, roomOptions, TypedLobby.Default); ;
+
     }
 
     public override void OnJoinedRoom(){
@@ -41,7 +48,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
         try
         {
-            Agora.Init(createInput.text, PhotonNetwork.LocalPlayer.NickName);
+            Agora.Init(roomInput.text, PhotonNetwork.LocalPlayer.NickName);
         }
         catch(System.EntryPointNotFoundException e)
         {
