@@ -7,6 +7,7 @@ TagManager:
   - Particles
   - IgnoreTriggers
   - Admin
+  - Path
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Players
-  - 
+  - Path
   - 
   - 
   - 

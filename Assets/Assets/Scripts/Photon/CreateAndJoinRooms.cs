@@ -87,7 +87,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         RoomOptions roomOptions = new RoomOptions
         {
             PlayerTtl = 0,
-            CustomRoomProperties = room_details
+            CustomRoomProperties = room_details,
+            CleanupCacheOnLeave = false
         };
         roomOptions.PublishUserId = true; 
 
@@ -96,7 +97,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     }
     private bool NameCheck()
     {
-        if (playerName.text.Length < 2 && playerName.text.Length > 14)
+        if (playerName.text.Length < 2 || playerName.text.Length > 14)
         {
             Debug.LogError("Please provide player name of length greater than 2 and less than 15");
             return false;
