@@ -23,6 +23,7 @@ public class MouseClickActionScript : MonoBehaviour
     
     void OnMouseEnter()
     {
+        Debug.Log("Yes");
         spriteRenderer.color = hoverColor; 
     }
 

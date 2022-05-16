@@ -104,6 +104,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         }
         return true;
     }
-
-    // Update is called once per frame
 }

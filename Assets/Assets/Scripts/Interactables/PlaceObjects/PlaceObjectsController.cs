@@ -13,6 +13,7 @@ public class PlaceObjectsController : MonoBehaviour
     [Header("Placement Settings")]
     public float maxPlacementDistance = 5f;
     public static int maxItemsPerPerson = 5;
+    public LayerMask invalidLayer;
 
 
     [Header("Components")]
@@ -27,6 +28,7 @@ public class PlaceObjectsController : MonoBehaviour
     public GameObject SelectedItemGhost;                    // Ghost is used as transparant representation of object over mouse cursor.
     private GameObject SelectedItemPrefab;                  // Actual object that is instantitated. Not Modified like ghost.
     public Transform localPlayer;
+    private Vector3 worldPos; 
 
     void Start()
     {
@@ -48,13 +50,15 @@ public class PlaceObjectsController : MonoBehaviour
 
     void PlacementModeLoop()
     {
+        GetLiveMousePosition();
         ShowGhostGameObjectOverMousePosition();
-
         if (Input.GetKeyDown(KeyCode.Escape))
             ResetItemSelection();
         if (Input.GetMouseButtonDown(1))
         {
-            PlaceSelectedItem();
+            
+            if (validPlacementPosition())
+                PlaceSelectedItem();
         }
     }
 
@@ -74,8 +78,8 @@ public class PlaceObjectsController : MonoBehaviour
 
     void ShowGhostGameObjectOverMousePosition()
     {
-        Vector3 worldPos = GetWorldPositionOnPlane(Input.mousePosition, 0f);
-        if (Vector2.Distance(worldPos, localPlayer.position) > maxPlacementDistance)
+        
+        if (!validPlacementPosition())
         {
             SelectedItemGhost.GetComponent<SpriteRenderer>().color = Color.red;                                                  // Can't place object, make it a red tint.
         }
@@ -87,24 +91,36 @@ public class PlaceObjectsController : MonoBehaviour
         SelectedItemGhost.transform.position = worldPos;
     }
 
+    bool validPlacementPosition()
+    {
+        return Vector2.Distance(worldPos, localPlayer.position) < maxPlacementDistance && !Physics2D.OverlapCircle(worldPos, 0.5f, invalidLayer);
+    }
+
+
+
+    /*
+     *  Placement Helper Functions
+     * 
+     */
+
+    void GetLiveMousePosition()
+    {
+        worldPos = GetWorldPositionOnPlane(Input.mousePosition, 0f);
+    }
+
     void FadeObjectSlightly(GameObject g)
     {
         Color color = SelectedItemGhost.GetComponent<SpriteRenderer>().color;          // Make it slightly transparant.
         color.a /= 2;
         SelectedItemGhost.GetComponent<SpriteRenderer>().color = color;
     }
- 
+
     void DisableAllColliders(GameObject g)
-    {   
+    {
         Collider2D col = SelectedItemGhost.GetComponent<Collider2D>();
-        if(col)
+        if (col)
             col.enabled = false;                                   // Disable Collider.
     }
-
-   /*
-    *  End of Placement Mode Functions
-    * 
-    */
 
 
     /*

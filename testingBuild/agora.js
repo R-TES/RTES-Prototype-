@@ -68,7 +68,7 @@ async function join() {
         AgoraRTC.createCameraVideoTrack()
     ]);
     // Plays Local video track
-    localTracks.videoTrack.play("local-player");
+    localTracks.videoTrack.play("localplayer");
     $("#local-player-name").text(`localVideo(${
         options.accountName
     })`);
