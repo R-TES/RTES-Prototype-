@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4985477595861371566}
   - component: {fileID: -7242758430282712391}
   - component: {fileID: -7609102336155204529}
+  - component: {fileID: 4042078316188034239}
+  - component: {fileID: -7941848463714414067}
   m_Layer: 0
   m_Name: Wood Glass Table
   m_TagString: Untagged
@@ -170,3 +172,29 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &4042078316188034239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985477595861371564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}
+--- !u!114 &-7941848463714414067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985477595861371564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}

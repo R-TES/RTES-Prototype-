@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 6455507270247791752}
   - component: {fileID: 1275106331375763263}
   - component: {fileID: 2196134131130481479}
+  - component: {fileID: -4258362981389502587}
+  - component: {fileID: -101702362985385778}
   m_Layer: 0
-  m_Name: Tree Plant
+  m_Name: Plant (S)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,3 +194,29 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-4258362981389502587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467590829299231791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}
+--- !u!114 &-101702362985385778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467590829299231791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}

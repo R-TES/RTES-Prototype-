@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using Photon.Pun;
 
+
 public class PlaceObjectsController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class PlaceObjectsController : MonoBehaviour
     [SerializeField] private GameObject TilePrefab;
     [SerializeField] private GameObject[] prefabItems;
     public Animator PlaceObjectParentWindow;
+    public GameObject ObjectDetailsWindow;
 
     [Header("Readonly Details")]
     private int itemsAlreadyPlaced = 0;
@@ -68,6 +70,7 @@ public class PlaceObjectsController : MonoBehaviour
         //TODO:
         //Firebase.StoreItemCoordinate(LobbyID, SelectedItemPrefab.name, worldPos.x, worldPos.y);
     }
+
 
     void ShowGhostGameObjectOverMousePosition()
     {

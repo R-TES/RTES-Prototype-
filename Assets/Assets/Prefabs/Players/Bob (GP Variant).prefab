@@ -72,6 +72,21 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8077370541275704972, guid: 820396bf79050584c814ddfedf677eba,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.03137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077370541275704972, guid: 820396bf79050584c814ddfedf677eba,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.10196076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077370541275704972, guid: 820396bf79050584c814ddfedf677eba,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.68159765
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820396bf79050584c814ddfedf677eba, type: 3}
 --- !u!1 &795871098571092398 stripped
@@ -92,3 +107,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db33e79519fe10b4eaaa99c83031d67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionStateVariable: dir
+  movingStateVaraible: isMoving

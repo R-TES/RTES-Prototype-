@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5124059205259108470}
   - component: {fileID: -5845182263200203796}
   - component: {fileID: -366762002072335082}
+  - component: {fileID: -5141210944081018899}
   m_Layer: 0
   m_Name: Shelf With Food
   m_TagString: Untagged
@@ -143,3 +144,16 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-5141210944081018899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124059205259108473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}

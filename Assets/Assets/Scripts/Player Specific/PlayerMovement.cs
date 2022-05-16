@@ -9,16 +9,22 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 250f;
     public float diagonalFluidity = 2f;
     public float minVelocity = 4f;
+    public float speedMultiplier = 1.5f;
+    public Color speedBoostColor = new Color(0.8f, 1f, 0.8f, 1f);
 
+    public LayerMask pathLayer;
     public InputManagerScript inputManagementScript; 
 
     private Rigidbody2D ribo; 
     private PhotonView view;
+    private SpriteRenderer sr;
     private Vector2 movementXY;
+    private Color defaultCharacterColor;
 
     void Start()
     {
-
+        sr = GetComponent<SpriteRenderer>();
+        defaultCharacterColor = sr.color;
         view = GetComponent<PhotonView>(); 
         ribo = GetComponent<Rigidbody2D>();
 
@@ -29,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
       movementXY = inputManagementScript.PlayerMoveGenericController();
+        
     }
     void FixedUpdate()
     {   
@@ -54,11 +61,25 @@ public class PlayerMovement : MonoBehaviour
     
     void ApplyVelocityToRigidBody()
     {
-        ribo.velocity = new Vector2(movementXY.x * Time.deltaTime * speed, movementXY.y * Time.deltaTime * speed);
+        float sm = SpeedModifierOnPath();
+        Debug.Log(sm);
+        ribo.velocity = new Vector2(movementXY.x * Time.deltaTime * speed * sm, movementXY.y * Time.deltaTime * speed * sm);
     }
     void VelocityThreshhold()
     {
         if (ribo.velocity.magnitude < minVelocity && ribo.velocity.magnitude > minVelocity / 2) ribo.velocity = Vector2.zero;
+    }
+
+    float SpeedModifierOnPath()
+    {
+
+        if (Physics2D.OverlapCircle(transform.position, 1f, pathLayer))
+        {
+            sr.color = speedBoostColor;
+            return speedMultiplier;
+        }
+        sr.color = defaultCharacterColor;
+        return 1; 
     }
 
 

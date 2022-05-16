@@ -244,9 +244,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84286460dc4f4304499dcba3059ea831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 325
+  speed: 250
   diagonalFluidity: 1.5
   minVelocity: 3
+  speedMultiplier: 1.75
+  speedBoostColor: {r: 0.8, g: 1, b: 0.8, a: 1}
+  pathLayer:
+    serializedVersion: 2
+    m_Bits: 128
   inputManagementScript: {fileID: 4870592517203586386}
 --- !u!114 &4292075591831702922
 MonoBehaviour:
@@ -727,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2447848747433865798}
+  isAllowingSubscribers: 0
 --- !u!212 &8077370541275704972
 SpriteRenderer:
   m_ObjectHideFlags: 0

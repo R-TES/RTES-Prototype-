@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 795871098571092398, guid: bafbc562cd29a0c4f9fe604fdf443057,
         type: 3}
       propertyPath: m_Name
-      value: Bob (Photon Variant)
+      value: 0P_Bob (Photon)
       objectReference: {fileID: 0}
     - target: {fileID: 7093902980170150288, guid: bafbc562cd29a0c4f9fe604fdf443057,
         type: 3}
