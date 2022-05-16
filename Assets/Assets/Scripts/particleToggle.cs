@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class particleToggle : MonoBehaviour
 {
-    public new GameObject particleSystem;
+    public GameObject particleSystem;
 
 
     public void Start() { 
