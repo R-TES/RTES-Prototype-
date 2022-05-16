@@ -19,13 +19,21 @@ input {
 }
 
 .player {
-    width: 240px;
-    height: 160px;
+    border: 1px solid rgb(48, 31, 1);
+    width: 27vh;
+    height: 15vh;
+    background-color: rgb(31, 18, 4);
+}
+#remote-playerlist{
+    display: flex; /*added*/
+    flex-direction: column; /*added*/
 }
 
 .local-player{
-    width: 120px;
-    height: 80px;
+    border: 1px solid rgb(2, 31, 2);
+    width: 23vh;
+    height: 13vh;
+    background-color: rgb(2, 5, 2);
 }
 
 .player-name {

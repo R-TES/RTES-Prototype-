@@ -1,10 +1,14 @@
+:root {
+  color-scheme: dark;
+}
+
 .container {
     display: grid;
     width: 95vw;
     height: 95vh;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 13% 1fr 1fr 1fr 17%;
-    grid-gap: 0.5rem;
+    grid-template-rows: 5% 1fr 1fr 1fr 8%;
+    grid-gap: 0.4rem;
     margin: 0px;
   
   }
@@ -37,29 +41,53 @@
     height: 100%;
     width: 100%;
     overflow-y: hidden;
-    background-color: rgb(20, 13, 19);
+    background-color: #454a58;
+    background-image: linear-gradient(190deg, #131418 100%, #0a0c1190 127%);
     display:grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 20% 78% ;
+    grid-template-rows: 20% 76% 1% ;
     grid-gap: 5px;
+    justify-content: center;
+    align-items: start;
   }
 
   .local-video {
-    background-color: rgb(113, 223, 79);
+    background-color: #454a58;
+    background-image: linear-gradient(190deg, #131418 100%, #0a0c1190 127%);
+    position: relative;
     grid-row: 1;
     grid-column: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
-  
-  .remote-video-panel {
-    
-    background-color: rgb(56, 145, 228);
-    overflow-y: auto;
-    overflow-x: hidden;
-    grid-row: 2;
+
+
+  #remote-playerlist{
+    color: #ffffff;
+    height:500px;
+    max-height: 100%;
+    background-color: #454a58;
+    background-image: linear-gradient(190deg, #131418 50%, #0a0c1190 127%);
+    justify-content: start;
+    align-items: center;
+    overflow-y:auto;
+ 
+
+    grid-row: 2/3;
     grid-column: 1;
+    flex:none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 1px;
+    scrollbar-color: rgb(107, 2, 2) #3e4250;
+
   }
   
-  
+  .video-footer{
+    grid-row: 3;
+    grid-column: 1;
+    font-size: 5px;
+  }
   /* OTHER STYLES */
   
   body {
@@ -67,6 +95,7 @@
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    overflow-y: auto;
     padding: 0px;
     margin: none;
     background-color: #3b404e;
@@ -80,8 +109,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
+    padding: 1px;
   }
 
   .header, .sidebar, .footer{
@@ -91,19 +121,19 @@
   }
   
   .header {
-    background-color: #1EAAFC;
-    background-image: linear-gradient(160deg, #6C52D9 0%, #9B8AE6 127%);
+    background-color: #0a0a0a;
+   
 
   }
   
   .sidebar {
-    background-image: linear-gradient(203deg, #3EDFD7 0%, #29A49D 90%)
+    background-image: linear-gradient(203deg, #0b1616 0%, #011b1a 90%)
 
   }
   
 
   
   .footer {
-    background-color: #6C52D9;
-    background-image: linear-gradient(160deg, #6C52D9 0%, #9B8AE6 127%);
+    background-color: #000000;
+    background-image: linear-gradient(120deg, #030203 30%, #000000 77%);
   }

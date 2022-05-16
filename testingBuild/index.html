@@ -21,15 +21,15 @@
                   <!-- Local Video -->
                   <div class="item local-video">
              
-                      <div id="localplayer" class="local-player"></div>
+                      <div id="localplayer" class="local-player"><span style="position: absolute; z-index: 10; background-color: black;"> You </span></div>
                   </div>
       
                   <!-- Remote Players -->
-                  <div class="remote-video-panel">
-                    <p id="remote-players-name"></p>  
-                    <div id="remote-playerlist"></div>
+                  <div id="remote-playerlist"></div>
+                  
+                  <div class="item video-footer">
+                      <span>RTC</span>
                   </div>
-                
              </div> <!-- End of Agora Videos -->
         
         </div>
@@ -45,7 +45,9 @@
                   </div>
                   <div id="unity-warning"> </div>
                   <div id="unity-footer" style="position: relative;">
-                    <div id="unity-fullscreen" style="position: fixed; right:0px; bottom: 0px; z-index: 10; background-color: grey; padding:10px;">Click here for Fullscreen</div>
+                    <div id="unity-fullscreen" style="position: fixed; font-size: 12px; right:0px; bottom: 0px; z-index: 10; background-color: rgb(8, 8, 8); padding:2px;">
+                      <span>Click Here to Go Fullscreen</span>
+                    </div>
                   </div>
                 </div>
               </div>
