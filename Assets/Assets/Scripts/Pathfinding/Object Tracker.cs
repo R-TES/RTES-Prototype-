@@ -7,18 +7,18 @@ public class ObjectTracker : MonoBehaviour
 {
 
 
-    public Transform target;
+    public Transform target;  // didn't find ?
 
 	public float speed = 200f;
 	public float nextWaypointDisance = 3f;
 
 	public Tranform enemyGFX; //reference to the enemy graphics
 
-	Path path;
+	Path path; // didn;t find 
 	int currentWaypoint = 0;
 	bool reachedEndOfPath = false;
 
-	Seeker seeker;
+	Seeker seeker; // didn't find the Seeker
 	Rigidbody2D rb;
 
 	 // Start is called before the first frame update
