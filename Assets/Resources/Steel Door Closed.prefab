@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5288919117157781776}
   - component: {fileID: 1435073382369311935}
   - component: {fileID: 3902889364541473804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Steel Door Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}

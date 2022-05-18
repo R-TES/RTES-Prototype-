@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5845182263200203796}
   - component: {fileID: -366762002072335082}
   - component: {fileID: -5141210944081018899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shelf With Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}

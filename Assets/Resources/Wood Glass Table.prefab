@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7609102336155204529}
   - component: {fileID: 4042078316188034239}
   - component: {fileID: -7941848463714414067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wood Glass Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}

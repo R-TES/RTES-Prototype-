@@ -13,7 +13,7 @@ public class PlaceObjectsController : MonoBehaviour
     [Header("Placement Settings")]
     public float maxPlacementDistance = 5f;
     public static int maxItemsPerPerson = 5;
-    public LayerMask invalidLayer;
+    public LayerMask validLayer;
 
 
     [Header("Components")]
@@ -93,7 +93,7 @@ public class PlaceObjectsController : MonoBehaviour
 
     bool validPlacementPosition()
     {
-        return Vector2.Distance(worldPos, localPlayer.position) < maxPlacementDistance && !Physics2D.OverlapCircle(worldPos, 0.5f, invalidLayer);
+        return Vector2.Distance(worldPos, localPlayer.position) < maxPlacementDistance && Physics2D.OverlapCircle(worldPos, 0.01f, validLayer);
     }
 
 

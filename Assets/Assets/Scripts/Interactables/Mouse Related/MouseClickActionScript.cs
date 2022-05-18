@@ -23,18 +23,33 @@ public class MouseClickActionScript : MonoBehaviour
     
     void OnMouseEnter()
     {
-        Debug.Log("Yes");
-        spriteRenderer.color = hoverColor; 
+        ObjectFocussed();
     }
 
     private void OnMouseExit()
+    {
+        ObjectUnfocussed();
+    }
+
+    public void ObjectFocussed()
+    {
+        Debug.Log("Yes");
+        spriteRenderer.color = hoverColor;
+    }
+
+    public void ObjectUnfocussed()
     {
         spriteRenderer.color = originalColor;
     }
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0)) { 
+        ObjectInteract();
+    }
+
+    public void ObjectInteract() {
+        if (Input.GetMouseButtonDown(0))
+        {
             Debug.Log("Pressed left click.");
             leftClickEvent.Invoke();
         }
@@ -49,6 +64,7 @@ public class MouseClickActionScript : MonoBehaviour
             middleClickEvent.Invoke();
         }
     }
+
     
     public void DebugFunction()
     {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3517539643831965588}
   - component: {fileID: -207212023142254588}
   - component: {fileID: 937678083611935832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Magic Wardrobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

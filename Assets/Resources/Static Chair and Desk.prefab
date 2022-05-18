@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: -6805819709758188331}
   - component: {fileID: 2776967094756197717}
   - component: {fileID: -49733377663095822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Static Chair and Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

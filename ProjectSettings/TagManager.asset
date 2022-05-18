@@ -18,8 +18,8 @@ TagManager:
   - Players
   - Path
   - Ground
-  - 
-  - 
+  - Placeable
+  - Interactable
   - 
   - 
   - 

@@ -28,7 +28,7 @@ public class RevealHiddenArea : MonoBehaviour
     {
         sr.color = Color.Lerp(transparentColor , defaultColor, step + pulsePercent * Mathf.Sin(Time.time));
         step = Mathf.Clamp(step + dir * Time.deltaTime / duration, -1, 1);
-        Debug.Log("STEP: " + (0.1f * Mathf.Sin(Time.time)).ToString());
+      
     }
 
     // Update is called once per frame

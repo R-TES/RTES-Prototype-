@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowBob Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1526864060210763979, guid: e953707d572f5954ebe4c608e80a6dac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e953707d572f5954ebe4c608e80a6dac, type: 3}
 --- !u!1 &5035954788265952279 stripped
@@ -166,10 +171,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5035954788265952281}
     m_Modifications:
+    - target: {fileID: 166233903165230588, guid: 761d5c181720b784597782e90db0b18f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 354400705051943520, guid: 761d5c181720b784597782e90db0b18f,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 354400705051943520, guid: 761d5c181720b784597782e90db0b18f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 486059984417155822, guid: 761d5c181720b784597782e90db0b18f,
         type: 3}
@@ -200,6 +215,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RenderMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936188888046175791, guid: 761d5c181720b784597782e90db0b18f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691290677716336948, guid: 761d5c181720b784597782e90db0b18f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8220650321255131871, guid: 761d5c181720b784597782e90db0b18f,
         type: 3}
@@ -319,6 +344,11 @@ PrefabInstance:
     - target: {fileID: 8220650321255131871, guid: 761d5c181720b784597782e90db0b18f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907479578841819891, guid: 761d5c181720b784597782e90db0b18f,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9052906795462098579, guid: 761d5c181720b784597782e90db0b18f,
