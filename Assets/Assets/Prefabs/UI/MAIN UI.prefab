@@ -5076,6 +5076,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5331054678609437723}
     m_Modifications:
+    - target: {fileID: 7982595643026345299, guid: df9f79e242a92a748973e03584cb2f34,
+        type: 3}
+      propertyPath: m_overflowMode
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7982595643856521838, guid: df9f79e242a92a748973e03584cb2f34,
         type: 3}
       propertyPath: m_Pivot.x
