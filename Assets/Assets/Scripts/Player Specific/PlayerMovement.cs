@@ -62,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
     void ApplyVelocityToRigidBody()
     {
         float sm = SpeedModifierOnPath();
-        Debug.Log(sm);
         ribo.velocity = new Vector2(movementXY.x * Time.deltaTime * speed * sm, movementXY.y * Time.deltaTime * speed * sm);
     }
     void VelocityThreshhold()

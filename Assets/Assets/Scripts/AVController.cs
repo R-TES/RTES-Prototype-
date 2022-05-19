@@ -18,12 +18,12 @@ namespace Scripts{
         }
 
         public void toggleMic(){
-            //Agora.ToggleMic();
+            Agora.ToggleMic();
             StartCoroutine(DumbResubscribeFix());
         }
 
         public void toggleVideo(){
-            //Agora.ToggleVideo();
+            Agora.ToggleVideo();
             StartCoroutine(DumbResubscribeFix());
         }
 

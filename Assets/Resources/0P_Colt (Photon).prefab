@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1420387120426604816, guid: 3027e2b1a1cbeb04d8b1aa6ac7e06eef,
         type: 3}
       propertyPath: m_Name
-      value: Colt Variant
+      value: 0P_Colt (Photon)
       objectReference: {fileID: 0}
     - target: {fileID: 1420387120426604821, guid: 3027e2b1a1cbeb04d8b1aa6ac7e06eef,
         type: 3}

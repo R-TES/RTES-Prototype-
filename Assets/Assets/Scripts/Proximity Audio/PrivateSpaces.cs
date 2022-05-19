@@ -23,6 +23,10 @@ public class PrivateSpaces : MonoBehaviour
             PhotonView newParticipantPV = collision.gameObject.GetComponent<PhotonView>();
             if (newParticipantPV.IsMine)    // Only CALL stuff if you are the one walking into the room.
             {
+                // Unsubscibe to everyone outsie room and force them to unsubscribe as well.
+                localPhotonView.RPC("UnSubscribeRPC", RpcTarget.All, newParticipantPV.Owner.NickName);
+                UnSubscribeToEveryMember();
+
                 localPhotonView.RPC("AddParticipant", RpcTarget.AllBuffered, newParticipantPV.ViewID);                      // RPC Call
                 localPhotonView.RPC("TogglePACOfNewUserEverywhere", RpcTarget.AllBuffered, newParticipantPV.ViewID, false); // RPC Call
                 SubscribeToAllExistingParticipants();                                                                       // Local Call
@@ -118,4 +122,13 @@ public class PrivateSpaces : MonoBehaviour
         foreach (PhotonView p in participants)
             localPAC.UnSubscribeToPlayerID(p.Owner.NickName);
     }
+
+    private void UnSubscribeToEveryMember()       // When you walk out of a private space, you unsubscribe to everyone part of the room.
+    {
+        ProximityAudioController localPAC = localPhotonView.gameObject.GetComponentInChildren<ProximityAudioController>();
+        foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            localPAC.UnSubscribeToPlayerID(p.NickName);
+    }
+
+
 }

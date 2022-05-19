@@ -82,10 +82,10 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
     {
         Vector3 tempPos = transform.position;
         transform.position = new Vector3(1000000, 100000);      // To Trigger OnExit for all nearby players.
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSeconds(0.01f);
         selfCollider.enabled = isEnabled;
         GetComponent<SpriteRenderer>().enabled = isEnabled;
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSeconds(0.01f);
         transform.position = tempPos;
     }
 

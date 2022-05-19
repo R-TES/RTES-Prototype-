@@ -7,13 +7,14 @@ public class ObjectInstanceController : MonoBehaviour
 {
     SpriteRenderer sr;
     public GameObject objectDetailsPanel;
+    public string ownerName;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         objectDetailsPanel = GameObject.Find("ObjectDetailWindow");
         OnInstantiate();
-
+        ownerName = gameObject.GetPhotonView().Owner.NickName;
     }
 
     // Update is called once per frame

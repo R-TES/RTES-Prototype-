@@ -21,7 +21,14 @@ public class PlayerNameSet : MonoBehaviour
             // Oh god. Not proud of this one.
 
             PhotonView pv = ch.GetComponent<PhotonView>();
-            playernameText.GetComponent<TMP_Text>().text =  pv.Owner.NickName; 
+            if (!pv.IsMine)
+            {
+                playernameText.GetComponent<TMP_Text>().text = pv.Owner.NickName;
+            }
+            else if (pv.IsMine)
+            {
+                playernameText.GetComponent<TMP_Text>().text = "<color=green>"+pv.Owner.NickName + "</color>";
+            }
 
         }
 
