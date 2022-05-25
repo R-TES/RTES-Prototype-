@@ -7,7 +7,7 @@ public class MouseRayCast : MonoBehaviour
    
 
     public LayerMask targetLayers;
-    public GameObject mouseFX; 
+    public GameInfoBar mouseGameInfoBar; 
     public MouseClickActionScript objectHitMCAS;
     public MouseClickActionScript oldObject;
 
@@ -31,8 +31,9 @@ public class MouseRayCast : MonoBehaviour
  
         if (objectHit != null )
         {
-            mouseFX.gameObject.SetActive(true);
-            mouseFX.gameObject.transform.position = mousePos;
+
+            
+            mouseGameInfoBar.SetGameInfoBarText("Left Click to Interact", mousePos);
 
             objectHitMCAS = objectHit.GetComponent<MouseClickActionScript>();
             if (oldObject && oldObject != objectHitMCAS)
@@ -42,9 +43,12 @@ public class MouseRayCast : MonoBehaviour
         }
         else
         {
-            if (oldObject) oldObject.ObjectUnfocussed();
-            oldObject = null;
-            mouseFX.gameObject.SetActive(false);
+            if (oldObject)
+            {
+                oldObject.ObjectUnfocussed();
+                oldObject = null;
+                mouseGameInfoBar.ResetGameInfoBarText();
+            }
         }
 
     }

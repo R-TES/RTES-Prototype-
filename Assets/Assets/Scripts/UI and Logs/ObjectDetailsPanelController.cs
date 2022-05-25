@@ -26,7 +26,8 @@ public class ObjectDetailsPanelController : MonoBehaviour
         info += "<b>Name:</b> " + selectedObject.name.Replace("(Clone)", "");
 
         if (PhotonNetwork.IsConnected) info += "\n<b>Placed by User:</b> " + selectedObject.GetComponent<ObjectInstanceController>().ownerName;
-        else info += "\n<b> Played By: </b>You"; 
+        else info += "\n<b>Played By: </b>You";
+
 
         infoTextField.text = info;
     }

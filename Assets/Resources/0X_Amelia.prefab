@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2332958279473726158}
   - component: {fileID: 4887292733026350042}
   m_Layer: 0
-  m_Name: 0P_Amelia (Photon)
+  m_Name: 0X_Amelia
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

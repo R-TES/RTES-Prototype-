@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293325816
+  m_fontColor: {r: 0.9716981, g: 0.95183635, b: 0.9029459, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -172,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 2447848747433865798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.25, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 239849839564557740}
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,10 +245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84286460dc4f4304499dcba3059ea831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
+  speed: 90
   diagonalFluidity: 1.5
   minVelocity: 3
-  speedMultiplier: 1.75
+  speedMultiplier: 1.6
   speedBoostColor: {r: 0.8, g: 1, b: 0.8, a: 1}
   pathLayer:
     serializedVersion: 2
@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionStateVariable: dir
   movingStateVaraible: isMoving
+  velocityThreshhold: 3
 --- !u!95 &2447848746999236413
 Animator:
   serializedVersion: 4
@@ -373,7 +374,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDrag: 10
+  m_LinearDrag: 12
   m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -591,12 +592,12 @@ GameObject:
   - component: {fileID: 9157989044486132166}
   - component: {fileID: 2392089925932595066}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Name Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2772322462680791978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -800,7 +801,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 101
   m_Sprite: {fileID: 21300000, guid: 2ec6eed9e00e3044190324fb7bf421e7, type: 3}
-  m_Color: {r: 0.8784314, g: 0.6313726, b: 0.101960786, a: 0.03137255}
+  m_Color: {r: 0.8784314, g: 0.6313726, b: 0.101960786, a: 0.015686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

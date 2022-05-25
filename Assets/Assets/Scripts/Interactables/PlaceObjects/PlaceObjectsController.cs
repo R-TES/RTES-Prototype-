@@ -28,13 +28,14 @@ public class PlaceObjectsController : MonoBehaviour
     public GameObject SelectedItemGhost;                    // Ghost is used as transparant representation of object over mouse cursor.
     private GameObject SelectedItemPrefab;                  // Actual object that is instantitated. Not Modified like ghost.
     public Transform localPlayer;
-    private Vector3 worldPos; 
+    private Vector3 worldPos;
+
+    public GameInfoBar gameInfoBar;
 
     void Start()
     {
         localPlayer = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         PopulateWindow();
-        
     }
 
     private void Update()
@@ -60,19 +61,35 @@ public class PlaceObjectsController : MonoBehaviour
             if (validPlacementPosition())
                 PlaceSelectedItem();
         }
+        if (Input.GetMouseButton(0))
+        {
+            RotateGhost();
+        }
+        
+    }
+
+
+    void RotateGhost()
+    {
+        Debug.Log("Rotating");
+        SelectedItemGhost.transform.rotation = Quaternion.AngleAxis(SelectedItemGhost.transform.rotation.x + 180, Vector3.up);
     }
 
     public void PlaceSelectedItem()
     {
+        GameObject placedObject; 
         itemsAlreadyPlaced++;
-        ResetItemSelection();                                                                           // Clear Item Selection.
         Vector3 worldPos = GetWorldPositionOnPlane(Input.mousePosition, 0f);                            // Get World Position.
         if (PhotonNetwork.IsConnected)
-            PhotonNetwork.Instantiate(SelectedItemPrefab.name, worldPos, Quaternion.identity);          // Instantiate in PhotonNetwork.
+            placedObject = PhotonNetwork.Instantiate(SelectedItemPrefab.name, worldPos, SelectedItemGhost.transform.rotation);          // Instantiate in PhotonNetwork.
         else
-            Instantiate(SelectedItemPrefab, worldPos, Quaternion.identity);
+            placedObject = Instantiate(SelectedItemPrefab, worldPos, SelectedItemGhost.transform.rotation);
+
+        placedObject.AddComponent<ObjectInstanceController>();
         //TODO:
         //Firebase.StoreItemCoordinate(LobbyID, SelectedItemPrefab.name, worldPos.x, worldPos.y);
+
+        ResetItemSelection();                                                                           // Clear Item Selection.
     }
 
 
@@ -82,10 +99,12 @@ public class PlaceObjectsController : MonoBehaviour
         if (!validPlacementPosition())
         {
             SelectedItemGhost.GetComponent<SpriteRenderer>().color = Color.red;                                                  // Can't place object, make it a red tint.
+            gameInfoBar.SetGameInfoBarText("<color=\"red\">Too far from player / \nNot valid location! </color>", worldPos);
         }
         else
         {
             SelectedItemGhost.GetComponent<SpriteRenderer>().color = SelectedItemPrefab.GetComponent<SpriteRenderer>().color;    // Can Place Object, normal tint.
+            gameInfoBar.SetGameInfoBarText("Right click to place it!", worldPos);
         }
         FadeObjectSlightly(SelectedItemGhost);
         SelectedItemGhost.transform.position = worldPos;
@@ -205,12 +224,14 @@ public class PlaceObjectsController : MonoBehaviour
     {
         Destroy(SelectedItemGhost);
         SelectedItemGhost = null;
+        gameInfoBar.ResetGameInfoBarText();
     }
     public void SelectItem(GameObject g)
     {
         SelectedItemGhost = Instantiate(g, Vector2.zero, Quaternion.identity);
         SelectedItemPrefab = g;
         DisableAllColliders(SelectedItemGhost);
+        
     }
 
 
@@ -219,4 +240,15 @@ public class PlaceObjectsController : MonoBehaviour
      *  End of Placement Window UI Functions.
      * 
     */
+
+
+    public void AddResourceObjectsToPlacementSystemViaEditor()
+    {
+
+    }
+
 }
+
+
+
+    

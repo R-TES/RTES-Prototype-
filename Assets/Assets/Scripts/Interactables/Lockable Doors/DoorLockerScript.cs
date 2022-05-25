@@ -8,7 +8,8 @@ public class DoorLockerScript : MonoBehaviour
     // Start is called before the first frame update
     public activateObjectAnimationIfNear animator;
     public KeyCode interact_key = KeyCode.E;
-    public bool onlyOnePersonCanLock = true; 
+    public bool onlyOnePersonCanLock = true;
+    public bool alreadyLockedOnStart = false;
     public Collider2D solidDoorCollider;
 
     private Collider2D personWhoLocked;
@@ -20,6 +21,7 @@ public class DoorLockerScript : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
+        if (alreadyLockedOnStart) { LockDoor();  }
     }
 
     private void Update()
@@ -40,7 +42,7 @@ public class DoorLockerScript : MonoBehaviour
                 }
                 else if (locked)
                 {
-                    if (!onlyOnePersonCanLock && interacter.GetComponent<PhotonView>().IsMine || interacter == personWhoLocked)
+                    if (!onlyOnePersonCanLock && interacter.GetComponent<PhotonView>().IsMine || interacter == personWhoLocked || !PhotonNetwork.IsConnected)
                     {
                         UnlockDoor();
                         photonView.RPC("UnlockDoor", RpcTarget.AllBuffered);

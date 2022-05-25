@@ -1,0 +1,11 @@
+First Drag and drop a gameobject into this folder a a prefab.
+YOU MUST HAVE A PHOTON VIEW COMPONENT ATTACHED TO THE OBJECT.
+
+Then goto 0Z_PlaceObjectsSystems, and in that, add the item to the PlaceObjectController Script Array. (Prefab Items)
+
+
+In the scene, you must mark the tilemap/floor as a "Ground" Layer in the Layermask dropdown to the top right of inspector.
+After that, you must attach a collider to it (Tilemap collider + composite collider + RigidBody.static) and make it a trigger type. 
+(Make it a trigger on the COMPOSITE collider options, not tilemap collider)
+Also make the Geometry type Polygon instead of outlines.
+

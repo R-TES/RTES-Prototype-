@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(PhotonNetwork.IsConnected && !view.IsMine)           // Disable script on online players.
             this.enabled = false;
+
+        speed *= transform.localScale.magnitude;
+        
     }
 
     private void Update()
@@ -38,15 +41,14 @@ public class PlayerMovement : MonoBehaviour
         
     }
     void FixedUpdate()
-    {   
-        PlayerMover();
-        
+    {
+        PlayerMover(); 
     }
 
     void PlayerMover(){
         DiagonalMovementDelimeter();
         ApplyVelocityToRigidBody();
-        VelocityThreshhold();
+        VelocityThreshholdStop();
     }
 
     /// 
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         float sm = SpeedModifierOnPath();
         ribo.velocity = new Vector2(movementXY.x * Time.deltaTime * speed * sm, movementXY.y * Time.deltaTime * speed * sm);
     }
-    void VelocityThreshhold()
+    void VelocityThreshholdStop()   // Stop player if not moving above threshhold.
     {
         if (ribo.velocity.magnitude < minVelocity && ribo.velocity.magnitude > minVelocity / 2) ribo.velocity = Vector2.zero;
     }
@@ -72,11 +74,12 @@ public class PlayerMovement : MonoBehaviour
     float SpeedModifierOnPath()
     {
 
-        if (Physics2D.OverlapCircle(transform.position, 1f, pathLayer))
+        if (Physics2D.OverlapCircle(transform.position, 0.125f, pathLayer))
         {
             sr.color = speedBoostColor;
             return speedMultiplier;
         }
+        //else
         sr.color = defaultCharacterColor;
         return 1; 
     }
