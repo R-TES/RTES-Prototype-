@@ -8,6 +8,13 @@ using TMPro;
 public class PhotonLogScript : MonoBehaviourPunCallbacks
 {
     public TMP_Text textfeed;
+
+    private void Start()
+    {
+        if(PhotonNetwork.IsConnected)
+        textfeed.text = "<color=\"grey\"><i>[ Number of players in room: " + PhotonNetwork.CountOfPlayersInRooms + " ]</i></color>\n" + textfeed.text;
+    }
+
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player otherplayer)
     {
         StartCoroutine(DelayedPlayerGreet(otherplayer));

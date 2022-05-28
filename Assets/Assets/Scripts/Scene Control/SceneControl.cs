@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine;
 using Photon.Pun;
 public class SceneControl : MonoBehaviour
 {

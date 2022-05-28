@@ -6,33 +6,53 @@ using Photon.Pun;
 public class CameraFollow : MonoBehaviour
 {
     [Header("Follow Parameters")]
+    
     public float speed = .1f;
     public float teleportIfDistanceGreaterThan = 100f;
+    public Vector3 offset;
 
-    private Vector3 tempPos;
-    private Transform localplayer; 
-    private Vector2 v;
+    [Header("Special Parameters")]
+    public bool followTargetObject = true;
+    public GameObject alternateTargetObject;
+
+    private Vector2 lerpVectors;
+    private GameObject targetObject;
+    private SpriteRenderer fade;
 
     void Start()
-    {   
-       BindCameraWithLocalPlayer();    
+    {
+        if(alternateTargetObject == null)
+            BindCameraWithLocalPlayer();
+        else
+            targetObject = alternateTargetObject;
+        fade = GetComponentInChildren<SpriteRenderer>();
     }
 
     void FixedUpdate()
     {
-        float distance = Vector3.Distance(transform.position, localplayer.position);
+        if(followTargetObject)
+            FluidCameraFollow();
+    }
+
+    void FluidCameraFollow()
+    {
+        float distance = Vector3.Distance(transform.position, targetObject.transform.position + offset);
         if (distance < teleportIfDistanceGreaterThan)
-            v = Vector3.Lerp(transform.position, localplayer.position, speed);
+            lerpVectors = Vector3.Lerp(transform.position, targetObject.transform.position + offset, speed);
         else
-            v = localplayer.position; 
-        transform.position = new Vector3(v.x, v.y, transform.position.z);
+            lerpVectors = targetObject.transform.position + offset;
+        transform.position = new Vector3(lerpVectors.x, lerpVectors.y, transform.position.z);
     }
 
     void BindCameraWithLocalPlayer(){
         
-        tempPos = transform.position ;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        localplayer = players[0].transform ; 
+        targetObject = players[0];
     }
 
+
+    public void CameraFade(Color color)
+    {
+        fade.color = color;
+    }
 }

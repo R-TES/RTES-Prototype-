@@ -6,6 +6,7 @@ public class AnimatePlayerScript : MonoBehaviour
 {
     public string directionStateVariable = "dir";
     public string movingStateVaraible = "isMoving";
+    public float velocityThreshhold = 0.5f;
 
     private enum Direction:int{Down, Right, Up, Left};
 
@@ -29,19 +30,19 @@ public class AnimatePlayerScript : MonoBehaviour
         {
             IdleAnimation(true);
         }
-        else if (ribo.velocity.x < 0)
+        else if (ribo.velocity.x < -velocityThreshhold)
         {                                           
             RunningAnimation(Direction.Left);
         }
-        else if (ribo.velocity.x > 0)
+        else if (ribo.velocity.x > velocityThreshhold)
         {
             RunningAnimation(Direction.Right);
         }
-        else if (ribo.velocity.y > 0)
+        else if (ribo.velocity.y > velocityThreshhold)
         {                                           
             RunningAnimation(Direction.Up);
         }
-        else if (ribo.velocity.y < 0)
+        else if (ribo.velocity.y < -velocityThreshhold)
         {
             RunningAnimation(Direction.Down);
         }
@@ -51,12 +52,14 @@ public class AnimatePlayerScript : MonoBehaviour
     private void IdleAnimation(bool state=true)
     {
         animator.SetBool("isMoving", !state);
+        animator.speed = 1;
     }
     
     private void RunningAnimation(Direction dir)
     {
         IdleAnimation(false);
         animator.SetInteger(directionStateVariable, (int)dir);
+        animator.speed = ribo.velocity.magnitude/6; 
         
     }
 

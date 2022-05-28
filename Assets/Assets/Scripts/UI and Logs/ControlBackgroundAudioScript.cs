@@ -10,6 +10,11 @@ public class ControlBackgroundAudioScript : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        if (PlayerPrefs.GetFloat("antivolume") == 0)
+            audioSource.volume = 0.3f ;
+        else
+            audioSource.volume = 1f - PlayerPrefs.GetFloat("antivolume");
+        audioSlider.value = audioSource.volume;
     }
 
     public void MuteAudio()
@@ -23,5 +28,7 @@ public class ControlBackgroundAudioScript : MonoBehaviour
     public void SliderAudioAdjust()
     {
         audioSource.volume = audioSlider.value;
+        PlayerPrefs.SetFloat("antivolume", 1f - audioSource.volume);
+        PlayerPrefs.Save();
     }
 }
