@@ -138,6 +138,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1024,6 +1025,45 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Room_Builder_free_48x48_32: 8103645361538973412
+      Room_Builder_free_48x48_7: -5450127952306040870
+      Room_Builder_free_48x48_19: 7170127002888851641
+      Room_Builder_free_48x48_29: 6108550557819299835
+      Room_Builder_free_48x48_31: 7892082483829628692
+      Room_Builder_free_48x48_10: -3542340177095863078
+      Room_Builder_free_48x48_9: 5791624870449453209
+      Room_Builder_free_48x48_0: -8758648131962045597
+      Room_Builder_free_48x48_28: 7821513539048428295
+      Room_Builder_free_48x48_1: -854300645133601245
+      Room_Builder_free_48x48_18: 8070866443328792862
+      Room_Builder_free_48x48_26: -5219060614587166317
+      Room_Builder_free_48x48_37: 4731636574760348390
+      Room_Builder_free_48x48_16: -3425848271674334261
+      Room_Builder_free_48x48_36: -4300084749381170998
+      Room_Builder_free_48x48_15: 3598045500829908948
+      Room_Builder_free_48x48_17: -8901925106219521664
+      Room_Builder_free_48x48_2: -6838706595324443630
+      Room_Builder_free_48x48_3: -8787939507627560922
+      Room_Builder_free_48x48_20: -8461341921466668556
+      Room_Builder_free_48x48_25: 6119077542655906396
+      Room_Builder_free_48x48_12: 5145987506789061830
+      Room_Builder_free_48x48_11: 8573136173355284899
+      Room_Builder_free_48x48_33: -8083833092957553168
+      Room_Builder_free_48x48_24: -5261592187896943368
+      Room_Builder_free_48x48_22: 2850994478933523438
+      Room_Builder_free_48x48_30: -3051711725503931225
+      Room_Builder_free_48x48_6: -8720735560248039611
+      Room_Builder_free_48x48_21: 1672422275852396394
+      Room_Builder_free_48x48_23: 2858483945674368371
+      Room_Builder_free_48x48_34: 1424034086809342628
+      Room_Builder_free_48x48_35: 3489518479069240979
+      Room_Builder_free_48x48_4: -2484111111667572131
+      Room_Builder_free_48x48_14: -3749082095907229013
+      Room_Builder_free_48x48_8: -6483220122086310645
+      Room_Builder_free_48x48_13: 8840676705662107615
+      Room_Builder_free_48x48_27: -6296879014572321917
+      Room_Builder_free_48x48_5: 738430743345629929
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

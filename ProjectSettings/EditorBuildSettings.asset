@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu1.unity
     guid: 6a21f0a544b1c34418a8ae663f720d7e
   - enabled: 1
-    path: Assets/Scenes/Gamespaces/DemoRoom1.unity
+    path: Assets/Scenes/Gamespaces/Psychosis.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Gamespaces/Template2.unity
@@ -23,4 +23,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/Lobby.unity
     guid: 1e641278b7ebb8140bf551ffa22fb687
+  - enabled: 1
+    path: Assets/Scenes/Gamespaces/mec.unity
+    guid: a8b92148d86f28d42b3409b410903bfb
+  - enabled: 1
+    path: Assets/Scenes/Menus/Select.unity
+    guid: 4b0a2d21b7017cf44865645686091214
+  - enabled: 0
+    path: Assets/Scenes/Gamespaces/V.unity
+    guid: 4517e7fb456e12740a54030b1ca7daa3
+  - enabled: 1
+    path: Assets/Scenes/Gamespaces/Room2.unity
+    guid: cac095c4dc3ef9f438f9393c37bad129
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Gamespaces/Testing.unity
+    guid: ac96f4ad0085e6246b69a120a21667a6
+  - enabled: 1
+    path: Assets/Scenes/Gamespaces/Village.unity
+    guid: b2cb626433135284c869f10cf7fe9d96
   m_configObjects: {}

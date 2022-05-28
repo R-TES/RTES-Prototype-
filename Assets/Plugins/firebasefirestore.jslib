@@ -11,7 +11,7 @@ mergeInto(LibraryManager.library, {
             firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function (doc) {
 
                 if (doc.exists) {
-                    window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(doc.data()));
+                   window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(doc.data()));
                 } else {
                     window.unityInstance.SendMessage(parsedObjectName, parsedCallback, "null");
                 }

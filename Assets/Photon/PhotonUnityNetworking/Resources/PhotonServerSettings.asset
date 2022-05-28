@@ -28,8 +28,8 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: 
-  PunLogging: 0
+  DevRegion: asia
+  PunLogging: 2
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
@@ -39,6 +39,21 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - LockDoor
+  - UnlockDoor
+  - RecieveMessageRPC
+  - AddParticipant
+  - CallSubscribeForParticipants
+  - CallUnSubscribeForParticipants
+  - RemoveParticipant
+  - DisablePACOfLocalUser
+  - TogglePACOfLocalUser
+  - TogglePACOfNewUserEverywhere
+  - SubscribeRPC
+  - UnSubscribeRPC
+  - <CallSubscribeForParticipants>g__SubscribeRPC|8_0
+  - <CallUnSubscribeForParticipants>g__UnSubscribeRPC|9_0
+  - AttachObjectInstanceScriptToObject
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0
