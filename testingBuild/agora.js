@@ -257,6 +257,7 @@ async function subscribe(user,mediaType) {
     const videoTrack = user.videoTrack;
     const audioTrack = user.audioTrack;
     console.log("subscribe success");
+    subscribedRemoteUsers[uid] = user
         const player = $(`
       <div id="player-wrapper-${uid}">
         <p class="player-name"><span style="position: relative; font-size: 12px; z-index: 10;"> ${uid} </span></p>
@@ -370,6 +371,8 @@ async function toggleVideo() {
     if ($("#video-icon").hasClass('fa-video')) {
         localTracks.videoTrack.setEnabled(false);
         console.log("Video Muted.");
+        const local = document.getElementById("localplayer")
+        local.style.backgroundColor = "black";
     } else {
         localTracks.videoTrack.setEnabled(true);
         console.log("Video Unmuted.");
@@ -386,14 +389,17 @@ function subscribeWhenNear(uid){
     // subscribedRemoteUsers[userAdded.uid] = userAdded;
     // console.log(subscribedRemoteUsers);
     console.log( "id fetched: " + uid + ", logging remoteUser[uid] from subscribewhennear: " + remoteUsers[uid] );
-    
     userAdded = remoteUsers[uid];
     if(!userAdded){
         console.log("AGORA DEBUG LOG:\nFUNCTION: subscribeWhenNear \nUSER UNDEFINED FOR ID: " + uid); 
         return; 
     }              // Sandy: Added Null Guards.
-    console.log(userAdded); 
-    subscribe(userAdded,"AV");
+    
+
+    if (!(uid in subscribedRemoteUsers))
+    {   console.log(userAdded); 
+        subscribe(userAdded,"AV"); // GMC : Ghost Player Check
+    }
 }
 
 function unsubscribeWhenFar(uid){
