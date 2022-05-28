@@ -41,7 +41,7 @@
         "**/*.flare":true,
         "**/*.mat":true,
         "**/*.meta":true,
-        "**/*.prefab":true,
+        "**/*.prefab":false,
         "**/*.unity":false,
         "build/":false,
         "Build/":false,
