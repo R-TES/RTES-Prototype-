@@ -180,6 +180,29 @@
           }).catch(function(error) {
               console.log(error);
           }); 
+        console.log("spacer")
+        function test(){
+          var res = "error";
+          var bufferSize = Buffer.byteLength(res, 'utf8') + 1;
+          var buffer = _malloc(bufferSize);
+          stringToUTF8(res, buffer, bufferSize);
+          firebase.firestore().collection("Users").doc("zd26igJS15tCTNchXaaQ").get().then(function (doc){
+              if (doc.exists) {
+                  res = JSON.stringify(doc.data());
+                  bufferSize = Buffer.byteLength(res, 'utf8') + 1;
+                  buffer = _malloc(bufferSize);
+                  stringToUTF8(res, buffer, bufferSize);
+                  console.log("firestore console log: " + buffer + res);
+              } else {
+                  console.log("Firestore: document doesnt exist!");
+              }
+              return buffer;
+          }).catch(function (error){
+              console.log("Firestore: error fetching document!");
+              return buffer;
+          });
+        }
+        console.log(test());
       </script>
 
     
