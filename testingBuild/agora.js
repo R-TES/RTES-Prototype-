@@ -58,24 +58,43 @@ async function join() {
     // Join a channel and create local tracks
     // Promise.all to runs join and create funcn's concurrently
     
-    [options.uid, localTracks.audioTrack, localTracks.videoTrack] = await Promise.all([
+    
+    [options.uid, localTracks.audioTrack] = await Promise.all([
         // join the channel
-        client.join(options.appid, options.channel, options.token, options.uid),
+        client.join(options.appid, options.channel, options.token),
         // create local tracks, using microphone and camera
         AgoraRTC.createMicrophoneAudioTrack(
             {AEC: true, ANS: true} // to suppress echo.
         ),
-        AgoraRTC.createCameraVideoTrack()
+        
     ]);
+    var devices = await AgoraRTC.getDevices();
+    var cameras = devices.filter(device => device.kind === 'videoinput');
+    if (cameras.length > 0)
+    {
+        localTracks.videoTrack = await AgoraRTC.createCameraVideoTrack()
+    }
+    else{
+        console.warn("No camera, only Audio !!!")
+    }
+
     // Plays Local video track
-    localTracks.videoTrack.play("localplayer");
-    $("#local-player-name").text(`localVideo(${
+    if (localTracks.videoTrack == null){
+        await client.publish(localTracks.audioTrack)
+        console.log("only Audio")
+        const local = document.getElementById("localplayer")
+        local.style.backgroundColor = "black";}
+    else{
+        console.log("????????????????????")
+        console.log(localTracks.videoTrack)
+        localTracks.videoTrack.play("local-player");
+        $("#local-player-name").text(`localVideo(${
         options.accountName
     })`);
-    // Publishes Localtracks so that other user's can subscribe
     await client.publish(Object.values(localTracks));
-    console.log("publish success");
-}
+    console.log("publish success");}
+    // Publishes Localtracks so that other user's can subscribe
+    }
 async function leave() {
     for (trackName in localTracks) {
         var track = localTracks[trackName];
