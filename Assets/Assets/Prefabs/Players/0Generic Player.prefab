@@ -156,6 +156,8 @@ GameObject:
   - component: {fileID: -941255712416001678}
   - component: {fileID: 4382104416392807991}
   - component: {fileID: 2194470189306937746}
+  - component: {fileID: 3384239184268761278}
+  - component: {fileID: 7298316597065308044}
   m_Layer: 6
   m_Name: 0Generic Player
   m_TagString: Player
@@ -254,6 +256,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   inputManagementScript: {fileID: 4870592517203586386}
+  movementXY: {x: 0, y: 0}
+  lockDefaultInputMethod: 0
 --- !u!114 &4292075591831702922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +496,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3294cd96f1db5f2409b278b0255707dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3384239184268761278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &7298316597065308044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0616dae1ffe103d4eb8f2ed0fe12ed94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  wayPointBufferDistance: 0.65
+  seeker: {fileID: 3384239184268761278}
 --- !u!1 &4591988777600460359
 GameObject:
   m_ObjectHideFlags: 0
