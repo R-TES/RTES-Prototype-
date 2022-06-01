@@ -13,10 +13,9 @@ public class PlayerPathFinderController : MonoBehaviour
     bool pathFindingEnabled = false;
     public float wayPointBufferDistance = 1f;
 
-    PlayerMovement movementScript;
+    PlayerMovement playerMover;
 
     public Seeker seeker;
-    Rigidbody2D rb;
     Path path;
     int waypoint = 0;
     bool reachedEndOfPath = false;
@@ -30,61 +29,51 @@ public class PlayerPathFinderController : MonoBehaviour
 
         seeker = GetComponent<Seeker>();
 
-        movementScript = GetComponent<PlayerMovement>();
+        playerMover = GetComponent<PlayerMovement>();
 
         GameObject[] dummy = GameObject.FindGameObjectsWithTag("Finish");
         target = dummy[0] ;
-
 
         //InvokeRepeating("PathFinderLoop", 0f, 0.5f);
     }
 
     // Update is called once per frame
+
     void Update()
     {
         PlayerPathFinderMouse();
-    }
-
-    void FixedUpdate()
-    {
         PlayerMover();
     }
 
 
-    void PathFinderLoop()
+    void CalculatePath()
     {
-        //if (!pathFindingEnabled) return;
         seeker.StartPath(gameObject.transform.position, target.transform.position, OnDestinationReached);
-        Debug.Log("Hello");
     }
 
     void PlayerMover()
     {
         
         if (!pathFindingEnabled) return;
-        Debug.Log("Hey");
         if (path == null) return;
-        Debug.Log("Works");
-
+       
         if(waypoint >= path.vectorPath.Count)
         {
             reachedEndOfPath = true;
-            movementScript.ApplyMotion(Vector2.zero);
+            playerMover.ApplyMotion(Vector2.zero);
             return;
         }
-        else
-        {
-            reachedEndOfPath = false;
-        }
+        //else 
+        reachedEndOfPath = false;
+        
 
         Vector2 direction = (path.vectorPath[waypoint] - gameObject.transform.position);
         float distance = Vector2.Distance(gameObject.transform.position, path.vectorPath[waypoint]);
+        
         if (distance < wayPointBufferDistance)
             waypoint++;
 
-        
-        Debug.Log(direction);
-        movementScript.ApplyMotion(direction.normalized);
+        playerMover.ApplyMotion(direction.normalized);
     }
 
     void OnDestinationReached(Path p)
@@ -94,6 +83,11 @@ public class PlayerPathFinderController : MonoBehaviour
             path = p;
             waypoint = 0;
             Debug.Log("Shortest Path Found!");
+        }
+
+        else
+        {
+            Debug.Log("No Path found.");
         }
     }
 
@@ -115,7 +109,7 @@ public class PlayerPathFinderController : MonoBehaviour
     {
         target.transform.position = GetWorldPositionOnPlane(Input.mousePosition);
         pathFindingEnabled = true;
-        PathFinderLoop();
+        CalculatePath();
     }
     
     private void DisablePathFinder()
@@ -131,7 +125,6 @@ public class PlayerPathFinderController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SetPathFinderTarget();
-            Debug.Log("yes");
         }
         else if (Input.anyKeyDown)
         {

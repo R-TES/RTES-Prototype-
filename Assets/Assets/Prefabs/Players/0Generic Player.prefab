@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4292075591831702922}
   - component: {fileID: 2447848746999236413}
   - component: {fileID: 4204932644826605367}
+  - component: {fileID: 2678806152410015354}
   - component: {fileID: 2447848747433865796}
   - component: {fileID: 2447848747433865799}
   - component: {fileID: 5224627293885444728}
@@ -249,7 +250,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 90
   diagonalFluidity: 1.5
-  minVelocity: 3
   speedMultiplier: 1.6
   speedBoostColor: {r: 0.8, g: 1, b: 0.8, a: 1}
   pathLayer:
@@ -321,6 +321,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2678806152410015354}
+        m_TargetAssemblyTypeName: ObjectInstanceController, Assembly-CSharp
+        m_MethodName: OpenObjectDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   rightClickEvent:
     m_PersistentCalls:
       m_Calls:
@@ -339,6 +351,21 @@ MonoBehaviour:
   middleClickEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2678806152410015354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}
+  ownerName: You
+  isSolid: 0
 --- !u!61 &2447848747433865796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -510,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   drawGizmos: 1
-  detailedGizmos: 0
+  detailedGizmos: 1
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -537,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  wayPointBufferDistance: 0.65
+  wayPointBufferDistance: 0.4
   seeker: {fileID: 3384239184268761278}
 --- !u!1 &4591988777600460359
 GameObject:

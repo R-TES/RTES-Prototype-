@@ -17,7 +17,7 @@ public class ObjectInstanceController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         objectDetailsPanel = GameObject.Find("ObjectDetailWindow");
 
-        if(PhotonNetwork.IsConnected)
+        if(PhotonNetwork.IsConnected && ownerName == null)
             ownerName = gameObject.GetPhotonView().Owner.NickName;
     }
 
@@ -63,6 +63,7 @@ public class ObjectInstanceController : MonoBehaviour
             gameObject.AddComponent<PhotonTransformViewClassic>();
         }
 
+        if(gameObject.layer != LayerMask.NameToLayer("Players"))
         gameObject.layer = LayerMask.NameToLayer("Placeable");
         
 
