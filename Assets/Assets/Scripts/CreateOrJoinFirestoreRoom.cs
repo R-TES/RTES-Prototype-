@@ -20,19 +20,16 @@ public class CreateOrJoinFirestoreRoom : MonoBehaviourPunCallbacks
 
     private void Start(){
         firestore.obj = this;
-        if(GetUserInfo()){
-            roomBuilder.createButtons(user.rooms, BuildRoom);
-        }
     }
 
-    public bool GetUserInfo(){
+    public void getUserAndRooms(){
         firestore.getUserInfo(agoraUserId.text);
+        UnityEngine.Debug.Log(agoraUserId.text);
         while(!isUserSet) continue;
-        if(user == null) return false;
-        return true;
+        if(user != null) roomBuilder.createButtons(user.rooms, buildRoom);
     }
 
-    public void BuildRoom(string roomId){
+    public void buildRoom(string roomId){
         firestore.getRoomInfo(roomId);
         while(!isRoomSet) continue;
         room.id = roomId;

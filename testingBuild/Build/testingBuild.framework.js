@@ -1166,26 +1166,26 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 3028912: function() {
+ 3029232: function() {
   Module["emscripten_get_now_backup"] = performance.now;
  },
- 3028967: function($0) {
+ 3029287: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 3029015: function($0) {
+ 3029335: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 3029063: function() {
+ 3029383: function() {
   performance.now = Module["emscripten_get_now_backup"];
  },
- 3029118: function() {
+ 3029438: function() {
   return Module.webglContextAttributes.premultipliedAlpha;
  },
- 3029179: function() {
+ 3029499: function() {
   return Module.webglContextAttributes.preserveDrawingBuffer;
  }
 };
@@ -1364,28 +1364,24 @@ function _DeleteField(collectionPath, documentId, field, objectName, callback, f
  }
 }
 
-function _GetDocument(collectionPath, documentId) {
+function _GetDocument(collectionPath, documentId, objectName, callback, fallback) {
  var parsedPath = UTF8ToString(collectionPath);
  var parsedId = UTF8ToString(documentId);
+ var parsedObjectName = UTF8ToString(objectName);
+ var parsedCallback = UTF8ToString(callback);
+ var parsedFallback = UTF8ToString(fallback);
  try {
   firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function(doc) {
    if (doc.exists) {
-    var res = JSON.stringify(doc.data());
-    var bufferSize = lengthBytesUTF8(res) + 1;
-    console.log("jslib buffersize: " + bufferSize);
-    var buffer = _malloc(bufferSize);
-    stringToUTF8(res, buffer, bufferSize);
-    console.log("Firestore: document found! " + res);
-    console.log("jslib buffer: " + buffer);
-    return buffer;
+    window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(doc.data()));
    } else {
-    console.log("Firestore: document doesnt exist!");
+    window.unityInstance.SendMessage(parsedObjectName, parsedCallback, "null");
    }
   }).catch(function(error) {
-   console.log("Firestore: error fetching document!");
+   window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
   });
  } catch (error) {
-  console.log("error in catch");
+  window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
  }
 }
 
