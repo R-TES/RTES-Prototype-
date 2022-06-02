@@ -1,6 +1,6 @@
 var client = AgoraRTC.createClient({mode: "rtc", codec: "vp8"});
 
-// RTM Global Vars
+// Flags for Cam and Mic
 var isCamera = true
 var isMic = true
 
@@ -50,6 +50,7 @@ $("#leave").click(function (e) {
 async function join() {
     $("#mic-btn").prop("disabled", false);
     $("#video-btn").prop("disabled", false);
+    $("#screen-share-btn").prop("disabled", false);
     $("#near").prop("disabled", false);
     $("#far").prop("disabled", false);
     // RTMJoin();
@@ -85,6 +86,7 @@ async function leave() {
             track.close();
             $('#mic-btn').prop('disabled', true);
             $('#video-btn').prop('disabled', true);
+            $('#screen-share-btn').prop('disabled', true);
             localTracks[trackName] = undefined;
         }
     }
@@ -99,6 +101,71 @@ async function leave() {
     console.log("client leaves channel success");
 }
 
+async function screenJoin(){
+    client.on("user-published", handleUserPublished);
+    client.on("user-left", handleUserLeft);
+    //localTracks.videoTrack.setEnabled(false);
+    let screenTrack;
+    await client.unpublish(localTracks.videoTrack)
+    localTracks.videoTrack.stop()
+    localTracks.videoTrack.close()
+
+    screenTrack = await AgoraRTC.createScreenVideoTrack({
+        encoderConfig: {
+          framerate: 15,
+          height: 640,
+          width: 480
+        }
+        //extensionId: 'minllpmhdgpndnkomcoccfekfegnlikg',
+      }, "auto")
+    
+    if(screenTrack instanceof Array){
+        localTracks.videoTrack = screenTrack[0];
+      }
+    else{
+        localTracks.videoTrack = screenTrack;
+      }
+    console.log("^^^^^^^^^^^^^^^^^^^^^")
+    console.log("Attempted to play track")
+    console.log(remoteUsers)
+
+    localTracks.videoTrack.play("localplayer");
+    $("#local-player-name").text(`localVideo(${
+        options.accountName
+    })`);
+
+    
+
+    localTracks.videoTrack.on("track-ended", () => {
+        alert(`Screen-share track ended, stop sharing screen ` + localTracks.videoTrack.getTrackId());
+        localTracks.videoTrack && localTracks.videoTrack.close();
+        afterScreenShareStops();
+
+        
+        //localScreenTracks.screenAudioTrack && localScreenTracks.screenAudioTrack.close();
+        //localTracks.audioTrack && localTracks.audioTrack.close();
+      });
+    
+      
+      await client.publish([localTracks.videoTrack]);
+      console.log("<><><><><><><><><><><><>");
+      console.log("publish success");
+}
+
+async function afterScreenShareStops(){
+    await client.unpublish(localTracks.videoTrack)
+    localTracks.videoTrack.stop()
+    localTracks.videoTrack.close()
+    localTracks.videoTrack = await AgoraRTC.createCameraVideoTrack();
+    localTracks.videoTrack.play("localplayer");
+    $("#local-player-name").text(`localVideo(${
+    options.accountName
+    })`);
+    await client.publish([localTracks.videoTrack]);
+    console.log("Camera re-published after screen share");
+}
+
+
 async function subscribe(user,mediaType) {
     const uid = user.uid;
     const remName = user.accountName;
@@ -107,6 +174,7 @@ async function subscribe(user,mediaType) {
     if (mediaType == "AV"){
     await client.subscribe(user, "video");
     await client.subscribe(user, "audio");
+    subscribedRemoteUsers[uid] = user;
     const videoTrack = user.videoTrack;
     const audioTrack = user.audioTrack;
     console.log("subscribe success");
@@ -195,6 +263,9 @@ function enableUiControls() {
     // $("#far").click(function () {
     //     unsubscribeWhenFar();
     // });
+    $("#screen-share-btn").click(function () {
+        toggleScreen();
+    });
 
 }
 
@@ -228,6 +299,10 @@ async function toggleVideo() {
     }
 }
 
+async function toggleScreen(){
+    await screenJoin();
+}
+
 function subscribeWhenNear(uid){
     console.log("SWN " + uid);
    // console.log(client.remoteUsers)
@@ -243,8 +318,10 @@ function subscribeWhenNear(uid){
         console.log("AGORA DEBUG LOG:\nFUNCTION: subscribeWhenNear \nUSER UNDEFINED FOR ID: " + uid); 
         return; 
     }              // Sandy: Added Null Guards.
+    if(!(uid in subscribedRemoteUsers)){
     console.log(userAdded); 
     subscribe(userAdded,"AV");
+    }
 }
 
 function unsubscribeWhenFar(uid){
@@ -259,6 +336,7 @@ function unsubscribeWhenFar(uid){
     }
     //console.log(userKickedOut)
     delete subscribedRemoteUsers[userKickedOut.uid];
+    console.log("DEBUG DEBUG DEBUG WHO WANTS THEIR DEBUG??" + subscribedRemoteUsers);
     unsubscribe(userKickedOut);
 
 
