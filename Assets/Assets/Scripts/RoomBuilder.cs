@@ -27,6 +27,7 @@ public class RoomBuilder : MonoBehaviourPunCallbacks {
     public void SetRoom(string data){
         room = Serializer<Room>.toObject(data);
         UnityEngine.Debug.Log("room set: " + room.id);
+        spawnRoomObjects();
     }
 
     public void DisplayErrorObject(string error){
@@ -34,6 +35,7 @@ public class RoomBuilder : MonoBehaviourPunCallbacks {
     }
 
     private void spawnRoomObjects(){
+    
         foreach(RoomObjectPosition obj in room.roomObjects){
             var roomObject = Resources.Load(obj.name) as GameObject;
             var pos = new Vector2(obj.xVal, obj.xVal);
