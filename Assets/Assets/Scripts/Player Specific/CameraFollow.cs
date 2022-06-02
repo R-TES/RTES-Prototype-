@@ -33,7 +33,7 @@ public class CameraFollow : MonoBehaviour
         fade = GetComponentInChildren<SpriteRenderer>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         EdgePan();
         ResetEdgePan();
@@ -60,7 +60,8 @@ public class CameraFollow : MonoBehaviour
 
     void EdgePan()
     {
-        
+        if (!Input.GetMouseButton(2)) return;
+
         if (Input.mousePosition.x > Screen.width - edgePanMarginHorizontal && Input.mousePosition.x < Screen.width - deadZone)
         {
             followTargetObject = false;
@@ -86,7 +87,8 @@ public class CameraFollow : MonoBehaviour
 
     void ResetEdgePan()
     {
-        if (Input.anyKey)
+        if (Input.GetMouseButton(2)) return;
+        else if (Input.anyKey)
         {
             followTargetObject = true;
         }

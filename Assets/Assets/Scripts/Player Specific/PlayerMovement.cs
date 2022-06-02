@@ -12,14 +12,15 @@ public class PlayerMovement : MonoBehaviour
     public Color speedBoostColor = new Color(0.8f, 1f, 0.8f, 1f);
 
     public LayerMask pathLayer;
-    public InputManagerScript inputManagementScript; 
+    public InputManagerScript inputManagementScript;
+    bool lockDefaultInputMethod = false;
 
     private Rigidbody2D ribo; 
     private PhotonView view;
     private SpriteRenderer sr;
     public Vector2 movementXY;
     private Color defaultCharacterColor;
-    public bool lockDefaultInputMethod = false; 
+    
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0)) lockDefaultInputMethod = true;
+        if (Input.GetMouseButton(1)) lockDefaultInputMethod = true; // Click to Move turned on, disable this system.
         else if (Input.anyKey) lockDefaultInputMethod = false;
         if(!lockDefaultInputMethod)
             movementXY = inputManagementScript.PlayerMoveGenericController(); 

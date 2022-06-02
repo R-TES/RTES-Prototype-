@@ -122,7 +122,7 @@ public class PlayerPathFinderController : MonoBehaviour
     {
         //if (!pathFindingEnabled) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             SetPathFinderTarget();
         }

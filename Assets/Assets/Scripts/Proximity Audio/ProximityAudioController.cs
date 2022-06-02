@@ -9,17 +9,24 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
 {
     //private string[] blockedUsers;
     public GameObject player;
-    private Collider2D selfCollider;
+    private CircleCollider2D selfCollider;
     public bool isAllowingSubscribers;
+    public LayerMask playerLayer;
+    private static int scanCount = 0;
 
     void Start()
     {
-        selfCollider = GetComponent<Collider2D>();
+        selfCollider = GetComponent<CircleCollider2D>();
         isAllowingSubscribers = true;
-        // If Online or this gameobject isn't attached to local player, destroy.
-        if (PhotonNetwork.IsConnected && !player.GetComponent<PhotonView>().IsMine)
-            selfCollider.enabled = false;
-
+        // If Online or this gameobject isn't attached to local player, disable.
+        if (PhotonNetwork.IsConnected)
+        {
+            if(!player.GetComponent<PhotonView>().IsMine) 
+                selfCollider.enabled = false;
+            else 
+                InvokeRepeating(nameof(PeriodicScan), 3f, 2f);
+        }
+        
 
     }
 
@@ -73,8 +80,10 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
 
     public string GetPhotonIDFromCollider2D(Collider2D col)
     {
-        string playerID = col.gameObject.GetComponent<PhotonView>().Owner.NickName;
-        return playerID; 
+        PhotonView ph = col.gameObject.GetComponent<PhotonView>();
+        if(!ph.IsMine)
+            return ph.Owner.NickName;
+        return "";
     }
 
 
@@ -94,6 +103,29 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
         isAllowingSubscribers = isEnabled;
         StartCoroutine(ToggleProximityAudio(isEnabled));
         Debug.Log("You toggled your Subscriber State.");
+    }
+
+
+    public void PeriodicScan()
+    {
+        scanCount++;
+        if (scanCount % 8 == 0) UnSubscribeToEveryMember(); // Just clean the bugs every 16 seconds.
+
+        Collider2D[] playerColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, selfCollider.radius * 0.8f, playerLayer);
+        Debug.Log(playerColliders.Length + " Players found");
+        foreach (var user in playerColliders)
+        {
+            Debug.Log(user.gameObject.name);
+            SubscribeToPlayerID(GetPhotonIDFromCollider2D(user));
+        }
+    }
+
+
+    private void UnSubscribeToEveryMember()       // Just clean up stuff every 15 seconds.
+    {
+        
+        foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            UnSubscribeToPlayerID(p.NickName);
     }
 }
 

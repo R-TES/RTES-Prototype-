@@ -33,7 +33,6 @@ public class MouseClickActionScript : MonoBehaviour
 
     public void ObjectFocussed()
     {
-        Debug.Log("Yes");
         spriteRenderer.color = hoverColor;
     }
 
