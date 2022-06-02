@@ -9,11 +9,6 @@ public class Room {
     public string owner;
     public List<RoomObjectPosition> roomObjects;
     public string template;
-
-    public Room(string id, string name){
-        this.id = id;
-        this.name = name;
-    }
 }
 
 [System.Serializable]

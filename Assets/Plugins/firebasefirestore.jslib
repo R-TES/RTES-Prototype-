@@ -9,7 +9,6 @@ mergeInto(LibraryManager.library, {
 
         try {
             firebase.firestore().collection(parsedPath).doc(parsedId).get().then(function (doc) {
-
                 if (doc.exists) {
                     console.log("jslib: response " + JSON.stringify(doc.data()));
                    window.unityInstance.SendMessage(parsedObjectName, parsedCallback, JSON.stringify(doc.data()));

@@ -25,6 +25,7 @@ public class RoomBuilder : MonoBehaviourPunCallbacks {
     }
 
     public void SetRoom(string data){
+        UnityEngine.Debug.Log("unity response: " + data);
         room = Serializer<Room>.toObject(data);
         UnityEngine.Debug.Log("room set: " + room.id);
         spawnRoomObjects();
