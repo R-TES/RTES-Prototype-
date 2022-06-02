@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4292075591831702922}
   - component: {fileID: 2447848746999236413}
   - component: {fileID: 4204932644826605367}
+  - component: {fileID: 2678806152410015354}
   - component: {fileID: 2447848747433865796}
   - component: {fileID: 2447848747433865799}
   - component: {fileID: 5224627293885444728}
@@ -156,6 +157,8 @@ GameObject:
   - component: {fileID: -941255712416001678}
   - component: {fileID: 4382104416392807991}
   - component: {fileID: 2194470189306937746}
+  - component: {fileID: 3384239184268761278}
+  - component: {fileID: 7298316597065308044}
   m_Layer: 6
   m_Name: 0Generic Player
   m_TagString: Player
@@ -247,13 +250,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 90
   diagonalFluidity: 1.5
-  minVelocity: 3
   speedMultiplier: 1.6
   speedBoostColor: {r: 0.8, g: 1, b: 0.8, a: 1}
   pathLayer:
     serializedVersion: 2
     m_Bits: 128
   inputManagementScript: {fileID: 4870592517203586386}
+  movementXY: {x: 0, y: 0}
+  lockDefaultInputMethod: 0
 --- !u!114 &4292075591831702922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +321,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2678806152410015354}
+        m_TargetAssemblyTypeName: ObjectInstanceController, Assembly-CSharp
+        m_MethodName: OpenObjectDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   rightClickEvent:
     m_PersistentCalls:
       m_Calls:
@@ -335,6 +351,21 @@ MonoBehaviour:
   middleClickEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2678806152410015354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f30aa0df378d4db586b9703beec93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectDetailsPanel: {fileID: 0}
+  ownerName: You
+  isSolid: 0
 --- !u!61 &2447848747433865796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -492,6 +523,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3294cd96f1db5f2409b278b0255707dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3384239184268761278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &7298316597065308044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447848747433865798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0616dae1ffe103d4eb8f2ed0fe12ed94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  wayPointBufferDistance: 0.4
+  seeker: {fileID: 3384239184268761278}
 --- !u!1 &4591988777600460359
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +797,7 @@ Transform:
   m_GameObject: {fileID: 8077370541275704960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.42, y: 0.42, z: 4}
+  m_LocalScale: {x: 0.42, y: 0.42, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2447848747433865795}
@@ -744,7 +818,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10.513213
+  m_Radius: 10
 --- !u!114 &8077370541275704975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +833,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2447848747433865798}
   isAllowingSubscribers: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!212 &8077370541275704972
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -801,7 +878,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 101
   m_Sprite: {fileID: 21300000, guid: 2ec6eed9e00e3044190324fb7bf421e7, type: 3}
-  m_Color: {r: 0.8784314, g: 0.6313726, b: 0.101960786, a: 0.015686275}
+  m_Color: {r: 0.91772515, g: 0.23985407, b: 0.9245283, a: 0.019607844}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

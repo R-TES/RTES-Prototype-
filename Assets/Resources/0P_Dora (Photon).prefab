@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 6573400621832349932, guid: b4a99f2b81a0cbe4e90ef9851fc496dd,
         type: 3}
       propertyPath: m_Name
-      value: Dora Variant
+      value: 0P_Dora (Photon)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a99f2b81a0cbe4e90ef9851fc496dd, type: 3}

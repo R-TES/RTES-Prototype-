@@ -8,18 +8,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float speed = 250f;
     public float diagonalFluidity = 2f;
-    public float minVelocity = 4f;
     public float speedMultiplier = 1.5f;
     public Color speedBoostColor = new Color(0.8f, 1f, 0.8f, 1f);
 
     public LayerMask pathLayer;
-    public InputManagerScript inputManagementScript; 
+    public InputManagerScript inputManagementScript;
+    bool lockDefaultInputMethod = false;
 
     private Rigidbody2D ribo; 
     private PhotonView view;
     private SpriteRenderer sr;
-    private Vector2 movementXY;
+    public Vector2 movementXY;
     private Color defaultCharacterColor;
+    
 
     void Start()
     {
@@ -37,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-      movementXY = inputManagementScript.PlayerMoveGenericController();
-        
+        if (Input.GetMouseButton(1)) lockDefaultInputMethod = true; // Click to Move turned on, disable this system.
+        else if (Input.anyKey) lockDefaultInputMethod = false;
+        if(!lockDefaultInputMethod)
+            movementXY = inputManagementScript.PlayerMoveGenericController(); 
     }
     void FixedUpdate()
     {
@@ -48,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerMover(){
         DiagonalMovementDelimeter();
         ApplyVelocityToRigidBody();
-        VelocityThreshholdStop();
+        
     }
 
     /// 
@@ -66,10 +69,7 @@ public class PlayerMovement : MonoBehaviour
         float sm = SpeedModifierOnPath();
         ribo.velocity = new Vector2(movementXY.x * Time.deltaTime * speed * sm, movementXY.y * Time.deltaTime * speed * sm);
     }
-    void VelocityThreshholdStop()   // Stop player if not moving above threshhold.
-    {
-        if (ribo.velocity.magnitude < minVelocity && ribo.velocity.magnitude > minVelocity / 2) ribo.velocity = Vector2.zero;
-    }
+
 
     float SpeedModifierOnPath()
     {
@@ -84,5 +84,9 @@ public class PlayerMovement : MonoBehaviour
         return 1; 
     }
 
+    public void ApplyMotion(Vector2 xy)
+    {
+        movementXY = xy;
+    }
 
 }
