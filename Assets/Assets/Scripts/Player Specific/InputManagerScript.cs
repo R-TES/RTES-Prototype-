@@ -15,8 +15,8 @@ public class InputManagerScript : MonoBehaviour
 
     public Vector2 GetKeyboardControlsForPlayerMovement()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
         Vector2 xyInput = new(h, v);
         return xyInput;
 

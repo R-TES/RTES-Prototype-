@@ -11,13 +11,18 @@ public class CameraFollow : MonoBehaviour
     public float teleportIfDistanceGreaterThan = 100f;
     public Vector3 offset;
 
-    [Header("Special Parameters")]
+    [Header("Edge Panning Parameters")]
+    public float edgePanMarginVertical = 100f;
+    public float edgePanMarginHorizontal = 150f;
+    public float deadZone = 20f;
+    public float edgePanSpeed = 5f;
     public bool followTargetObject = true;
     public GameObject alternateTargetObject;
 
     private Vector2 lerpVectors;
     private GameObject targetObject;
     private SpriteRenderer fade;
+
 
     void Start()
     {
@@ -30,8 +35,10 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(followTargetObject)
-            FluidCameraFollow();
+        EdgePan();
+        ResetEdgePan();
+        if (!followTargetObject) return;
+        FluidCameraFollow();
     }
 
     void FluidCameraFollow()
@@ -48,6 +55,41 @@ public class CameraFollow : MonoBehaviour
         
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         targetObject = players[0];
+        
+    }
+
+    void EdgePan()
+    {
+        
+        if (Input.mousePosition.x > Screen.width - edgePanMarginHorizontal && Input.mousePosition.x < Screen.width - deadZone)
+        {
+            followTargetObject = false;
+            transform.position += edgePanSpeed * Time.deltaTime * Vector3.right ;
+        }
+        else if (Input.mousePosition.x < edgePanMarginHorizontal && Input.mousePosition.x > deadZone)
+        {
+            followTargetObject = false;
+            transform.position += edgePanSpeed * Time.deltaTime * Vector3.left;
+        }
+        if (Input.mousePosition.y > Screen.height - edgePanMarginVertical && Input.mousePosition.y < Screen.height - deadZone)
+        {
+            followTargetObject = false;
+            transform.position += edgePanSpeed * Time.deltaTime * Vector3.up;
+        }
+        else if (Input.mousePosition.y < edgePanMarginVertical && Input.mousePosition.y > deadZone)
+        {
+            followTargetObject = false;
+            transform.position += edgePanSpeed * Time.deltaTime * Vector3.down;
+        }
+    }
+
+
+    void ResetEdgePan()
+    {
+        if (Input.anyKey)
+        {
+            followTargetObject = true;
+        }
     }
 
 
