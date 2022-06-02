@@ -45,7 +45,7 @@
     background-image: linear-gradient(190deg, #131418 100%, #0a0c1190 127%);
     display:grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 20% 76% 1% ;
+    grid-template-rows: 25% 70% 2%;
     grid-gap: 5px;
     justify-content: center;
     align-items: start;
@@ -84,9 +84,9 @@
   }
   
   .video-footer{
-    grid-row: 3;
+    grid-row: 3/4;
     grid-column: 1;
-    font-size: 5px;
+    font-size: 6px;
   }
   /* OTHER STYLES */
   

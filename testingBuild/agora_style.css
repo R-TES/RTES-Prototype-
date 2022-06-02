@@ -24,6 +24,13 @@ input {
     height: 15vh;
     background-color: rgb(31, 18, 4);
 }
+
+.player:hover {
+    
+    width: 54vh;
+    height: 30vh;
+}
+
 #remote-playerlist{
     display: flex; /*added*/
     flex-direction: column; /*added*/
@@ -34,6 +41,11 @@ input {
     width: 23vh;
     height: 13vh;
     background-color: rgb(2, 5, 2);
+}
+
+.local-player:hover{
+    width: 46vh;
+    height: 26vh;
 }
 
 .player-name {
