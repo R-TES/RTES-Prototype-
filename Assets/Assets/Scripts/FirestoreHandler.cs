@@ -32,8 +32,7 @@ public static class FirestoreHandler
 
     
     [DllImport("__Internal")]
-    public static extern void AddElementInArrayField(string collectionPath, string documentId, string field,
-        string value, string objectName, string callback, string fallback);
+    public static extern void AddElementInArrayField(string collectionPath, string documentId, string field, string value);
 
 
     [DllImport("__Internal")]

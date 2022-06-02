@@ -15,6 +15,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public InputField roomInput;
     public InputField playerName;
 
+
     public void CreateRoom()
     {
         if(!NameCheck())return;
@@ -54,8 +55,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         {
             Debug.LogError(e.ToString());
         }
-
-        PhotonNetwork.LoadLevel(mapSelected); 
+    
+        PhotonNetwork.LoadLevel(mapSelected);
     }
 
     
@@ -91,7 +92,6 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
             CleanupCacheOnLeave = false
         };
         roomOptions.PublishUserId = true; 
-
 
         return roomOptions;
     }

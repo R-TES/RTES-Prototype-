@@ -159,29 +159,25 @@ mergeInto(LibraryManager.library, {
         }
     },
 
-    AddElementInArrayField: function (collectionPath, documentId, field, value, objectName, callback, fallback) {
+    AddElementInArrayField: function (collectionPath, documentId, field, value) {
         var parsedPath = UTF8ToString(collectionPath);
         var parsedId = UTF8ToString(documentId);
         var parsedField = UTF8ToString(field);
         var parsedValue = UTF8ToString(value);
-        var parsedObjectName = UTF8ToString(objectName);
-        var parsedCallback = UTF8ToString(callback);
-        var parsedFallback = UTF8ToString(fallback);
 
         try {
-
             var value = {};
             value[parsedField] = firebase.firestore.FieldValue.arrayUnion(JSON.parse(parsedValue));
 
             firebase.firestore().collection(parsedPath).doc(parsedId).update(value).then(function() {
-                window.unityInstance.SendMessage(parsedObjectName, parsedCallback, "Success: element " + parsedValue + " was added in " + parsedField);
+                console.log("Success: element " + parsedValue + " was added in " + parsedField);
             })
                 .catch(function(error) {
-                    window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
+                    console.log("jslib: error " + JSON.stringify(error, Object.getOwnPropertyNames(error)));
                 });
 
         } catch (error) {
-            window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
+            console.log("jslib error: " + JSON.stringify(error, Object.getOwnPropertyNames(error)));
         }
     },
 

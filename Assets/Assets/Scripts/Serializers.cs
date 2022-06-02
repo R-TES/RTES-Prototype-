@@ -19,8 +19,14 @@ public class Room {
 [System.Serializable]
 public class RoomObjectPosition {
     public string name;
-    public int xVal;
-    public int yVal;
+    public float xVal;
+    public float yVal;
+
+    public RoomObjectPosition(string name, float xVal, float yVal){
+        this.name = name;
+        this.xVal = xVal;
+        this.yVal = yVal;
+    }
 }
 
 [System.Serializable]

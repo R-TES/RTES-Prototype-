@@ -449,69 +449,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343144481}
   m_CullTransparentMesh: 1
---- !u!1 &400205275
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 400205277}
-  - component: {fileID: 400205276}
-  m_Layer: 0
-  m_Name: CreateOrJoinFirestoreRoom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &400205276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400205275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df9b7adce26e674f9b7dafe000ae6ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agoraUserId: {fileID: 0}
-  room:
-    id: 
-    name: 
-    owner: 
-    roomObjects: []
-    template: 
-  isUserSet: 0
-  isRoomSet: 0
-  roomBuilder: {fileID: 2054566748}
-  firestore: {fileID: 1720982013}
-  user:
-    id: 
-    username: 
-    avatar: 
-    designation: 
-    email: 
-    mobile: 
-    rooms: []
---- !u!4 &400205277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400205275}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &438152388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,35 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df9b7adce26e674f9b7dafe000ae6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agoraUserId: {fileID: 438152390}
-  room:
-    id: 
-    name: 
-    owner: 
-    roomObjects: []
-    template: 
-  isUserSet: 0
-  isRoomSet: 0
-  roomBuilder: {fileID: 0}
-  firestore: {fileID: 1720982013}
-  user:
-    id: zd26igJS15tCTNchXaaQ
-    username: aryajayadevkm
-    avatar: IwZIvRqQlKXHj8hVMM76
-    designation: 
-    email: aryajayadevkm@gmail.com
-    mobile: 
-    rooms:
-    - id: tSSPMUrsoiU6lYPGDkme
-      name: Office 1
-      owner: 
-      roomObjects: []
-      template: 
-    - id: vRVo1rLAtEU14Tzl5288
-      name: Office 2
-      owner: 
-      roomObjects: []
-      template: 
 --- !u!114 &1341141552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,59 +1222,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1720982012
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1720982014}
-  - component: {fileID: 1720982013}
-  m_Layer: 0
-  m_Name: FirebaseFirestore
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1720982013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720982012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69977b044e19e244385340a0186aceac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uid: 
-  res: 
-  room:
-    id: 
-    name: 
-    owner: 
-    roomObjects: []
-    template: 
-  obj: {fileID: 400205276}
---- !u!4 &1720982014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720982012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 474.7809, y: 287.4612, z: -0.14888069}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855409394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: 20}
+  m_AnchoredPosition: {x: 170, y: 10}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1861991285
@@ -1518,10 +1373,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 400205276}
-        m_TargetAssemblyTypeName: CreateOrJoinFirestoreRoom, Assembly-CSharp
-        m_MethodName: getUserAndRooms
-        m_Mode: 1
+      - m_Target: {fileID: 2054566750}
+        m_TargetAssemblyTypeName: RoomBuilder, Assembly-CSharp
+        m_MethodName: buildRoom
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1577,7 +1432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054566749}
-  - component: {fileID: 2054566748}
+  - component: {fileID: 2054566750}
   m_Layer: 0
   m_Name: RoomBuilder
   m_TagString: Untagged
@@ -1585,26 +1440,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2054566748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054566747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84c31ab83e65adf4fbb0dc89eb262e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1179888690530112737, guid: 9b9c9f745c306cb43b599116ea5eab0b, type: 3}
-  panel: {fileID: 1341141550}
-  room:
-    id: 
-    name: 
-    owner: 
-    roomObjects: []
-    template: 
 --- !u!4 &2054566749
 Transform:
   m_ObjectHideFlags: 0
@@ -1618,5 +1453,18 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054566750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054566747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c31ab83e65adf4fbb0dc89eb262e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomInput: {fileID: 438152390}

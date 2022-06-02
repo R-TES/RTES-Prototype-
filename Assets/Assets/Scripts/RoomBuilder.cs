@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using System;
 using System.Diagnostics;
 using System.Data.SqlTypes;
@@ -9,34 +10,27 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class RoomBuilder : MonoBehaviourPunCallbacks {
-    public RoomOptions roomOptions = new RoomOptions();
-    public GameObject button;
-    public Transform panel;
-    public Room room;
+    private string roomId;
+    private Room room;
 
-    public void createButtons(List<Room> rooms, Action<string> action){
-        foreach(Room room in rooms){
-            GameObject roomButton = Instantiate(button);
-            roomButton.transform.SetParent(panel);
-            roomButton.GetComponentInChildren<Text>().text = room.name;
-            roomButton.GetComponent<Button>().onClick.AddListener(delegate { 
-                action(room.id);});
-        }
-        
+    public void Start(){
+        roomId = PhotonNetwork.CurrentRoom.Name;
+        UnityEngine.Debug.Log(roomId);
+        getRoom();
     }
 
-    public void build(Room room){
-        this.room = room;
-        PhotonNetwork.JoinOrCreateRoom(room.id, roomOptions, TypedLobby.Default);
+    private void getRoom(){
+        UnityEngine.Debug.Log("RoomBuilder: roomId " + roomId);
+        FirestoreHandler.GetDocument("Rooms", "tSSPMUrsoiU6lYPGDkme", gameObject.name, "SetRoom", "DisplayErrorObject");
     }
 
-    public override void OnJoinedRoom(){
-        UnityEngine.Debug.Log(room.template);
-        PhotonNetwork.LoadLevel(room.template); 
-        if (PhotonNetwork.IsMasterClient){
-            spawnRoomObjects();
-        }
-        
+    public void SetRoom(string data){
+        room = Serializer<Room>.toObject(data);
+        UnityEngine.Debug.Log("room set: " + room.id);
+    }
+
+    public void DisplayErrorObject(string error){
+        UnityEngine.Debug.Log("firestore: " + error);
     }
 
     private void spawnRoomObjects(){

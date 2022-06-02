@@ -22,6 +22,7 @@ public class PlaceObjectsController : MonoBehaviour
     [SerializeField] private GameObject[] prefabItems;
     public Animator PlaceObjectParentWindow;
     public GameObject ObjectDetailsWindow;
+    public StoreItemCoordinate storeItemCoordinate;
 
     [Header("Readonly Details")]
     private int itemsAlreadyPlaced = 0;
@@ -88,6 +89,7 @@ public class PlaceObjectsController : MonoBehaviour
         placedObject.AddComponent<ObjectInstanceController>();
         //TODO:
         //Firebase.StoreItemCoordinate(LobbyID, SelectedItemPrefab.name, worldPos.x, worldPos.y);
+        storeItemCoordinate.save(PhotonNetwork.CurrentRoom.Name, SelectedItemPrefab.name, worldPos.x, worldPos.y);
 
         ResetItemSelection();                                                                           // Clear Item Selection.
     }
