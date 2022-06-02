@@ -14,6 +14,7 @@ public class RoomBuilder : MonoBehaviourPunCallbacks {
     private Room room;
 
     public void Start(){
+        if (!PhotonNetwork.IsMasterClient) return;
         roomId = PhotonNetwork.CurrentRoom.Name;
         UnityEngine.Debug.Log(roomId);
         getRoom();
@@ -21,13 +22,14 @@ public class RoomBuilder : MonoBehaviourPunCallbacks {
 
     private void getRoom(){
         UnityEngine.Debug.Log("RoomBuilder: roomId " + roomId);
-        FirestoreHandler.GetDocument("Rooms", "tSSPMUrsoiU6lYPGDkme", gameObject.name, "SetRoom", "DisplayErrorObject");
+        FirestoreHandler.GetDocument("Rooms", roomId, gameObject.name, "SetRoom", "DisplayErrorObject");
     }
 
     public void SetRoom(string data){
         UnityEngine.Debug.Log("unity response: " + data);
         room = Serializer<Room>.toObject(data);
-        UnityEngine.Debug.Log("room set: " + room.id);
+        UnityEngine.Debug.Log("room set: " + room.name);
+        UnityEngine.Debug.Log("room set template: " + room.roomObjects.Count);
         spawnRoomObjects();
     }
 
@@ -36,11 +38,15 @@ public class RoomBuilder : MonoBehaviourPunCallbacks {
     }
 
     private void spawnRoomObjects(){
-    
-        foreach(RoomObjectPosition obj in room.roomObjects){
-            var roomObject = Resources.Load(obj.name) as GameObject;
-            var pos = new Vector2(obj.xVal, obj.xVal);
-            PhotonNetwork.InstantiateRoomObject(obj.name, pos, Quaternion.identity);
+        UnityEngine.Debug.Log("Unity Debug: STARTING INSTANTIATE LOOP");
+        foreach (RoomObjectPosition obj in room.roomObjects){
+            UnityEngine.Debug.Log("Unity Debug: Instantiating Objects From Firebase: " + obj.name);
+            GameObject roomObjectInstance = Resources.Load(obj.name) as GameObject;
+            var pos = new Vector2(obj.xVal, obj.yVal);
+            GameObject g = PhotonNetwork.Instantiate(roomObjectInstance.name, pos, Quaternion.identity);
+
+            UnityEngine.Debug.Log("Created gameobject: " + g.name + "Position = " + g.transform.position.x + " : " + g.transform.position.y);
+
         }
     }
 }
