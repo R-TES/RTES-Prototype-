@@ -23479,6 +23479,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 4141857401009715102, guid: ef968110a346ce241bd839671a8cfb8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4141857401478537003, guid: ef968110a346ce241bd839671a8cfb8d,
         type: 3}
       propertyPath: m_RootOrder
@@ -23583,6 +23588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141857401799793854, guid: ef968110a346ce241bd839671a8cfb8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef968110a346ce241bd839671a8cfb8d, type: 3}
@@ -25002,6 +25012,10 @@ MonoBehaviour:
   speed: 0.1
   teleportIfDistanceGreaterThan: 100
   offset: {x: 0, y: 0, z: 0}
+  edgePanMarginVertical: 100
+  edgePanMarginHorizontal: 150
+  deadZone: 20
+  edgePanSpeed: 5
   followTargetObject: 1
   alternateTargetObject: {fileID: 0}
 --- !u!213 &1165525534

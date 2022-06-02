@@ -22,12 +22,10 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
         if (PhotonNetwork.IsConnected)
         {
             if(!player.GetComponent<PhotonView>().IsMine) 
-                selfCollider.enabled = false;
+                selfCollider.enabled = false;                   // Remote User players.
             else 
-                InvokeRepeating(nameof(PeriodicScan), 3f, 2f);
+                InvokeRepeating(nameof(PeriodicScan), 3f, 2f);  // Your player.
         }
-        
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,10 +35,9 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
         if (other.gameObject.CompareTag("Player"))
         {
             string playerID = GetPhotonIDFromCollider2D(other);         // Retrieve Other Players ID
-            ProximityAudioController otherPlayersPAC = other.gameObject.GetComponentInChildren<ProximityAudioController>();     // Retrieve Other Player's PAC
             Debug.Log("UNITY DEBUG LOG:\n A user has ENTERED your proximity: " + playerID);
-            
-            if (otherPlayersPAC.isAllowingSubscribers)   // If collided user's PAC is in disabled state, ignore.
+
+            if (IsAllowingSubscribers(other.gameObject))   // If collided user's PAC is in disabled state, ignore.
                 SubscribeToPlayerID(playerID);
         }
     }
@@ -53,7 +50,7 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
         {
             string playerID = GetPhotonIDFromCollider2D(other);
             Debug.Log("UNITY DEBUG LOG:\n A user has EXITED your proximity: " + playerID);
-            if (other.gameObject.GetComponentInChildren<ProximityAudioController>().isAllowingSubscribers)
+            if (IsAllowingSubscribers(other.gameObject))
                 UnSubscribeToPlayerID(playerID);
         }
     }
@@ -108,6 +105,8 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
 
     public void PeriodicScan()
     {
+        if (!isAllowingSubscribers) return; //Private Space Logic Guard. Coupling is bad dumbass.
+
         scanCount++;
         if (scanCount % 8 == 0) UnSubscribeToEveryMember(); // Just clean the bugs every 16 seconds.
 
@@ -116,7 +115,8 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
         foreach (var user in playerColliders)
         {
             Debug.Log(user.gameObject.name);
-            SubscribeToPlayerID(GetPhotonIDFromCollider2D(user));
+            if (IsAllowingSubscribers(user.gameObject))
+                SubscribeToPlayerID(GetPhotonIDFromCollider2D(user));
         }
     }
 
@@ -126,6 +126,11 @@ public class ProximityAudioController : MonoBehaviour       // Henceforth called
         
         foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             UnSubscribeToPlayerID(p.NickName);
+    }
+
+    private bool IsAllowingSubscribers(GameObject user)
+    {
+        return user.GetComponentInChildren<ProximityAudioController>().isAllowingSubscribers;
     }
 }
 
