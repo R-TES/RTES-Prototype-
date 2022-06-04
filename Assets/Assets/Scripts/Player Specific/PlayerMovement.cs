@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float diagonalFluidity = 2f;
     public float speedMultiplier = 1.5f;
     public Color speedBoostColor = new Color(0.8f, 1f, 0.8f, 1f);
+    public GameObject particleSystem;
 
     public LayerMask pathLayer;
     public InputManagerScript inputManagementScript;
@@ -77,10 +78,12 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.125f, pathLayer))
         {
             sr.color = speedBoostColor;
+            particleSystem.SetActive(true);
             return speedMultiplier;
         }
         //else
         sr.color = defaultCharacterColor;
+        particleSystem.SetActive(false);
         return 1; 
     }
 

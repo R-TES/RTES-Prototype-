@@ -37,15 +37,19 @@ public class CameraFollow : MonoBehaviour
     {
         EdgePan();
         ResetEdgePan();
+
         if (!followTargetObject) return;
         FluidCameraFollow();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            CenterCamera();
     }
 
     void FluidCameraFollow()
     {
         float distance = Vector3.Distance(transform.position, targetObject.transform.position + offset);
         if (distance < teleportIfDistanceGreaterThan)
-            lerpVectors = Vector3.Lerp(transform.position, targetObject.transform.position + offset, speed);
+            lerpVectors = Vector3.Lerp(transform.position, targetObject.transform.position + offset, speed * Time.deltaTime);
         else
             lerpVectors = targetObject.transform.position + offset;
         transform.position = new Vector3(lerpVectors.x, lerpVectors.y, transform.position.z);
@@ -56,6 +60,11 @@ public class CameraFollow : MonoBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         targetObject = players[0];
         
+    }
+
+    void CenterCamera()
+    {
+        transform.position = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y, transform.position.z); 
     }
 
     void EdgePan()
