@@ -82,15 +82,14 @@ public class PlaceObjectsController : MonoBehaviour
         itemsAlreadyPlaced++;
         Vector3 worldPos = GetWorldPositionOnPlane(Input.mousePosition, 0f);                            // Get World Position.
         if (PhotonNetwork.IsConnected)
+        {
             placedObject = PhotonNetwork.Instantiate(SelectedItemPrefab.name, worldPos, SelectedItemGhost.transform.rotation);          // Instantiate in PhotonNetwork.
+            storeItemCoordinate.save(PhotonNetwork.CurrentRoom.Name, SelectedItemPrefab.name, worldPos.x, worldPos.y);
+        }
         else
             placedObject = Instantiate(SelectedItemPrefab, worldPos, SelectedItemGhost.transform.rotation);
 
-        placedObject.AddComponent<ObjectInstanceController>();
-        //TODO:
-        //Firebase.StoreItemCoordinate(LobbyID, SelectedItemPrefab.name, worldPos.x, worldPos.y);
-        storeItemCoordinate.save(PhotonNetwork.CurrentRoom.Name, SelectedItemPrefab.name, worldPos.x, worldPos.y);
-
+        placedObject.AddComponent<ObjectInstanceController>();    
         ResetItemSelection();                                                                           // Clear Item Selection.
     }
 

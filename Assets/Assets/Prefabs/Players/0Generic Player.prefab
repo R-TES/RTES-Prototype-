@@ -257,7 +257,6 @@ MonoBehaviour:
     m_Bits: 128
   inputManagementScript: {fileID: 4870592517203586386}
   movementXY: {x: 0, y: 0}
-  lockDefaultInputMethod: 0
 --- !u!114 &4292075591831702922
 MonoBehaviour:
   m_ObjectHideFlags: 0
