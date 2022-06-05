@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="stylesheet" href="agora_style.css">
+
+    
+    <script src="./reminder.js"></script>
 </head>
-<body>
+<body onload="updateClock(); setInterval('updateClock()', 1000)" >
 
     <div class="container">
         <div class="item header">RTES Virtual Office</div>
@@ -53,8 +56,45 @@
               </div>
         
         </div>
-        <div class="item footer">Fatigue Detection Tools</div>
+        <div class="item footer">
+          <div class="row" >
+            <div class="column2" style="background-color:#aaa;" >
+              <h1 id="dhour"></h1>
+            
+            </div>
+            <div class="column2" style="background-color:#bbb;" >
+              <h1 id="dminute"></h1>
+            </div>
+            <div class="column2" style="background-color:#ccc;" >
+              <h1 id="dseconds"></h1>
+            </div>
+          
+      
+        
+          <div class="column2" style="background-color:#ccc;" >
+              <h1 >Hour</h1>
+              <input type="text" id="hour" />
+          </div>
+          <div class="column2" style="background-color:#aaa;" >
+              <h1 >Minute</h1>
+              <form>
+              <input type="text" id="minute" />
+            </form>
+          </div>
+          <div class="column2" style="background-color:#bbb;" >
+              <h1 >Set</h1>
+              <button  onclick="testVariable(); setInterval('testVariable()', 1000)">Submit</button> <br />
+          </div>
+        
+
+        <div class="entire" style="background-color:#ddd">
+          <span id="reminder_shower">
+
+          </span>
+          </div>
       </div>
+    </div>
+      
 
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
