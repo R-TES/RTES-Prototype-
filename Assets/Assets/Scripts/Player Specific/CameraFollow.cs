@@ -19,10 +19,16 @@ public class CameraFollow : MonoBehaviour
     public bool followTargetObject = true;
     public GameObject alternateTargetObject;
 
+    [Header("Camera Zoom Setting")]
+    public float maxZoomDelta;
+    public float minZoomDelta;
+    public float sensitivity = 10;
+    private float currentZoom;
+
     private Vector2 lerpVectors;
     private GameObject targetObject;
     private SpriteRenderer fade;
-
+    private Camera cam;
 
     void Start()
     {
@@ -31,18 +37,26 @@ public class CameraFollow : MonoBehaviour
         else
             targetObject = alternateTargetObject;
         fade = GetComponentInChildren<SpriteRenderer>();
+        cam = GetComponent<Camera>();
+        currentZoom = cam.fieldOfView;
     }
 
     void Update()
     {
         EdgePan();
         ResetEdgePan();
+        if (Input.GetKeyDown(KeyCode.Space))
+            CenterCamera();
 
         if (!followTargetObject) return;
         FluidCameraFollow();
+        ChangeZoom(Input.GetAxis("Mouse ScrollWheel"), sensitivity);
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            CenterCamera();
+
+    void ChangeZoom(float i = 1, float sens = 1f)
+    {
+        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView - i * sensitivity, currentZoom - minZoomDelta, currentZoom + maxZoomDelta);
     }
 
     void FluidCameraFollow()
@@ -69,7 +83,7 @@ public class CameraFollow : MonoBehaviour
 
     void EdgePan()
     {
-        if (!Input.GetMouseButton(2)) return;
+        if (!Input.GetMouseButton(0)) return;
 
         if (Input.mousePosition.x > Screen.width - edgePanMarginHorizontal && Input.mousePosition.x < Screen.width - deadZone)
         {

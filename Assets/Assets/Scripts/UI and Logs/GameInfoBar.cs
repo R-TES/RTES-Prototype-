@@ -7,6 +7,7 @@ public class GameInfoBar : MonoBehaviour
 {
     TMP_Text textfield;
     public Vector3 offset = new(1f, -1f, 0);
+    public GameObject mouseClickRing;
     private void Start()
     {
         textfield = GetComponent<TMP_Text>();
@@ -23,6 +24,14 @@ public class GameInfoBar : MonoBehaviour
         gameObject.transform.position = pos + offset;
     }
 
+    private void OnMouseDown()
+    {
+        
+    }
 
+    private void Update()
+    {
+        
+    }
 
 }

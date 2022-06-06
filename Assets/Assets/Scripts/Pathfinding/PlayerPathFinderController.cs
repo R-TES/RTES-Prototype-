@@ -16,14 +16,17 @@ public class PlayerPathFinderController : MonoBehaviour
     PlayerMovement playerMover;
 
     public Seeker seeker;
+    public GameObject destinationTileDisplay;
+
     Path path;
     int waypoint = 0;
     bool reachedEndOfPath = false;
-
+    
 
     //public GameObject pathFinderTargetDummyObject;
     void Start()
     {
+        destinationTileDisplay.transform.parent = null;
         if (PhotonNetwork.IsConnected && !gameObject.GetComponent<PhotonView>().IsMine)           // Disable script on online players.
             this.enabled = false;
 
@@ -43,12 +46,16 @@ public class PlayerPathFinderController : MonoBehaviour
     {
         PlayerPathFinderMouse();
         PlayerMover();
+
+     
     }
 
+ 
 
     void CalculatePath()
     {
         seeker.StartPath(gameObject.transform.position, target.transform.position, OnDestinationReached);
+        destinationTileDisplay.transform.position = target.transform.position;
     }
 
     void PlayerMover()
@@ -69,10 +76,11 @@ public class PlayerPathFinderController : MonoBehaviour
 
         Vector2 direction = (path.vectorPath[waypoint] - gameObject.transform.position);
         float distance = Vector2.Distance(gameObject.transform.position, path.vectorPath[waypoint]);
-        
-        if (distance < wayPointBufferDistance)
-            waypoint++;
 
+        if (distance < wayPointBufferDistance)
+        {
+            waypoint++;
+        }
         playerMover.ApplyMotion(direction.normalized);
     }
 
@@ -109,12 +117,14 @@ public class PlayerPathFinderController : MonoBehaviour
     {
         target.transform.position = GetWorldPositionOnPlane(Input.mousePosition);
         pathFindingEnabled = true;
+        destinationTileDisplay.SetActive(true);
         CalculatePath();
     }
     
     private void DisablePathFinder()
     {
         pathFindingEnabled = false;
+        destinationTileDisplay.SetActive(false);
     }
     
 
@@ -126,7 +136,7 @@ public class PlayerPathFinderController : MonoBehaviour
         {
             SetPathFinderTarget();
         }
-        else if (Input.anyKeyDown)
+        else if (Input.anyKeyDown && !Input.GetMouseButton(0))
         {
             DisablePathFinder();
         }

@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     float SpeedModifierOnPath()
     {
 
-        if (Physics2D.OverlapCircle(transform.position, 0.125f, pathLayer))
+        if (Physics2D.OverlapCircle(transform.position + Vector3.down * 0.5f, 0.0625f, pathLayer))
         {
             sr.color = speedBoostColor;
             particleSystem.SetActive(true);
