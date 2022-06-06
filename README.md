@@ -11,22 +11,21 @@
 
 ## Gallary
 
-![RTES](https://github.com/R-TES/RTES-Prototype-/blob/main/Images/RTES.png?raw=true)
+
 RTES Team
+<img src="https://github.com/R-TES/RTES-Prototype-/blob/main/Images/RTES.png?raw=true" height="250">
 
 
-![RTES](https://github.com/R-TES/RTES-Prototype-/blob/main/Images/ClippertonIsland.png?raw=true)
-Demo Map Exterior
+"Village" (Exterior)
+<img src="https://github.com/R-TES/RTES-Prototype-/blob/main/Images/ClippertonIsland.png?raw=true" height="250">
 
 
-![RTES](https://github.com/R-TES/RTES-Prototype-/blob/main/Images/JapaneseHouse.png?raw=true)
 One of many Interiors
+<img src="https://github.com/R-TES/RTES-Prototype-/blob/main/Images/JapaneseHouse.png?raw=true" height="250">
 
 
-![RTES](https://github.com/R-TES/RTES-Prototype-/blob/main/Images/MECgameSpaceExterior.png?raw=true)
-Govt. Model Engineering College, Kochi (Real World Example)
-
-
+Govt. Model Engineering College, Kochi  *(Real World Example)*
+<img src="https://github.com/R-TES/RTES-Prototype-/blob/main/Images/MECgameSpaceExterior.png?raw=true" height="200">
 
 
 ## Concept
