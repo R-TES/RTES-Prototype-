@@ -96,11 +96,8 @@ public class CameraFollow : MonoBehaviour
 
     void ResetEdgePan()
     {
-        if (Input.GetMouseButton(2)) return;
-        else if (Input.anyKey)
-        {
-            followTargetObject = true;
-        }
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetAxisRaw("Horizontal")!= 0 || Input.GetAxisRaw("Vertical")!= 0 )
+            followTargetObject = true;   
     }
 
 
