@@ -21,7 +21,8 @@
 ## Project Documents
 
 [Presentation](https://docs.google.com/presentation/d/1n_eTfEwomj4OV1Z334lq_1CXjGD_L5nGCJ2xOqZWMLs/)
-[Software Design Specification Document](https://github.com/R-TES/RTES-Prototype-/blob/main/RTES_FinalProjectReport.pdf)
+
+[Software Design Specification Document](https://github.com/R-TES/RTES-Prototype-/raw/main/RTES_FinalProjectReport.pdf)
 
 
 
