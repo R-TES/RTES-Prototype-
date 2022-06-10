@@ -1,0 +1,62 @@
+[33mcommit 1419db62eddc5d47e802e6327787bec4d6139d09[m[33m ([m[1;36mHEAD -> [m[1;32magora-neo[m[33m, [m[1;31morigin/agora-neo[m[33m)[m
+Author: George M Cherian <hurakannx@gmail.com>
+Date:   Tue May 31 20:08:21 2022 +0530
+
+    Support for devices without a camera
+
+[1mdiff --git a/testingBuild/agora.js b/testingBuild/agora.js[m
+[1mindex bed29475f..e0df6884e 100644[m
+[1m--- a/testingBuild/agora.js[m
+[1m+++ b/testingBuild/agora.js[m
+[36m@@ -58,24 +58,43 @@[m [masync function join() {[m
+     // Join a channel and create local tracks[m
+     // Promise.all to runs join and create funcn's concurrently[m
+     [m
+[31m-    [options.uid, localTracks.audioTrack, localTracks.videoTrack] = await Promise.all([[m
+[32m+[m[41m    [m
+[32m+[m[32m    [options.uid, localTracks.audioTrack] = await Promise.all([[m
+         // join the channel[m
+[31m-        client.join(options.appid, options.channel, options.token, options.uid),[m
+[32m+[m[32m        client.join(options.appid, options.channel, options.token),[m
+         // create local tracks, using microphone and camera[m
+         AgoraRTC.createMicrophoneAudioTrack([m
+             {AEC: true, ANS: true} // to suppress echo.[m
+         ),[m
+[31m-        AgoraRTC.createCameraVideoTrack()[m
+[32m+[m[41m        [m
+     ]);[m
+[32m+[m[32m    var devices = await AgoraRTC.getDevices();[m
+[32m+[m[32m    var cameras = devices.filter(device => device.kind === 'videoinput');[m
+[32m+[m[32m    if (cameras.length > 0)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        localTracks.videoTrack = await AgoraRTC.createCameraVideoTrack()[m
+[32m+[m[32m    }[m
+[32m+[m[32m    else{[m
+[32m+[m[32m        console.warn("No camera, only Audio !!!")[m
+[32m+[m[32m    }[m
+[32m+[m
+     // Plays Local video track[m
+[31m-    localTracks.videoTrack.play("localplayer");[m
+[31m-    $("#local-player-name").text(`localVideo(${[m
+[32m+[m[32m    if (localTracks.videoTrack == null){[m
+[32m+[m[32m        await client.publish(localTracks.audioTrack)[m
+[32m+[m[32m        console.log("only Audio")[m
+[32m+[m[32m        const local = document.getElementById("localplayer")[m
+[32m+[m[32m        local.style.backgroundColor = "black";}[m
+[32m+[m[32m    else{[m
+[32m+[m[32m        console.log("????????????????????")[m
+[32m+[m[32m        console.log(localTracks.videoTrack)[m
+[32m+[m[32m        localTracks.videoTrack.play("local-player");[m
+[32m+[m[32m        $("#local-player-name").text(`localVideo(${[m
+         options.accountName[m
+     })`);[m
+[31m-    // Publishes Localtracks so that other user's can subscribe[m
+     await client.publish(Object.values(localTracks));[m
+[31m-    console.log("publish success");[m
+[31m-}[m
+[32m+[m[32m    console.log("publish success");}[m
+[32m+[m[32m    // Publishes Localtracks so that other user's can subscribe[m
+[32m+[m[32m    }[m
+ async function leave() {[m
+     for (trackName in localTracks) {[m
+         var track = localTracks[trackName];[m
