@@ -31,6 +31,10 @@ Govt. Model Engineering College, Kochi  *(Real World Example)*
 
 <img src="https://github.com/R-TES/RTES-Prototype-/blob/main/Images/MECgameSpaceExterior.png?raw=true" height="200">
 
+Proximity Chat Example
+
+<img src="https://github.com/R-TES/RTES-Prototype-/blob/main/Images/proximity-audio.gif?raw=true" height="200">
+
 
 ## Concept
 
